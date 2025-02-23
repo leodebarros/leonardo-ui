@@ -1,74 +1,62 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { View } from "@/components/leonardoUI/View";
+import List from "@/components/leonardoUI/List";
+import Header from "@/components/leonardoUI/Header";
+import { Link } from "expo-router";
+import { View as DefaultView } from "react-native";
+import { Button } from "@/components/leonardoUI/Button";
+import { useTheme, useThemeActions } from "@/store/themeContext";
 
 export default function HomeScreen() {
+  const theme = useTheme();
+  const { chosenPrimaryKey, setPrimaryColor } = useThemeActions();
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View>
+      <Header
+        title="LeonardoUI"
+        description="An open sourced UI components project for Expo"
+      />
+      <List>
+        <List.Title>Components</List.Title>
+        <List.Description>
+          Check out our curated list of components
+        </List.Description>
+        <Link href={"/(index)/actionScreen"} asChild>
+          <List.Item
+            caption="Action"
+            description="Iconized button to trigger actions"
+          />
+        </Link>
+        <Link href={"/(index)/buttonScreen"} asChild>
+          <List.Item caption="Button" description="Trigger an action" />
+        </Link>
+        <List.Item caption="Card" description="Display detailed information" />
+        <Link href={"/(index)/chipScreen"} asChild>
+          <List.Item caption="Chip" description="Info helpers" />
+        </Link>
+        <List.Item caption="Dialog" description="Prompt for double check" />
+        <Link href={"/(index)/featuredScreen"} asChild>
+          <List.Item caption="Featured" description="Show case a service" />
+        </Link>
+        <Link href={"/(index)/headerScreen"} asChild>
+          <List.Item
+            caption="Header"
+            description="Screen headers with descriptions and nav back arrow"
+          />
+        </Link>
+        <Link href={"/(index)/listScreen"} asChild>
+          <List.Item caption="List" description="This one is a list" />
+        </Link>
+        <Link href={"/(index)/toastScreen"} asChild>
+          <List.Item
+            caption="Toast"
+            description="Throw notifications on actions results"
+          />
+        </Link>
+        <Link href={"/(tabs)/playground"} asChild>
+          <Button caption="Go to Playground" type="primary" />
+        </Link>
+      </List>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
