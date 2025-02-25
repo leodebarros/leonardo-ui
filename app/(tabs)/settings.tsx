@@ -29,9 +29,7 @@ export default function SettingsScreen() {
       <Options sectionTitle="Primary Color">
         <Options.Select
           label={COLOR_HEX_TO_LABEL[chosenPrimaryKey] || chosenPrimaryKey}
-          iconLeft={
-            <AntDesign name="skin" size={15} color={theme.colors.textSidebar} />
-          }
+          iconName="skin"
           options={[
             { label: "Teal", value: "teal" },
             { label: "Purple", value: "purple" },
