@@ -27,6 +27,7 @@ function Card({ children, style, padding = "lg", cover }: CardProps) {
       width: "100%",
     },
     coverImage: {
+      minWidth: "100%",
       maxWidth: "100%",
       height: 200,
       borderTopLeftRadius: theme.borderRadius.md,
@@ -126,8 +127,7 @@ Card.Footer = function CardFooter({ text, button, chipTone }: CardFooterProps) {
       paddingHorizontal: theme.padding.md,
     },
     footerButtonContainer: {
-      flexBasis: "40%",
-      maxWidth: "40%",
+      maxWidth: "60%",
     },
   });
 
