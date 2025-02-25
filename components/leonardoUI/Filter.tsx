@@ -66,8 +66,8 @@ const Filter: FC<FilterProps> = ({
     container: {
       paddingVertical: theme.padding.sm,
       paddingHorizontal: theme.padding.md,
-      borderRadius: 15,
-      marginRight: 5,
+      borderRadius: theme.borderRadius.lg,
+      marginRight: theme.margin.sm,
 
       backgroundColor,
       borderWidth,
