@@ -1,15 +1,17 @@
 import * as React from "react";
 import {
   StyleSheet,
-  View,
+  View as RNView,
   StyleProp,
   ViewStyle,
   TouchableOpacity,
   GestureResponderEvent,
+  Image,
+  ImageSourcePropType,
 } from "react-native";
 import { useTheme } from "./Theme";
 import { Entypo } from "@expo/vector-icons";
-import { forwardRef } from "react";
+import { createContext, forwardRef, useContext, useState } from "react";
 import { useThemeActions } from "@/store/themeContext";
 import { Text } from "./Text";
 
@@ -19,9 +21,17 @@ interface ListProps {
   padding?: "md" | "lg";
 }
 
+const ListContext = createContext({ hasHeader: false });
+
 function List({ children, style, padding = "lg" }: ListProps) {
   const theme = useTheme();
   const paddingValue = theme.padding[padding];
+
+  const hasHeader = React.Children.toArray(children).some(
+    (child) =>
+      React.isValidElement(child) &&
+      (child.type === List.Title || child.type === List.Description)
+  );
 
   const styles = StyleSheet.create({
     list: {
@@ -31,15 +41,17 @@ function List({ children, style, padding = "lg" }: ListProps) {
       backgroundColor: theme.colors.surface,
       borderRadius: theme.borderRadius.md,
       padding: paddingValue,
+      gap: hasHeader ? 0 : 20,
     },
   });
 
-  return <View style={[styles.list, style]}>{children}</View>;
+  return (
+    <ListContext.Provider value={{ hasHeader }}>
+      <RNView style={[styles.list, style]}>{children}</RNView>
+    </ListContext.Provider>
+  );
 }
 
-/* ------------------------------------------------------------------
-   2. Title sub-component
-   ------------------------------------------------------------------ */
 List.Title = function ListTitle({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
 
@@ -56,72 +68,62 @@ List.Title = function ListTitle({ children }: { children: React.ReactNode }) {
   );
 };
 
-/* ------------------------------------------------------------------
-   3. Description sub-component
-   ------------------------------------------------------------------ */
 List.Description = function ListDescription({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const theme = useTheme();
-
-  const styles = StyleSheet.create({
-    container: {
-      minWidth: "100%",
-    },
-    description: {
-      marginBottom: theme.margin.lg,
-    },
-  });
-
-  return (
-    <View style={styles.container}>
-      <Text color="textSecondary" style={styles.description}>
-        {children}
-      </Text>
-    </View>
-  );
+  return <Text color="textSecondary">{children}</Text>;
 };
 
-/* ------------------------------------------------------------------
-   4. Item sub-component
-   ------------------------------------------------------------------ */
 interface ListItemProps {
   caption: string;
   description?: string;
   value?: string;
-  avatar?: string;
+  avatar?: ImageSourcePropType;
+  showNavArrow?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
+  disabled?: boolean;
 }
 
-List.Item = forwardRef<View, ListItemProps>(function ListItem(
-  { caption, description, value, avatar, onPress },
+List.Item = forwardRef<RNView, ListItemProps>(function ListItem(
+  { caption, description, value, avatar, showNavArrow, onPress, disabled },
   ref
 ) {
   const theme = useTheme();
   const { chosenPrimaryKey } = useThemeActions();
+  const [imageError, setImageError] = useState(false);
+
+  const { hasHeader } = useContext(ListContext);
 
   const styles = StyleSheet.create({
     itemContainer: {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      marginBottom: theme.margin.lg,
+      marginTop: hasHeader ? theme.margin.lg : 0,
     },
     leftSection: {
       flexDirection: "row",
       alignItems: "center",
+      gap: 3,
       flexShrink: 1,
+    },
+    avatarImage: {
+      width: 32,
+      height: 32,
+      marginRight: theme.margin.sm,
+      backgroundColor: theme.colors.border,
+      borderRadius: theme.borderRadius.md,
     },
     avatarPlaceholder: {
       width: 32,
       height: 32,
-      borderRadius: 16,
       marginRight: theme.margin.sm,
-      backgroundColor: theme.colors.border,
-      justifyContent: "center",
-      alignItems: "center",
+      borderWidth: 1,
+      borderColor: theme.colors.border,
+      backgroundColor: theme.colors.background,
+      borderRadius: theme.borderRadius.md,
     },
     textContainer: {
       flexShrink: 1,
@@ -143,15 +145,24 @@ List.Item = forwardRef<View, ListItemProps>(function ListItem(
   });
 
   return (
-    <TouchableOpacity ref={ref} style={styles.itemContainer} onPress={onPress}>
-      <View style={styles.leftSection}>
-        {typeof avatar === "string" && (
-          <View style={styles.avatarPlaceholder}>
-            {/* e.g. <Text style={{ color: '#fff' }}>A</Text> */}
-          </View>
-        )}
-
-        <View style={styles.textContainer}>
+    <TouchableOpacity
+      ref={ref}
+      style={styles.itemContainer}
+      onPress={onPress}
+      disabled={disabled}
+    >
+      <RNView style={styles.leftSection}>
+        {avatar !== undefined && !imageError ? (
+          <Image
+            source={avatar}
+            style={styles.avatarImage}
+            resizeMode="contain"
+            onError={() => setImageError(true)}
+          />
+        ) : avatar !== undefined ? (
+          <RNView style={styles.avatarPlaceholder} />
+        ) : null}
+        <RNView style={styles.textContainer}>
           <Text weight="semibold" numberOfLines={1}>
             {caption}
           </Text>
@@ -160,18 +171,19 @@ List.Item = forwardRef<View, ListItemProps>(function ListItem(
               {description}
             </Text>
           )}
-        </View>
-      </View>
+        </RNView>
+      </RNView>
 
-      <View style={styles.rightSection}>
-        {value ? (
+      <RNView style={styles.rightSection}>
+        {value && (
           <Text weight="semibold" numberOfLines={1}>
             {value}
           </Text>
-        ) : (
+        )}
+        {showNavArrow && (
           <Entypo name="chevron-right" size={30} color={chosenPrimaryKey} />
         )}
-      </View>
+      </RNView>
     </TouchableOpacity>
   );
 });
