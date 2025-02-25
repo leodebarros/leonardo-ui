@@ -2,9 +2,17 @@ import React from "react";
 import { View, FlexAlignType, StyleSheet } from "react-native";
 import { Text } from "./Text";
 
+export type ChipTone =
+  | "green"
+  | "yellow"
+  | "cyan"
+  | "red"
+  | "purple"
+  | "neutral";
+
 interface ChipParams {
   caption: string;
-  tone: "green" | "yellow" | "cyan" | "red" | "purple" | "neutral";
+  tone: ChipTone;
   rounded?: "sm" | "full";
   alignSelf?: FlexAlignType;
 }
@@ -69,8 +77,8 @@ const Chip = ({
       color: textColor,
     },
     tagStyle: {
-      paddingHorizontal: 12, // Equivalent to Tailwind `px-3`
-      paddingVertical: 4, // Equivalent to Tailwind `py-1`
+      paddingHorizontal: 12,
+      paddingVertical: 4,
       alignItems: "center",
       justifyContent: "center",
       alignSelf,
