@@ -115,7 +115,7 @@ export default function ToastScreen() {
           title={toastConfig.title}
           description={toastConfig.description}
           linkCaption={toastConfig.linkCaption}
-          linkRoute={"/"}
+          path={"/(index)/actionScreen"}
           type={selectedToastType}
           isVisible={isVisible}
           onRequestClose={() => setIsVisible(false)}

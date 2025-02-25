@@ -21,7 +21,7 @@ interface ToastProps {
   type: ToastType;
   showIcon?: boolean;
   linkCaption?: string;
-  linkRoute?: Href;
+  path?: Href;
 }
 
 const Toast: React.FC<ToastProps> = ({
@@ -32,7 +32,7 @@ const Toast: React.FC<ToastProps> = ({
   type,
   showIcon = true,
   linkCaption,
-  linkRoute,
+  path,
 }) => {
   const theme = useTheme();
   const isDarkMode = useColorScheme() === "dark";
@@ -149,8 +149,8 @@ const Toast: React.FC<ToastProps> = ({
           <Text color="textSecondary" style={styles.toastDescription}>
             {description}
           </Text>
-          {linkCaption && linkRoute && (
-            <Link href={linkRoute} style={styles.linkText}>
+          {linkCaption && path && (
+            <Link href={path} style={styles.linkText}>
               <Text weight="semibold">{linkCaption}</Text>
             </Link>
           )}
