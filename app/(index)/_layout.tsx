@@ -9,6 +9,7 @@ export default function IndexLayout() {
       <Stack.Screen name="chipScreen" options={{ headerShown: false }} />
       <Stack.Screen name="dialogScreen" options={{ headerShown: false }} />
       <Stack.Screen name="featuredScreen" options={{ headerShown: false }} />
+      <Stack.Screen name="filterScreen" options={{ headerShown: false }} />
       <Stack.Screen name="listScreen" options={{ headerShown: false }} />
       <Stack.Screen name="textScreen" options={{ headerShown: false }} />
       <Stack.Screen name="toastScreen" options={{ headerShown: false }} />
