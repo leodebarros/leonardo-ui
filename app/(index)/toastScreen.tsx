@@ -3,7 +3,7 @@ import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
 import Toast from "@/components/leonardoUI/Toast";
 import { View } from "@/components/leonardoUI/View";
-import { View as DefaultView, StyleSheet } from "react-native";
+import { View as RNView, StyleSheet } from "react-native";
 import { useMemo, useState } from "react";
 import RadioButton from "@/components/leonardoUI/RadioButton";
 import { Text } from "@/components/leonardoUI/Text";
@@ -70,45 +70,44 @@ export default function ToastScreen() {
           Select a type and press the trigger button
         </Card.Description>
 
-        <DefaultView style={{ marginVertical: 12, gap: 12 }}>
+        <RNView style={{ marginVertical: 12, gap: 12 }}>
           {/* INFO */}
-          <DefaultView style={styles.row}>
+          <RNView style={styles.row}>
             <Text>Info</Text>
             <RadioButton
               selected={selectedToastType === "info"}
               onPress={() => setSelectedToastType("info")}
             />
-          </DefaultView>
+          </RNView>
 
           {/* SUCCESS */}
-          <DefaultView style={styles.row}>
+          <RNView style={styles.row}>
             <Text>Success</Text>
             <RadioButton
               selected={selectedToastType === "success"}
               onPress={() => setSelectedToastType("success")}
             />
-          </DefaultView>
+          </RNView>
 
           {/* ERROR */}
-          <DefaultView style={styles.row}>
+          <RNView style={styles.row}>
             <Text>Error</Text>
             <RadioButton
               selected={selectedToastType === "error"}
               onPress={() => setSelectedToastType("error")}
             />
-          </DefaultView>
+          </RNView>
 
           {/* WARNING */}
-          <DefaultView style={styles.row}>
+          <RNView style={styles.row}>
             <Text>Warning</Text>
             <RadioButton
               selected={selectedToastType === "warning"}
               onPress={() => setSelectedToastType("warning")}
             />
-          </DefaultView>
-        </DefaultView>
+          </RNView>
+        </RNView>
 
-        {/* Trigger toast */}
         <Button caption="Trigger toast" type="primary" onPress={handleSubmit} />
 
         <Toast
