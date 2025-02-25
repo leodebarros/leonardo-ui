@@ -6,7 +6,7 @@ import Header from "@/components/leonardoUI/Header";
 import Dialog from "@/components/leonardoUI/Dialog";
 import { useState } from "react";
 import Toast from "@/components/leonardoUI/Toast";
-import FilterPill from "@/components/leonardoUI/FilterPill";
+import Filter from "@/components/leonardoUI/Filter";
 import List from "@/components/leonardoUI/List";
 import { Action } from "@/components/leonardoUI/Action";
 import { Text } from "@/components/leonardoUI/Text";
@@ -27,7 +27,6 @@ export default function PlaygroundScreen() {
     { label: "Completed" },
   ];
 
-  // Track which filter is active
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
   const styles = StyleSheet.create({
@@ -53,7 +52,7 @@ export default function PlaygroundScreen() {
         contentContainerStyle={styles.contentContainer}
       >
         {filterOptions.map((option) => (
-          <FilterPill
+          <Filter
             key={option.label}
             label={option.label}
             isActive={option.label === activeFilter}
