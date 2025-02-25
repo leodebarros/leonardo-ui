@@ -21,7 +21,8 @@ const PRIMARY_COLOR_OPTIONS = {
   purple: "#8E24AA",
 } as const;
 
-type PrimaryColorKey = keyof typeof PRIMARY_COLOR_OPTIONS;
+export type PrimaryColorKey = keyof typeof PRIMARY_COLOR_OPTIONS;
+
 type ThemeContextType = {
   theme: ResolvedTheme;
   chosenPrimaryKey: string;
