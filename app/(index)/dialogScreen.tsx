@@ -12,7 +12,11 @@ export default function DialogScreen() {
 
   return (
     <View>
-      <Header title="Dialog" description="Prompt for double check" navBack />
+      <Header
+        title="Dialog"
+        description="A modal overlay that requires user interaction, often used for confirmations, alerts, or form inputs."
+        navBack
+      />
       <DefaultView style={{ gap: 12 }}>
         <Card>
           <Card.Title>Dialog</Card.Title>

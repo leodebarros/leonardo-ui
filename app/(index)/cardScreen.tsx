@@ -12,7 +12,7 @@ export default function CardScreen() {
     <View>
       <Header
         title="Card"
-        description="Showcase structured content with flexible layouts"
+        description="A versatile container that groups related content and actions, often used for displaying previews or summaries."
         navBack
       />
       <DefaultView style={{ gap: 12 }}>

@@ -7,7 +7,7 @@ export default function FeaturedScreen() {
     <View>
       <Header
         title="Featured"
-        description="Outstanding featured cards to render services or promos"
+        description="A visually prominent section used to highlight key content, such as promotional items or important updates."
         navBack
       />
       <Featured

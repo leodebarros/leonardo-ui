@@ -10,7 +10,7 @@ export default function ChipScreen() {
     <View>
       <Header
         title="Chip"
-        description="Compact labels to highlight statuses, categories, or actions"
+        description="A small, interactive UI element used to display information, filter content, or represent choices in a compact way."
         navBack
       />
 
