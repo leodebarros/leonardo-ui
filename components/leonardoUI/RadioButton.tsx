@@ -13,7 +13,7 @@ interface RadioButtonProps {
   /** Whether the radio button is currently selected. */
   selected: boolean;
   /** Handler called when the user presses the radio button. */
-  onPress: () => void;
+  onPress?: () => void;
   /** Disable the button and make it non-interactive. */
   disabled?: boolean;
   /** Optional style overrides for the outer container. */
