@@ -37,9 +37,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="playground"
+        name="examples"
         options={{
-          title: "Playground",
+          title: "Examples",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="play.circle" color={color} />
           ),
