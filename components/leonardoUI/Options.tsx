@@ -85,11 +85,12 @@ Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
 
     const styles = StyleSheet.create({
       itemContainer: {
-        width: "100%",
+        minWidth: "100%",
+        maxWidth: "100%",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        height: !!avatar && description ? 42 : 30,
+        height: isAvatarMode || description ? 42 : 30,
         paddingLeft: theme.padding.sm,
         paddingRight: theme.padding.xs,
       },
@@ -107,9 +108,9 @@ Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
         borderRadius: theme.borderRadius.md,
       },
       main: {
-        flexDirection: isAvatarMode ? "column" : "row",
-        alignItems: isAvatarMode ? "flex-start" : "center",
-        gap: isAvatarMode ? 2 : 8,
+        flexDirection: isAvatarMode || description ? "column" : "row",
+        alignItems: isAvatarMode || description ? "flex-start" : "center",
+        gap: isAvatarMode || description ? 2 : 8,
         flexShrink: 1,
       },
       description: {
@@ -134,7 +135,7 @@ Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
           ) : (
             <AntDesign
               name={iconName}
-              size={15}
+              size={18}
               color={theme.colors.textSidebar}
             />
           )}
@@ -142,7 +143,7 @@ Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
             <Text weight="semibold" color="textSidebar" numberOfLines={1}>
               {label}
             </Text>
-            {isAvatarMode && description ? (
+            {description ? (
               <Text style={styles.description} numberOfLines={1}>
                 {description}
               </Text>
@@ -254,6 +255,9 @@ Options.Select = function OptionsSelect({
     label: {
       color: chosenPrimaryKey,
     },
+    iconColor: {
+      color: chosenPrimaryKey,
+    },
   });
 
   return (
@@ -266,7 +270,7 @@ Options.Select = function OptionsSelect({
         <RNView style={styles.leftSection}>
           <AntDesign
             name={iconName}
-            size={15}
+            size={18}
             color={theme.colors.textSidebar}
           />
           <Text style={styles.label} weight="semibold" numberOfLines={1}>
@@ -295,7 +299,11 @@ Options.Select = function OptionsSelect({
                   {opt.label}
                 </Text>
                 {opt.value === selectedValue ? (
-                  <AntDesign name="check" size={18} />
+                  <AntDesign
+                    name="check"
+                    size={18}
+                    color={theme.colors.textPrimary}
+                  />
                 ) : null}
               </TouchableOpacity>
               <RNView
