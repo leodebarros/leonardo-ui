@@ -12,8 +12,10 @@ import { useThemeActions } from "@/store/themeContext";
 
 type TouchableOpacityRef = React.ElementRef<typeof TouchableOpacity>;
 
+export type ActionType = "primary" | "default" | "ghost" | "accent";
+
 interface ActionProps {
-  type?: "primary" | "default" | "ghost" | "accent";
+  type?: ActionType;
   iconName: keyof typeof AntDesign.glyphMap;
   iconSize?: number;
   style?: StyleProp<ViewStyle>;
