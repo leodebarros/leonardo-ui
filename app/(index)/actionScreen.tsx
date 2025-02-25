@@ -33,7 +33,7 @@ export default function ActionScreen() {
     <View>
       <Header
         title="Action"
-        description="Iconized buttons to trigger actions"
+        description="A compact, interactive button with an icon, used for quick actions such as sharing, saving, or liking."
         navBack
       />
 
