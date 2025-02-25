@@ -1,29 +1,93 @@
-import React from "react";
-import { Text } from "react-native";
-import { useTheme, useThemeActions } from "@/store/themeContext";
+import React, { useState } from "react";
 import { View } from "@/components/leonardoUI/View";
 import Header from "@/components/leonardoUI/Header";
-import { Button } from "@/components/leonardoUI/Button";
+import { AntDesign } from "@expo/vector-icons";
+import {
+  PrimaryColorKey,
+  useTheme,
+  useThemeActions,
+} from "@/store/themeContext";
+import { Options } from "@/components/leonardoUI/Options";
+import { Link } from "expo-router";
+
+const leonardoAvatar = require("@/assets/avatars/leodebarros.png");
+
+const COLOR_HEX_TO_LABEL: Record<string, string> = {
+  "#00B2A9": "teal",
+  "#1E88E5": "blue",
+  "#FF6D00": "orange",
+  "#8E24AA": "purple",
+};
 
 export default function SettingsScreen() {
   const theme = useTheme();
+
   const { chosenPrimaryKey, setPrimaryColor } = useThemeActions();
 
   return (
     <View>
       <Header title="Settings" description="Configure your app settings" />
-      <Button caption="Teal" onPress={() => setPrimaryColor("teal")} />
-      <Button caption="Blue" onPress={() => setPrimaryColor("blue")} />
-      <Button caption="Orange" onPress={() => setPrimaryColor("orange")} />
-      <Button caption="Purple" onPress={() => setPrimaryColor("purple")} />
-      <Text
-        style={{
-          color: theme.colors.primary,
-          fontSize: theme.fontSize.base,
-        }}
-      >
-        This text uses the current primary color
-      </Text>
+
+      <Options sectionTitle="Theme">
+        <Options.Select
+          label={COLOR_HEX_TO_LABEL[chosenPrimaryKey] || chosenPrimaryKey}
+          iconLeft={
+            <AntDesign name="skin" size={15} color={theme.colors.textSidebar} />
+          }
+          options={[
+            { label: "Teal", value: "teal" },
+            { label: "Purple", value: "purple" },
+            { label: "Blue", value: "blue" },
+            { label: "Orange", value: "orange" },
+          ]}
+          selectedValue={COLOR_HEX_TO_LABEL[chosenPrimaryKey]}
+          onChange={(value) => setPrimaryColor(value as PrimaryColorKey)}
+        />
+      </Options>
+
+      <Options sectionTitle="Contributors">
+        <Link href={"https://github.com/leodebarros"} asChild>
+          <Options.Item
+            iconLeft={
+              <AntDesign
+                name="skin"
+                size={15}
+                color={theme.colors.textSidebar}
+              />
+            }
+            label="Leonardo De Barros"
+            description="github: leodebarros"
+            avatar={leonardoAvatar}
+            actionIcon="chevron-forward-outline"
+          />
+        </Link>
+      </Options>
+
+      <Options sectionTitle="About LeonardoUI">
+        <Options.Item
+          disabled
+          iconLeft={
+            <AntDesign
+              name="file1"
+              size={15}
+              color={theme.colors.textSidebar}
+            />
+          }
+          label="Read our Docs (Coming soon)"
+        />
+        <Link href={"https://github.com/leodebarros/leonardo-ui"} asChild>
+          <Options.Item
+            iconLeft={
+              <AntDesign
+                name="github"
+                size={15}
+                color={theme.colors.textSidebar}
+              />
+            }
+            label="View source code"
+          />
+        </Link>
+      </Options>
     </View>
   );
 }
