@@ -8,6 +8,8 @@ import { Text } from "@/components/leonardoUI/Text";
 import { ACTION_VARIANTS } from "@/data/components";
 import { ActionType } from "@/components/leonardoUI/Action";
 import { AntDesign } from "@expo/vector-icons";
+import { Button } from "@/components/leonardoUI/Button";
+import { Link } from "expo-router";
 
 export default function ActionScreen() {
   const theme = useTheme();
@@ -59,6 +61,24 @@ export default function ActionScreen() {
           </DefaultView>
         </Card>
       ))}
+      <Card>
+        <Card.Title>Customize Your Action</Card.Title>
+        <Card.Description>
+          Need a different action? Easily customize your own using **AntDesign**
+          icons or any other library.
+        </Card.Description>
+        <Card.Description>
+          Explore all available **AntDesign** icons at:
+          <Text weight="semibold"> https://icons.expo.fyi/Index</Text>
+        </Card.Description>
+        <Card.Description>
+          Want to use a different icon library? Simply update the **iconName**
+          prop in **Action.tsx** and type it accordingly.
+        </Card.Description>
+        <Link href={"https://icons.expo.fyi/Index"} asChild>
+          <Button caption="Browse Expo Icons" />
+        </Link>
+      </Card>
     </View>
   );
 }
