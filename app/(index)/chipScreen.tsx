@@ -4,6 +4,7 @@ import Chip from "@/components/leonardoUI/Chip";
 import Header from "@/components/leonardoUI/Header";
 import { View } from "@/components/leonardoUI/View";
 import { CHIP_VARIANTS } from "@/data/components";
+import { Link } from "expo-router";
 
 export default function ChipScreen() {
   return (
@@ -35,7 +36,9 @@ export default function ChipScreen() {
           Use the following structure: **100** for background, **200** for
           border, and **900** for text color.
         </Card.Description>
-        <Button caption="Open Tailwind's Colors Page" />
+        <Link href={"https://tailwindcss.com/docs/colors"} asChild>
+          <Button caption="Open Tailwind's Colors Page" />
+        </Link>
       </Card>
     </View>
   );
