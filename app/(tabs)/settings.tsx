@@ -54,11 +54,7 @@ export default function SettingsScreen() {
       </Options>
 
       <Options sectionTitle="About LeonardoUI">
-        <Options.Item
-          disabled
-          iconName="file1"
-          label="Read our Docs (Coming soon)"
-        />
+        <Options.Item disabled iconName="file1" label="Docs (Coming soon)" />
         <Link href={"https://github.com/leodebarros/leonardo-ui"} asChild>
           <Options.Item iconName="github" label="View source code" />
         </Link>
