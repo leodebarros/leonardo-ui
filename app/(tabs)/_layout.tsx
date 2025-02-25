@@ -37,9 +37,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="examples"
+        name="showcase"
         options={{
-          title: "Examples",
+          title: "Showcase",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="play.circle" color={color} />
           ),
