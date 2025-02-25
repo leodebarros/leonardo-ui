@@ -24,9 +24,9 @@ export default function HomeScreen() {
           </Link>
         ))}
 
-        <Link href={"/(tabs)/examples"} asChild>
+        <Link href={"/(tabs)/showcase"} asChild>
           <Button
-            caption="View Examples"
+            caption="View Showcase"
             type="primary"
             style={{ marginTop: 20 }}
           />
