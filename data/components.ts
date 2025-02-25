@@ -113,28 +113,52 @@ export const BUTTON_VARIANTS = [
     },
 ];
 
-export const ACTION_VARIANTS = [
-    {
-        title: "Plus",
-        description: "A plus icon button, commonly used for adding new items or creating new content.",
-        iconName: "plus",
-    },
-    {
-        title: "Ellipsis",
-        description: "An ellipsis icon button, typically used for opening menus or more options.",
-        iconName: "ellipsis1",
-    },
-    {
-        title: "Add File",
-        description: "A file upload icon button, often used for file uploads or attachments.",
-        iconName: "addfile",
-    },
-    {
-        title: "Copy",
-        description: "A copy icon button, commonly used to duplicate or copy content to clipboard.",
-        iconName: "copy1",
-    },
-];
+export const ACTION_VARIANTS: {
+    title: string;
+    description: string;
+    iconName: keyof typeof AntDesign.glyphMap;
+}[] = [
+        {
+            title: "Plus",
+            description: "iconName: plus",
+            iconName: "plus",
+        },
+        {
+            title: "Ellipsis",
+            description: "iconName: ellipsis1",
+            iconName: "ellipsis1",
+        },
+        {
+            title: "Add File",
+            description: "iconName: addfile",
+            iconName: "addfile",
+        },
+        {
+            title: "Copy",
+            description: "iconName: copy1",
+            iconName: "copy1",
+        },
+        {
+            title: "Find",
+            description: "iconName: find",
+            iconName: "find",
+        },
+        {
+            title: "Cloud",
+            description: "iconName: cloud",
+            iconName: "cloud",
+        },
+        {
+            title: "Calendar",
+            description: "iconName: calendar",
+            iconName: "calendar",
+        },
+        {
+            title: "Delete",
+            description: "iconName: delete",
+            iconName: "delete",
+        },
+    ];
 
 export const CHIP_VARIANTS = [
     {
