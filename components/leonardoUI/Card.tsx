@@ -48,12 +48,10 @@ function Card({ children, style, padding = "lg", cover }: CardProps) {
 
   return (
     <View style={styles.container}>
-      {/* Render cover image if provided */}
       {cover && (
         <Image source={cover} style={styles.coverImage} resizeMode="cover" />
       )}
 
-      {/* The main card content */}
       <View style={[styles.card, style]}>{children}</View>
     </View>
   );
