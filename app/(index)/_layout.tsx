@@ -13,6 +13,7 @@ export default function IndexLayout() {
       <Stack.Screen name="headerScreen" options={{ headerShown: false }} />
       <Stack.Screen name="listScreen" options={{ headerShown: false }} />
       <Stack.Screen name="optionsScreen" options={{ headerShown: false }} />
+      <Stack.Screen name="radioButtonScreen" options={{ headerShown: false }} />
       <Stack.Screen name="textScreen" options={{ headerShown: false }} />
       <Stack.Screen name="toastScreen" options={{ headerShown: false }} />
     </Stack>
