@@ -18,7 +18,7 @@ export default function HomeScreen() {
           Check out our curated list of components
         </List.Description>
 
-        {COMPONENTS.map(({ path, caption, description }) => (
+        {COMPONENTS.map(({ path, caption }) => (
           <Link key={path} href={path as Href} asChild>
             <List.Item caption={caption} showNavArrow />
           </Link>
