@@ -12,8 +12,15 @@ import { Text } from "./Text";
 
 type TouchableOpacityRef = React.ElementRef<typeof TouchableOpacity>;
 
+export type ButtonType =
+  | "default"
+  | "primary"
+  | "outline"
+  | "ghost"
+  | "destructive";
+
 interface ButtonProps {
-  type?: "default" | "primary" | "outline" | "ghost" | "destructive";
+  type?: ButtonType;
   style?: StyleProp<ViewStyle>;
   caption: string;
   disabled?: boolean;
@@ -65,17 +72,17 @@ export const Button = forwardRef<TouchableOpacityRef, ButtonProps>(
 
     const styles = StyleSheet.create({
       button: {
-        minWidth: "100%",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        padding: theme.padding.md,
+        paddingHorizontal: theme.padding.lg,
+        paddingVertical: theme.padding.md,
         marginVertical: theme.margin.md,
         borderRadius: theme.borderRadius.md,
       },
       caption: {
         color: textColor,
-        letterSpacing: 0.2,
+        letterSpacing: 0.3,
       },
     });
 
