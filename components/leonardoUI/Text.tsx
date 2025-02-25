@@ -6,9 +6,11 @@ import {
 } from "react-native";
 import { useTheme } from "./Theme";
 
+export type TextSize = "xs" | "sm" | "base" | "md" | "lg" | "xl";
+export type FontWeight = "normal" | "semibold" | "bold";
 interface TextProps extends RNTextProps {
-  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl";
-  weight?: "normal" | "semibold" | "bold";
+  size?: TextSize;
+  weight?: FontWeight;
   color?: keyof ReturnType<typeof useTheme>["colors"];
 }
 
