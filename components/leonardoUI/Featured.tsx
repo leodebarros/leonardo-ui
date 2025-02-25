@@ -5,11 +5,9 @@ import {
   ImageBackground,
   TouchableOpacity,
   ImageSourcePropType,
-  useColorScheme,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "./Theme";
-import { Href, Link } from "expo-router";
 import { Text } from "./Text";
 
 interface Tone {
@@ -21,24 +19,23 @@ interface Tone {
 interface FeaturedProps {
   title: string;
   subtitle: string;
+  buttonCaption: string;
   imageAddress: ImageSourcePropType;
   tone?: Tone;
-  navRoute?: Href;
 }
 
 const Featured = ({
   title,
   subtitle,
+  buttonCaption,
   imageAddress,
   tone = {
     themeColor: "rgb(15, 40, 112)",
     titleColor: "#e9f6ff",
     subtitleColor: "#b6dfff",
   },
-  navRoute,
 }: FeaturedProps) => {
   const theme = useTheme();
-  const isDarkMode = useColorScheme() === "dark";
 
   const styles = StyleSheet.create({
     container: {
@@ -91,48 +88,46 @@ const Featured = ({
   });
 
   return (
-    <Link href={navRoute ? navRoute : "/"} asChild>
-      <TouchableOpacity style={styles.container}>
-        <ImageBackground
-          source={imageAddress}
-          style={styles.imageBackground}
-          imageStyle={styles.image}
+    <TouchableOpacity style={styles.container}>
+      <ImageBackground
+        source={imageAddress}
+        style={styles.imageBackground}
+        imageStyle={styles.image}
+      >
+        <LinearGradient
+          colors={["transparent", tone.themeColor]}
+          style={styles.gradient}
         >
-          <LinearGradient
-            colors={["transparent", tone.themeColor]}
-            style={styles.gradient}
+          <Text
+            size="lg"
+            weight="bold"
+            style={[styles.text, { color: tone.titleColor }]}
           >
-            <Text
-              size="lg"
-              weight="bold"
-              style={[styles.text, { color: tone.titleColor }]}
-            >
-              {title}
+            {title}
+          </Text>
+          <Text
+            style={[
+              styles.subtitle,
+              {
+                color: tone.subtitleColor,
+              },
+            ]}
+          >
+            {subtitle}
+          </Text>
+          <DefaultView
+            style={[
+              styles.actionBtnContainer,
+              { backgroundColor: tone.subtitleColor },
+            ]}
+          >
+            <Text weight="semibold" style={styles.actionBtn}>
+              {buttonCaption}
             </Text>
-            <Text
-              style={[
-                styles.subtitle,
-                {
-                  color: tone.subtitleColor,
-                },
-              ]}
-            >
-              {subtitle}
-            </Text>
-            <DefaultView
-              style={[
-                styles.actionBtnContainer,
-                { backgroundColor: tone.subtitleColor },
-              ]}
-            >
-              <Text weight="semibold" style={styles.actionBtn}>
-                Apply now
-              </Text>
-            </DefaultView>
-          </LinearGradient>
-        </ImageBackground>
-      </TouchableOpacity>
-    </Link>
+          </DefaultView>
+        </LinearGradient>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 };
 
