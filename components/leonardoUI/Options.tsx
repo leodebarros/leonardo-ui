@@ -13,7 +13,6 @@ import { useTheme } from "./Theme";
 import { Text } from "./Text";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { useThemeActions } from "@/store/themeContext";
-import { GlyphMap } from "@expo/vector-icons/build/createIconSet";
 
 interface OptionsProps {
   children: React.ReactNode;
@@ -181,7 +180,7 @@ interface SelectOption {
 }
 
 interface OptionsSelectProps {
-  iconLeft?: React.ReactNode;
+  iconName: keyof typeof AntDesign.glyphMap;
   label: string;
   options: SelectOption[];
   selectedValue?: string;
@@ -190,7 +189,7 @@ interface OptionsSelectProps {
 }
 
 Options.Select = function OptionsSelect({
-  iconLeft,
+  iconName,
   label,
   options,
   selectedValue,
@@ -265,7 +264,11 @@ Options.Select = function OptionsSelect({
         disabled={disabled}
       >
         <RNView style={styles.leftSection}>
-          {iconLeft}
+          <AntDesign
+            name={iconName}
+            size={15}
+            color={theme.colors.textSidebar}
+          />
           <Text style={styles.label} weight="semibold" numberOfLines={1}>
             {selectedValue
               ? options.find((o) => o.value === selectedValue)?.label ?? label
