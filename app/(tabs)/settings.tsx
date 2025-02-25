@@ -10,8 +10,6 @@ import {
 import { Options } from "@/components/leonardoUI/Options";
 import { Link } from "expo-router";
 
-const leonardoAvatar = require("@/assets/avatars/leodebarros.png");
-
 const COLOR_HEX_TO_LABEL: Record<string, string> = {
   "#00B2A9": "teal",
   "#1E88E5": "blue",
@@ -28,7 +26,7 @@ export default function SettingsScreen() {
     <View>
       <Header title="Settings" description="Configure your app settings" />
 
-      <Options sectionTitle="Theme">
+      <Options sectionTitle="Primary Color">
         <Options.Select
           label={COLOR_HEX_TO_LABEL[chosenPrimaryKey] || chosenPrimaryKey}
           iconLeft={
@@ -48,16 +46,10 @@ export default function SettingsScreen() {
       <Options sectionTitle="Contributors">
         <Link href={"https://github.com/leodebarros"} asChild>
           <Options.Item
-            iconLeft={
-              <AntDesign
-                name="skin"
-                size={15}
-                color={theme.colors.textSidebar}
-              />
-            }
+            iconName="skin"
             label="Leonardo De Barros"
             description="github: leodebarros"
-            avatar={leonardoAvatar}
+            avatar={require("@/assets/avatars/leodebarros.png")}
             actionIcon="chevron-forward-outline"
           />
         </Link>
@@ -66,26 +58,11 @@ export default function SettingsScreen() {
       <Options sectionTitle="About LeonardoUI">
         <Options.Item
           disabled
-          iconLeft={
-            <AntDesign
-              name="file1"
-              size={15}
-              color={theme.colors.textSidebar}
-            />
-          }
+          iconName="file1"
           label="Read our Docs (Coming soon)"
         />
         <Link href={"https://github.com/leodebarros/leonardo-ui"} asChild>
-          <Options.Item
-            iconLeft={
-              <AntDesign
-                name="github"
-                size={15}
-                color={theme.colors.textSidebar}
-              />
-            }
-            label="View source code"
-          />
+          <Options.Item iconName="github" label="View source code" />
         </Link>
       </Options>
     </View>
