@@ -45,7 +45,7 @@ export default function SettingsScreen() {
         <Link href={"https://github.com/leodebarros"} asChild>
           <Options.Item
             iconName="skin"
-            label="Leonardo De Barros"
+            label="Leonardsso De Barros"
             description="github: leodebarros"
             avatar={require("@/assets/avatars/leodebarros.png")}
             actionIcon="chevron-forward-outline"
