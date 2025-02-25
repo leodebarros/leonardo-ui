@@ -156,7 +156,7 @@ List.Item = forwardRef<RNView, ListItemProps>(function ListItem(
           <Image
             source={avatar}
             style={styles.avatarImage}
-            resizeMode="contain"
+            resizeMode="cover"
             onError={() => setImageError(true)}
           />
         ) : avatar !== undefined ? (
