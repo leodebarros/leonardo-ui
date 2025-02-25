@@ -13,6 +13,7 @@ import { useTheme } from "./Theme";
 import { Text } from "./Text";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { useThemeActions } from "@/store/themeContext";
+import { GlyphMap } from "@expo/vector-icons/build/createIconSet";
 
 interface OptionsProps {
   children: React.ReactNode;
@@ -26,7 +27,7 @@ export function Options({ children, style, sectionTitle }: OptionsProps) {
   const styles = StyleSheet.create({
     container: {
       width: "100%",
-      backgroundColor: theme.colors.sidebarBg,
+      backgroundColor: theme.colors.surface,
       borderRadius: theme.borderRadius.md,
       padding: theme.padding.md,
       marginBottom: theme.margin.lg,
@@ -55,7 +56,7 @@ export function Options({ children, style, sectionTitle }: OptionsProps) {
 }
 
 interface OptionsItemProps {
-  iconLeft?: React.ReactNode;
+  iconName: keyof typeof AntDesign.glyphMap;
   avatar?: ImageSourcePropType;
   label: string;
   description?: string;
@@ -69,7 +70,7 @@ type TouchableOpacityRef = React.ElementRef<typeof TouchableOpacity>;
 Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
   function OptionsItem(
     {
-      iconLeft,
+      iconName,
       avatar,
       label,
       description,
@@ -132,7 +133,11 @@ Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
               resizeMode="contain"
             />
           ) : (
-            iconLeft
+            <AntDesign
+              name={iconName}
+              size={15}
+              color={theme.colors.textSidebar}
+            />
           )}
           <RNView style={styles.main}>
             <Text weight="semibold" color="textSidebar" numberOfLines={1}>
@@ -247,6 +252,9 @@ Options.Select = function OptionsSelect({
       borderBottomWidth: 1,
       borderBottomColor: theme.colors.border,
     },
+    label: {
+      color: chosenPrimaryKey,
+    },
   });
 
   return (
@@ -258,7 +266,7 @@ Options.Select = function OptionsSelect({
       >
         <RNView style={styles.leftSection}>
           {iconLeft}
-          <Text weight="semibold" color="textSidebar" numberOfLines={1}>
+          <Text style={styles.label} weight="semibold" numberOfLines={1}>
             {selectedValue
               ? options.find((o) => o.value === selectedValue)?.label ?? label
               : label}
@@ -280,7 +288,9 @@ Options.Select = function OptionsSelect({
                   setOpen(false);
                 }}
               >
-                <Text color="textSidebar">{opt.label}</Text>
+                <Text color="textSidebar" weight="semibold">
+                  {opt.label}
+                </Text>
                 {opt.value === selectedValue ? (
                   <AntDesign name="check" size={18} />
                 ) : null}
