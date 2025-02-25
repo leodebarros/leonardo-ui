@@ -7,7 +7,11 @@ import { LIST_VARIANTS } from "@/data/components";
 export default function ListScreen() {
   return (
     <View>
-      <Header title="List" description="Display row items in a list" navBack />
+      <Header
+        title="List"
+        description="A structured, collection of items, commonly used for menus, settings, or displaying dynamic data."
+        navBack
+      />
       <RNView style={{ gap: 18 }}>
         {LIST_VARIANTS.map(({ title, description, items }, index) => (
           <List key={index}>
