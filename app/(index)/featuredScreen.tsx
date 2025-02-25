@@ -13,6 +13,7 @@ export default function FeaturedScreen() {
       <Featured
         title="Get up to $25,000"
         subtitle="If approved, you'll get your money in less than 24 hours"
+        buttonCaption="Apply Now"
         imageAddress={require("@/assets/covers/featured-sample.png")}
       />
     </View>
