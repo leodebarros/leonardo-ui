@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View as DefaultView, ScrollView, StyleSheet } from "react-native";
+import { View as DefaultView } from "react-native";
 import { Button } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
 import { View } from "@/components/leonardoUI/View";
@@ -8,7 +8,7 @@ import Dialog from "@/components/leonardoUI/Dialog";
 
 export default function DialogScreen() {
   const [showPrimaryDialog, setShowPrimaryDialog] = useState<boolean>(false);
-  const [showDefaultDialog, setShowDefaultDialog] = useState<boolean>(false);
+  // const [showDefaultDialog, setShowDefaultDialog] = useState<boolean>(false);
 
   return (
     <View>
@@ -20,7 +20,7 @@ export default function DialogScreen() {
       <DefaultView style={{ gap: 12 }}>
         <Card>
           <Card.Title>Dialog</Card.Title>
-          <Card.Description>Type: primary</Card.Description>
+          <Card.Description>type: primary</Card.Description>
           <Card.Footer
             button={
               <Button
@@ -34,24 +34,6 @@ export default function DialogScreen() {
         <Dialog
           isVisible={showPrimaryDialog}
           onCancel={() => setShowPrimaryDialog(false)}
-        />
-        <Card>
-          <Card.Title>Dialog</Card.Title>
-          <Card.Description>Type: default</Card.Description>
-          <Card.Footer
-            button={
-              <Button
-                caption="Open dialog"
-                type="default"
-                onPress={() => setShowDefaultDialog(true)}
-              />
-            }
-          />
-        </Card>
-        <Dialog
-          type="default"
-          isVisible={showDefaultDialog}
-          onCancel={() => setShowDefaultDialog(false)}
         />
       </DefaultView>
     </View>
