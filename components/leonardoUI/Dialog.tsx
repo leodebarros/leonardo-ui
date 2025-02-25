@@ -9,6 +9,7 @@ interface DialogProps {
   onConfirm?: () => void;
   onCancel: () => void;
   onRequestClose?: () => void;
+  type?: "primary" | "default";
 }
 
 const Dialog: React.FC<DialogProps> = ({
@@ -16,6 +17,7 @@ const Dialog: React.FC<DialogProps> = ({
   onConfirm,
   onCancel,
   onRequestClose,
+  type = "primary",
 }) => {
   const theme = useTheme();
   const styles = StyleSheet.create({
@@ -32,7 +34,6 @@ const Dialog: React.FC<DialogProps> = ({
       borderRadius: theme.borderRadius.md,
     },
     modalTitle: {
-      fontWeight: theme.fontWeight.semibold,
       marginBottom: theme.margin.sm,
     },
     modalText: {
@@ -50,7 +51,7 @@ const Dialog: React.FC<DialogProps> = ({
     >
       <DefaultView style={styles.modalContainer}>
         <DefaultView style={styles.modalContent}>
-          <Text weight="semibold" style={styles.modalTitle}>
+          <Text weight="bold" style={styles.modalTitle}>
             Confirm Action
           </Text>
           <Text style={styles.modalText}>
@@ -60,7 +61,7 @@ const Dialog: React.FC<DialogProps> = ({
             <Button
               caption="Confirm"
               onPress={onConfirm}
-              type="primary"
+              type={type}
               style={{ marginBottom: 0 }}
             />
             <Button caption="Cancel" onPress={onCancel} type="outline" />
