@@ -72,6 +72,7 @@ export const Button = forwardRef<TouchableOpacityRef, ButtonProps>(
 
     const styles = StyleSheet.create({
       button: {
+        height: 39,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
