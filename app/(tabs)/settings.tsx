@@ -14,7 +14,7 @@ const COLOR_HEX_TO_LABEL: Record<string, string> = {
   "#00B2A9": "teal",
   "#1E88E5": "blue",
   "#FF6D00": "orange",
-  "#8E24AA": "purple",
+  "#B03FCF": "purple",
 };
 
 export default function SettingsScreen() {
@@ -45,7 +45,7 @@ export default function SettingsScreen() {
         <Link href={"https://github.com/leodebarros"} asChild>
           <Options.Item
             iconName="skin"
-            label="Leonardsso De Barros"
+            label="Leonardo De Barros"
             description="github: leodebarros"
             avatar={require("@/assets/avatars/leodebarros.png")}
             actionIcon="chevron-forward-outline"
