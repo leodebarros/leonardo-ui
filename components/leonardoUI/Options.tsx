@@ -34,7 +34,7 @@ export function Options({ children, style, sectionTitle }: OptionsProps) {
     },
     sectionTitle: {
       paddingLeft: theme.padding.xs,
-      marginBottom: theme.margin.md,
+      marginBottom: theme.margin.sm,
     },
   });
 
@@ -44,6 +44,7 @@ export function Options({ children, style, sectionTitle }: OptionsProps) {
         <Text
           color="textSecondary"
           weight="semibold"
+          size="sm"
           style={styles.sectionTitle}
         >
           {sectionTitle}
@@ -187,6 +188,7 @@ interface OptionsSelectProps {
   selectedValue?: string;
   onChange?: (value: string) => void;
   disabled?: boolean;
+  style?: StyleProp<ViewStyle>;
 }
 
 Options.Select = function OptionsSelect({
@@ -196,6 +198,7 @@ Options.Select = function OptionsSelect({
   selectedValue,
   onChange,
   disabled = false,
+  style,
 }: OptionsSelectProps) {
   const theme = useTheme();
   const { chosenPrimaryKey } = useThemeActions();
@@ -263,7 +266,7 @@ Options.Select = function OptionsSelect({
   return (
     <React.Fragment>
       <TouchableOpacity
-        style={styles.container}
+        style={[styles.container, style]}
         onPress={handlePress}
         disabled={disabled}
       >
