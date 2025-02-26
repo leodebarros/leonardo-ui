@@ -73,8 +73,7 @@ export default function ShowcaseScreen() {
     row: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 10,
-      marginVertical: theme.margin.md,
+      gap: 9,
     },
     betweenRow: {
       flexDirection: "row",
@@ -137,7 +136,11 @@ export default function ShowcaseScreen() {
           description="Walmart"
           value="-87.20 USD"
         />
-        <Button caption="See All Transactions" type="outline" />
+        <Button
+          caption="See All Transactions"
+          type="outline"
+          style={{ marginTop: theme.margin.lg }}
+        />
       </List>
 
       <List>
@@ -332,9 +335,9 @@ export default function ShowcaseScreen() {
       </Options>
 
       <Card>
-        <Card.Title>Manage Account</Card.Title>
+        <Card.Description>Manage Account</Card.Description>
         <Button
-          type="default"
+          type="ghost"
           caption="Change Phone Number"
           onPress={() => setDialogVisible(true)}
           style={{ marginBottom: 0 }}
