@@ -2,6 +2,10 @@
 
 Welcome to [LeonardoUI](https://github.com/leodebarros/leonardo-ui), a growing set of React Native components built specifically for **Expo** applications. This repository is based on [Expo](https://expo.dev) and created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+<p align="center">
+  <img src="https://amplify-mouapp-dev-110551-deployment.s3.eu-west-2.amazonaws.com/public/cover.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIASZBVI2BBLAYEDLQR%2F20250226%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250226T190943Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECsaCWV1LXdlc3QtMiJHMEUCIQDOEG34ZFu2bnLABjfJCPkc01hulhziklqNxvBN0s00RAIgJMkR8gRcokzjwQrdnSVQYexPsQ5z%2BIT9E2bCrLKbCWIq7AIIZBAAGgwxOTEyMzc3NzEzMzAiDNJPglC3tfYNsPLOgirJAraygvbTgBSvkPgbMqk%2B5QFzhu%2FDnkD3kglGGK5z88z4I0v3Xu8EBcyBTXvQEU9KP7UEC3vD9qXfq%2B5SLM4FyRX5bwIdM51g1Ec2wZjl0YJK2G1zxi4oAApsHdJQHGe36X%2FP1rHLh0SngffUvbku0CpkdFIZY1Z4HP7wCt7Kc50l5BUd5%2B1h3IAk2y2EDsnYnLVEeWlxvf0hkGa5oPafebJ%2BAq9SwNnrFMID5LVdogkpAQbtbfIXk7HlZX0a0epQilyXPwnNyo5Dt2%2BS2qsO%2FTOHEgCa2FidApr5kcgMd5Z8fguYPFa9BhBBdFcs8RFLB%2BAzZlmu9YebL0g2rVX2HLl3HED9ZRtMqGCaP4BS%2BWNV9lSJh%2Fn5OxMB132FFGRzaqzB2IlZJyMU%2BrMXEp8K26w3zWGGRVmbi%2BnA2bMCCF3mGtrVE5%2F2ynTKMMSY%2Fb0GOrMCLyKRrl7a2QQCzLsKCbOG4U0SYQNtddDwgrLDyLvZuF8JP%2FRpb2pA8v%2F3WarII%2BcfaWdlss286dtECFJ8I3TR%2BLl%2FEVa1BIeUkZi%2BcfDTkEJerdV2wl5DAmqyF%2Fvj9r6uYzCz92xY4gOYf7X5UtvvJ4%2FvMzxraWoiAFknzKXhG1vC%2FZoLVuCfr4SqhxrS3ZBQuELOcEzrFu9ueB9oH95%2FCSPgYPEi2eYekIH68jV7Gf0IEGYnNNsHPRc2ukdAN%2BlvWW%2BZnFF3yVIHCY9aXfpGib9%2B5hHUKppVcz82Q6Hu9yWK8eFDag9cb3u%2FhXy8x9TahoLmAvIaSuasnNCiOub5Gt9m2yzD6vL6Xucc4qMpKRFXBNFXbSX1h3SaKJWKt807pP7UPGLmoXnw86CDm7yC%2B2FOSg%3D%3D&X-Amz-Signature=d183be3d5fddec019bb6f2beb08b61c92859332375d53b42c5a30c05c5bfd8f0&X-Amz-SignedHeaders=host&response-content-disposition=inline">
+</p>
+
 ---
 
 ## 🚀 Quick Start
