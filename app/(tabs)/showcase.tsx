@@ -113,8 +113,9 @@ export default function ShowcaseScreen() {
         </Card.Title>
         <Card.Description>{currentAccount?.equivalent} USD</Card.Description>
         <Card.Footer
-          text="Main Account"
+          text="Premium Plan"
           button={<Button caption="Deposit Funds" type="primary" />}
+          chipTone="cyan"
         />
       </Card>
 
@@ -183,60 +184,108 @@ export default function ShowcaseScreen() {
   );
 
   const renderDataShowcase = () => (
-    <RNView>
-      <RNView style={styles.betweenRow}>
-        <RNView>
-          <Text weight="semibold" color="textSidebar">
-            Main Bucket
-          </Text>
-          <Text size="sm" color="textSecondary">
-            Using 54% of 100 GB available
-          </Text>
+    <RNView style={{ gap: 12 }}>
+      <RNView>
+        <RNView style={styles.betweenRow}>
+          <RNView>
+            <Text weight="semibold" color="textSidebar">
+              Main Bucket
+            </Text>
+            <Text size="sm" color="textSecondary">
+              Using 54% of 100 GB available
+            </Text>
+          </RNView>
+          <RNView style={styles.actionsRow}>
+            <Action iconName="export" type="accent" />
+            <Action iconName="ellipsis1" type="accent" />
+            <Action iconName="plus" type="primary" />
+          </RNView>
         </RNView>
-        <RNView style={styles.actionsRow}>
-          <Action iconName="export" type="accent" />
-          <Action iconName="ellipsis1" type="accent" />
-          <Action iconName="plus" type="primary" />
-        </RNView>
+        <List>
+          <List.Item
+            caption="Instructions.pdf"
+            description="PDF Document"
+            value="9.20 MB"
+            avatar={require("@/assets/avatars/pdficon.png")}
+          />
+          <List.Item
+            caption="CookingRecipes.pdf"
+            description="PDF Document"
+            value="2.42 MB"
+            avatar={require("@/assets/avatars/pdficon.png")}
+          />
+          <List.Item
+            caption="magic.png"
+            description="PNG Image"
+            value="953 KB"
+            avatar={require("@/assets/avatars/png.png")}
+          />
+          <List.Item
+            caption="strees.webp"
+            description="PNG Image"
+            value="93 KB"
+            avatar={require("@/assets/avatars/png.png")}
+          />
+          <List.Item
+            caption="66fd6d40807194121.pdf"
+            description="PDF Document"
+            value="1.03 MB"
+            avatar={require("@/assets/avatars/pdficon.png")}
+          />
+          <List.Item
+            caption="CamScanner0.56.pdf"
+            description="PDF Document"
+            value="3.39 MB"
+            avatar={require("@/assets/avatars/pdficon.png")}
+          />
+        </List>
       </RNView>
-      <List>
-        <List.Item
-          caption="Instructions.pdf"
-          description="PDF Dsocument"
-          value="9.20 MB"
-          avatar={require("@/assets/avatars/pdficon.png")}
-        />
-        <List.Item
-          caption="CookingRecipes.pdf"
-          description="PDF Document"
-          value="2.42 MB"
-          avatar={require("@/assets/avatars/pdficon.png")}
-        />
-        <List.Item
-          caption="magic.png"
-          description="PNG Image"
-          value="953 KB"
-          avatar={require("@/assets/avatars/pngicon.png")}
-        />
-        <List.Item
-          caption="strees.webp"
-          description="PNG Image"
-          value="93 KB"
-          avatar={require("@/assets/avatars/pngicon.png")}
-        />
-        <List.Item
-          caption="66fd6d40807194121.pdf"
-          description="PDF Document"
-          value="1.03 MB"
-          avatar={require("@/assets/avatars/pdficon.png")}
-        />
-        <List.Item
-          caption="CamScanner0.56.pdf"
-          description="PDF Document"
-          value="3.39 MB"
-          avatar={require("@/assets/avatars/pdficon.png")}
-        />
-      </List>
+
+      <RNView>
+        <RNView style={styles.betweenRow}>
+          <RNView>
+            <Text weight="semibold" color="textSidebar">
+              Active buckets (5)
+            </Text>
+            <Text size="sm" color="textSecondary">
+              Buckets are containers for data stored
+            </Text>
+          </RNView>
+          <RNView style={styles.actionsRow}></RNView>
+        </RNView>
+        <List>
+          <List.Item
+            caption="kansas-city-team"
+            description="Europe (London) eu-west-2"
+            avatar={require("@/assets/avatars/storage.png")}
+            showNavArrow
+          />
+          <List.Item
+            caption="my-favorite-app"
+            description="Europe (London) eu-west-2"
+            avatar={require("@/assets/avatars/storage.png")}
+            showNavArrow
+          />
+          <List.Item
+            caption="songs-music"
+            description="Canada (Central) ca-central-1"
+            avatar={require("@/assets/avatars/storage.png")}
+            showNavArrow
+          />
+          <List.Item
+            caption="samples"
+            description="United States (Ohio) us-west-2"
+            avatar={require("@/assets/avatars/storage.png")}
+            showNavArrow
+          />
+          <List.Item
+            caption="expo-app"
+            description="United States (Oregon) us-west-1"
+            avatar={require("@/assets/avatars/storage.png")}
+            showNavArrow
+          />
+        </List>
+      </RNView>
     </RNView>
   );
 
