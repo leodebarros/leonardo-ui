@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   StyleProp,
   StyleSheet,
-  View,
+  View as RNView,
   ViewStyle,
   Image,
   ImageSourcePropType,
@@ -34,7 +34,8 @@ function Card({ children, style, padding = "lg", cover }: CardProps) {
       borderTopRightRadius: theme.borderRadius.md,
     },
     card: {
-      width: "100%",
+      minWidth: "100%",
+      maxWidth: "100%",
       marginBottom: theme.margin.md,
       borderTopLeftRadius: !cover ? theme.borderRadius.md : 0,
       borderTopRightRadius: !cover ? theme.borderRadius.md : 0,
@@ -42,18 +43,17 @@ function Card({ children, style, padding = "lg", cover }: CardProps) {
       borderBottomRightRadius: theme.borderRadius.md,
       backgroundColor: theme.colors.surface,
       padding: paddingValue,
-      overflow: "hidden",
     },
   });
 
   return (
-    <View style={styles.container}>
+    <RNView style={styles.container}>
       {cover && (
         <Image source={cover} style={styles.coverImage} resizeMode="cover" />
       )}
 
-      <View style={[styles.card, style]}>{children}</View>
-    </View>
+      <RNView style={[styles.card, style]}>{children}</RNView>
+    </RNView>
   );
 }
 
@@ -91,11 +91,11 @@ Card.Description = function CardDescription({
   });
 
   return (
-    <View style={styles.container}>
+    <RNView style={styles.container}>
       <Text color="textSecondary" style={styles.description}>
         {children}
       </Text>
-    </View>
+    </RNView>
   );
 };
 
@@ -130,8 +130,8 @@ Card.Footer = function CardFooter({ text, button, chipTone }: CardFooterProps) {
   });
 
   return (
-    <View style={styles.footerContainer}>
-      <View style={styles.footerButtonContainer}>{button}</View>
+    <RNView style={styles.footerContainer}>
+      <RNView style={styles.footerButtonContainer}>{button}</RNView>
 
       {text && chipTone ? (
         <Chip alignSelf="center" caption={text} tone={chipTone} />
@@ -140,7 +140,7 @@ Card.Footer = function CardFooter({ text, button, chipTone }: CardFooterProps) {
           {text}
         </Text>
       )}
-    </View>
+    </RNView>
   );
 };
 
