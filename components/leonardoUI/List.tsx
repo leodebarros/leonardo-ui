@@ -113,8 +113,9 @@ List.Item = forwardRef<RNView, ListItemProps>(function ListItem(
       width: 32,
       height: 32,
       marginRight: theme.margin.sm,
-      backgroundColor: theme.colors.border,
+      backgroundColor: "transparent",
       borderRadius: theme.borderRadius.md,
+      objectFit: "contain",
     },
     avatarPlaceholder: {
       width: 32,
@@ -156,7 +157,7 @@ List.Item = forwardRef<RNView, ListItemProps>(function ListItem(
           <Image
             source={avatar}
             style={styles.avatarImage}
-            resizeMode="cover"
+            resizeMode="center"
             onError={() => setImageError(true)}
           />
         ) : avatar !== undefined ? (
