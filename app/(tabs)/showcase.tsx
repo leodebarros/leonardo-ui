@@ -21,23 +21,47 @@ import { Text } from "@/components/leonardoUI/Text";
 
 const filterOptions = [
   { label: "Banking" },
+  { label: "Data" },
   { label: "Promotion" },
   { label: "Settings" },
 ];
 
 export default function ShowcaseScreen() {
   const theme = useTheme();
-  const [activeFilter, setActiveFilter] = useState("Banking");
-  const [dialogVisible, setDialogVisible] = useState(false);
-  const [toastVisible, setToastVisible] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<string>("Banking");
+  const [dialogVisible, setDialogVisible] = useState<boolean>(false);
+  const [toastVisible, setToastVisible] = useState<boolean>(false);
 
-  const [radioSelected, setRadioSelected] = useState("monthly");
-  const [notificationsOn, setNotificationsOn] = useState(true);
+  const [radioSelected, setRadioSelected] = useState<string>("monthly");
+  const [notificationsOn, setNotificationsOn] = useState<boolean>(true);
+  const [selectedAccount, setSelectedAccount] = useState<string>("BTC");
+
+  const accounts = [
+    {
+      currency: "BTC",
+      balance: "1.9259",
+      equivalent: "≈ 163,903.26",
+    },
+    {
+      currency: "ETH",
+      balance: "85.0380149",
+      equivalent: "≈ 240,119.65",
+    },
+    {
+      currency: "SOL",
+      balance: "56.849143",
+      equivalent: "≈ 11,945.03",
+    },
+  ];
+
+  const currentAccount = accounts.find(
+    (acc) => acc.currency === selectedAccount
+  );
 
   const styles = StyleSheet.create({
     scrollContainer: {
       paddingLeft: theme.padding.sm,
-      marginBottom: 15,
+      marginBottom: theme.margin.lg,
     },
     container: {
       paddingHorizontal: theme.padding.sm,
@@ -52,13 +76,43 @@ export default function ShowcaseScreen() {
       gap: 10,
       marginVertical: theme.margin.md,
     },
+    betweenRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginBottom: theme.margin.md,
+      marginHorizontal: theme.padding.xs,
+    },
+    actionsRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 9,
+    },
   });
 
   const renderBankingShowcase = () => (
     <RNView style={{ gap: 9 }}>
+      <RNView>
+        <Options style={{ marginBottom: 0 }} sectionTitle="Select an account">
+          <Options.Select
+            label={selectedAccount}
+            iconName="checkcircle"
+            options={[
+              { label: "BTC", value: "BTC" },
+              { label: "ETH", value: "ETH" },
+              { label: "SOL", value: "SOL" },
+            ]}
+            selectedValue={selectedAccount}
+            onChange={(value) => setSelectedAccount(value)}
+          />
+        </Options>
+      </RNView>
       <Card>
-        <Card.Title>BTC 1.9259</Card.Title>
-        <Card.Description>≈ 163,903.26 USD</Card.Description>
+        <Card.Title>
+          {currentAccount?.currency} {currentAccount?.balance}
+        </Card.Title>
+        <Card.Description>{currentAccount?.equivalent} USD</Card.Description>
         <Card.Footer
           text="Main Account"
           button={<Button caption="Deposit Funds" type="primary" />}
@@ -71,7 +125,7 @@ export default function ShowcaseScreen() {
         <List.Item
           caption="Starbucks Coffee"
           description="Friday morning"
-          value="-4.50 USD"
+          value="-94.50 USD"
         />
         <List.Item
           caption="Salary"
@@ -106,6 +160,78 @@ export default function ShowcaseScreen() {
           description="@mkors"
           avatar={require("@/assets/avatars/recipient3.png")}
           showNavArrow
+        />
+      </List>
+      <Featured
+        title="Get up to $25,000"
+        subtitle="If approved, you'll get your money in less than 24 hours"
+        buttonCaption="Apply Now"
+        imageAddress={require("@/assets/covers/featured-sample.png")}
+      />
+      <Card cover={require("@/assets/covers/surf.png")}>
+        <Card.Title>Invest with a Financial Advisor</Card.Title>
+        <Card.Description>
+          Looking to lose all your money? Chart your course towards your next
+          bankruptcy with our expert gamblers.
+        </Card.Description>
+        <Card.Footer button={<Button caption="Learn More" type="outline" />} />
+      </Card>
+    </RNView>
+  );
+
+  const renderDataShowcase = () => (
+    <RNView>
+      <RNView style={styles.betweenRow}>
+        <RNView>
+          <Text weight="semibold" color="textSidebar">
+            Main Bucket
+          </Text>
+          <Text size="sm" color="textSecondary">
+            Using 54% of 100 GB available
+          </Text>
+        </RNView>
+        <RNView style={styles.actionsRow}>
+          <Action iconName="export" type="accent" />
+          <Action iconName="ellipsis1" type="accent" />
+          <Action iconName="plus" type="primary" />
+        </RNView>
+      </RNView>
+      <List>
+        <List.Item
+          caption="Instructions.pdf"
+          description="PDF Dsocument"
+          value="9.20 MB"
+          avatar={require("@/assets/avatars/pdficon.png")}
+        />
+        <List.Item
+          caption="CookingRecipes.pdf"
+          description="PDF Document"
+          value="2.42 MB"
+          avatar={require("@/assets/avatars/pdficon.png")}
+        />
+        <List.Item
+          caption="magic.png"
+          description="PNG Image"
+          value="953 KB"
+          avatar={require("@/assets/avatars/pngicon.png")}
+        />
+        <List.Item
+          caption="strees.webp"
+          description="PNG Image"
+          value="93 KB"
+          avatar={require("@/assets/avatars/pngicon.png")}
+        />
+        <List.Item
+          caption="66fd6d40807194121.pdf"
+          description="PDF Document"
+          value="1.03 MB"
+          avatar={require("@/assets/avatars/pdficon.png")}
+        />
+        <List.Item
+          caption="CamScanner0.56.pdf"
+          description="PDF Document"
+          value="3.39 MB"
+          avatar={require("@/assets/avatars/pdficon.png")}
         />
       </List>
     </RNView>
@@ -205,11 +331,20 @@ export default function ShowcaseScreen() {
         </RNView>
       </Options>
 
-      <Button
-        type="destructive"
-        caption="Log Out"
-        onPress={() => setDialogVisible(true)}
-      />
+      <Card>
+        <Card.Title>Manage Account</Card.Title>
+        <Button
+          type="default"
+          caption="Change Phone Number"
+          onPress={() => setDialogVisible(true)}
+          style={{ marginBottom: 0 }}
+        />
+        <Button
+          type="destructive"
+          caption="Delete Account"
+          onPress={() => setDialogVisible(true)}
+        />
+      </Card>
 
       <Dialog
         isVisible={dialogVisible}
@@ -225,6 +360,8 @@ export default function ShowcaseScreen() {
     switch (activeFilter) {
       case "Banking":
         return renderBankingShowcase();
+      case "Data":
+        return renderDataShowcase();
       case "Promotion":
         return renderPromotionShowcase();
       case "Settings":
