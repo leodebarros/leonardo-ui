@@ -13,6 +13,7 @@ export type ChipTone =
 interface ChipParams {
   caption: string;
   tone: ChipTone;
+  size?: "sm" | "base";
   rounded?: "sm" | "full";
   alignSelf?: FlexAlignType;
 }
@@ -20,6 +21,7 @@ interface ChipParams {
 const Chip = ({
   caption,
   tone,
+  size = "base",
   rounded = "full",
   alignSelf = "flex-start",
 }: ChipParams) => {
@@ -91,7 +93,7 @@ const Chip = ({
 
   return (
     <View style={styles.tagStyle}>
-      <Text weight="semibold" style={styles.caption}>
+      <Text size={size} weight="semibold" style={styles.caption}>
         {caption}
       </Text>
     </View>
