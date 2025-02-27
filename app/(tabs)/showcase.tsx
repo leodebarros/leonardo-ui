@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View as RNView } from "react-native";
-import { useTheme } from "@/store/themeContext";
+import { useTheme, useThemeActions } from "@/store/themeContext";
 
 // LeonardoUI Components
 import { View } from "@/components/leonardoUI/View";
@@ -18,6 +18,7 @@ import RadioButton from "@/components/leonardoUI/RadioButton";
 import { Switch } from "@/components/leonardoUI/Switch";
 import Toast from "@/components/leonardoUI/Toast";
 import { Text } from "@/components/leonardoUI/Text";
+import { Callout } from "@/components/leonardoUI/Callout";
 
 const filterOptions = [
   { label: "Banking" },
@@ -28,6 +29,7 @@ const filterOptions = [
 
 export default function ShowcaseScreen() {
   const theme = useTheme();
+  const { chosenPrimaryKey } = useThemeActions();
   const [activeFilter, setActiveFilter] = useState<string>("Banking");
   const [dialogVisible, setDialogVisible] = useState<boolean>(false);
   const [toastVisible, setToastVisible] = useState<boolean>(false);
@@ -87,6 +89,9 @@ export default function ShowcaseScreen() {
       alignItems: "center",
       justifyContent: "space-between",
       gap: 9,
+    },
+    textColor: {
+      color: chosenPrimaryKey,
     },
   });
 
@@ -185,7 +190,12 @@ export default function ShowcaseScreen() {
   );
 
   const renderDataShowcase = () => (
-    <RNView style={{ gap: 12 }}>
+    <RNView style={{ gap: 15 }}>
+      <Callout
+        title="⚠️ Storage Almost Full"
+        message="Your storage is 90% full. To continue managing your data without interruptions, consider upgrading your plan."
+        type="inverted"
+      />
       <RNView>
         <RNView style={styles.betweenRow}>
           <RNView>
