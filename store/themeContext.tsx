@@ -19,6 +19,7 @@ const PRIMARY_COLOR_OPTIONS = {
   blue: "#1E88E5",
   orange: "#FF6D00",
   purple: "#B03FCF",
+  yellow: "#BA8E23",
 } as const;
 
 export type PrimaryColorKey = keyof typeof PRIMARY_COLOR_OPTIONS;

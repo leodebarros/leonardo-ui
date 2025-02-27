@@ -15,11 +15,10 @@ const COLOR_HEX_TO_LABEL: Record<string, string> = {
   "#1E88E5": "blue",
   "#FF6D00": "orange",
   "#B03FCF": "purple",
+  "#BA8E23": "yellow",
 };
 
 export default function SettingsScreen() {
-  const theme = useTheme();
-
   const { chosenPrimaryKey, setPrimaryColor } = useThemeActions();
 
   return (
@@ -35,6 +34,7 @@ export default function SettingsScreen() {
             { label: "Purple", value: "purple" },
             { label: "Blue", value: "blue" },
             { label: "Orange", value: "orange" },
+            { label: "Yellow", value: "yellow" },
           ]}
           selectedValue={COLOR_HEX_TO_LABEL[chosenPrimaryKey]}
           onChange={(value) => setPrimaryColor(value as PrimaryColorKey)}
