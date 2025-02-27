@@ -21,6 +21,7 @@ export type ButtonType =
 
 interface ButtonProps {
   type?: ButtonType;
+  size?: "sm" | "base";
   style?: StyleProp<ViewStyle>;
   caption: string;
   disabled?: boolean;
@@ -32,6 +33,7 @@ export const Button = forwardRef<TouchableOpacityRef, ButtonProps>(
   (
     {
       type = "default",
+      size = "base",
       style,
       caption = "Click me",
       disabled = false,
@@ -72,14 +74,17 @@ export const Button = forwardRef<TouchableOpacityRef, ButtonProps>(
 
     const styles = StyleSheet.create({
       button: {
-        height: 39,
+        height: size === "base" ? 39 : 27,
         flexDirection: "row",
+        alignSelf: size === "base" ? "auto" : "flex-start",
         alignItems: "center",
         justifyContent: "center",
-        paddingHorizontal: theme.padding.lg,
-        paddingVertical: theme.padding.md,
+        paddingHorizontal:
+          size === "base" ? theme.padding.lg : theme.padding.md,
+        paddingVertical: size === "base" ? theme.padding.md : theme.padding.sm,
         marginVertical: theme.margin.md,
-        borderRadius: theme.borderRadius.md,
+        borderRadius:
+          size === "base" ? theme.borderRadius.md : theme.borderRadius.sm,
       },
       caption: {
         color: textColor,
@@ -106,7 +111,7 @@ export const Button = forwardRef<TouchableOpacityRef, ButtonProps>(
         {loading ? (
           <ActivityIndicator color={textColor} />
         ) : (
-          <Text weight="semibold" style={styles.caption}>
+          <Text weight="semibold" size={size} style={styles.caption}>
             {caption}
           </Text>
         )}
