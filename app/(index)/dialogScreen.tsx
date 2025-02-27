@@ -1,14 +1,15 @@
-import { useState } from "react";
+// DialogScreen.tsx
+import React, { useState } from "react";
 import { View as DefaultView } from "react-native";
-import { Button } from "@/components/leonardoUI/Button";
-import Card from "@/components/leonardoUI/Card";
 import { View } from "@/components/leonardoUI/View";
+import { Button, ButtonType } from "@/components/leonardoUI/Button";
+import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
-import Dialog from "@/components/leonardoUI/Dialog";
+import Dialog, { GhostType } from "@/components/leonardoUI/Dialog";
+import { DIALOG_CONTENT } from "@/data/components";
 
 export default function DialogScreen() {
-  const [showPrimaryDialog, setShowPrimaryDialog] = useState<boolean>(false);
-  // const [showDefaultDialog, setShowDefaultDialog] = useState<boolean>(false);
+  const [visibleDialog, setVisibleDialog] = useState<string | null>(null);
 
   return (
     <View>
@@ -17,24 +18,40 @@ export default function DialogScreen() {
         description="A modal overlay that requires user interaction, often used for confirmations, alerts, or form inputs."
         navBack
       />
+
       <DefaultView style={{ gap: 12 }}>
-        <Card>
-          <Card.Title>Dialog</Card.Title>
-          <Card.Description>type: primary</Card.Description>
-          <Card.Footer
-            button={
-              <Button
-                caption="Open dialog"
-                type="primary"
-                onPress={() => setShowPrimaryDialog(true)}
+        {DIALOG_CONTENT.map((dialogItem) => {
+          const { id, title, description, type } = dialogItem;
+          // Determine if this dialog should be open
+          const isOpen = visibleDialog === id;
+
+          return (
+            <React.Fragment key={id}>
+              <Card>
+                <Card.Title>{title}</Card.Title>
+                <Card.Description>{description}</Card.Description>
+                <Card.Footer
+                  button={
+                    <Button
+                      caption="Open dialog"
+                      type={type as ButtonType}
+                      onPress={() => setVisibleDialog(id)}
+                    />
+                  }
+                />
+              </Card>
+
+              <Dialog
+                type={type as GhostType}
+                isVisible={isOpen}
+                onConfirm={() => {
+                  setVisibleDialog(null);
+                }}
+                onCancel={() => setVisibleDialog(null)}
               />
-            }
-          />
-        </Card>
-        <Dialog
-          isVisible={showPrimaryDialog}
-          onCancel={() => setShowPrimaryDialog(false)}
-        />
+            </React.Fragment>
+          );
+        })}
       </DefaultView>
     </View>
   );
