@@ -2,6 +2,9 @@ import { SwitchType } from "@/components/leonardoUI/Switch";
 import { AntDesign } from "@expo/vector-icons";
 import { ImageSourcePropType } from "react-native";
 
+// -------------------------------------------------------
+// Components Index
+// -------------------------------------------------------
 export const COMPONENTS = [
     {
         path: "/(index)/actionScreen",
@@ -29,7 +32,7 @@ export const COMPONENTS = [
     },
     {
         path: "/(index)/dialogScreen",
-        caption: "Dialog (Work in progress)",
+        caption: "Dialog",
         description: "An interactive modal overlay.",
         avatar: require("@/assets/avatars/di.png")
     },
@@ -101,6 +104,9 @@ export const COMPONENTS = [
     },
 ];
 
+// -------------------------------------------------------
+// Button (Bu)
+// -------------------------------------------------------
 export const BUTTON_VARIANTS = [
     {
         title: "Default button",
@@ -129,6 +135,9 @@ export const BUTTON_VARIANTS = [
     },
 ];
 
+// -------------------------------------------------------
+// Action (Ac)
+// -------------------------------------------------------
 export const ACTION_VARIANTS: {
     title: string;
     description: string;
@@ -176,6 +185,9 @@ export const ACTION_VARIANTS: {
         },
     ];
 
+// -------------------------------------------------------
+// Chip (Ch)
+// -------------------------------------------------------
 export const CHIP_VARIANTS = [
     {
         title: "Green",
@@ -215,6 +227,9 @@ export const CHIP_VARIANTS = [
     },
 ];
 
+// -------------------------------------------------------
+// Card (Ca)
+// -------------------------------------------------------
 export const CARD_VARIANTS = [
     {
         title: "Card with Cover and Footer",
@@ -255,6 +270,9 @@ export const CARD_VARIANTS = [
     },
 ];
 
+// -------------------------------------------------------
+// List (Li)
+// -------------------------------------------------------
 type ListItem = {
     caption: string;
     description?: string;
@@ -307,6 +325,9 @@ export const LIST_VARIANTS: {
         },
     ];
 
+// -------------------------------------------------------
+// Text (Tx)
+// -------------------------------------------------------
 export const TEXT_VARIANTS = [
     {
         size: 'xs',
@@ -328,6 +349,9 @@ export const TEXT_VARIANTS = [
     }
 ]
 
+// -------------------------------------------------------
+// Options (Op)
+// -------------------------------------------------------
 type OptionItem = {
     isSelect?: boolean
     sectionTitle?: string
@@ -414,6 +438,9 @@ export const OPTIONS_VARIANTS: {
         },
     ]
 
+// -------------------------------------------------------
+// Switch (Sw) 
+// -------------------------------------------------------
 export type SwitchVariant = {
     key: SwitchType;
     title: string;
@@ -436,4 +463,35 @@ export const SWITCH_VARIANTS: SwitchVariant[] = [
         title: "Ghost Switch",
         description: "type: ghost",
     },
-];    
+];
+
+
+// -------------------------------------------------------
+// Dialog (Di) 
+// -------------------------------------------------------
+export const DIALOG_CONTENT = [
+    {
+        id: "primary",
+        title: "Primary Dialog",
+        description: "type: primary",
+        type: "primary",
+    },
+    {
+        id: "default",
+        title: "Default Dialog",
+        description: "type: default",
+        type: "default",
+    },
+    {
+        id: "ghost",
+        title: "Ghost Dialog",
+        description: "type: ghost",
+        type: "ghost",
+    },
+    {
+        id: "destructive",
+        title: "Destructive Dialog",
+        description: "type: destructive",
+        type: "destructive",
+    },
+];
