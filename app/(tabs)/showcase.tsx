@@ -115,7 +115,8 @@ export default function ShowcaseScreen() {
         <Card.Footer
           text="Premium Plan"
           button={<Button caption="Deposit Funds" type="primary" />}
-          chipTone="cyan"
+          chipTone="yellow"
+          chipSize="sm"
         />
       </Card>
 
@@ -310,13 +311,14 @@ export default function ShowcaseScreen() {
           31st.
         </Card.Description>
         <RNView style={styles.row}>
-          <Chip caption="Limited Time" tone="red" />
-          <Chip caption="One-use Only" tone="yellow" />
+          <Chip caption="Limited Time" size="sm" tone="red" />
+          <Chip caption="One-use Only" size="sm" tone="yellow" />
         </RNView>
         <Button
           type="default"
           caption="Claim Coupon"
           onPress={() => setToastVisible(true)}
+          style={{ marginTop: theme.margin.lg }}
         />
       </Card>
 
