@@ -32,9 +32,6 @@ export default function TextScreen() {
         description="A configurable component for displaying and styling text consistently throughout the app."
         navBack
       />
-      <Text color="textSidebar" weight="semibold">
-        Font Weight
-      </Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
