@@ -5,6 +5,7 @@ export default function IndexLayout() {
     <Stack>
       <Stack.Screen name="actionScreen" options={{ headerShown: false }} />
       <Stack.Screen name="buttonScreen" options={{ headerShown: false }} />
+      <Stack.Screen name="calloutScreen" options={{ headerShown: false }} />
       <Stack.Screen name="cardScreen" options={{ headerShown: false }} />
       <Stack.Screen name="chipScreen" options={{ headerShown: false }} />
       <Stack.Screen name="dialogScreen" options={{ headerShown: false }} />
