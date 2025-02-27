@@ -1,12 +1,31 @@
+import { useState } from "react";
+import { Link } from "expo-router";
+import { ScrollView, StyleSheet } from "react-native";
+
 import { Button } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
 import Chip from "@/components/leonardoUI/Chip";
+import Filter from "@/components/leonardoUI/Filter";
 import Header from "@/components/leonardoUI/Header";
 import { View } from "@/components/leonardoUI/View";
+import { useTheme } from "@/store/themeContext";
+import { Text } from "@/components/leonardoUI/Text";
+
 import { CHIP_VARIANTS } from "@/data/components";
-import { Link } from "expo-router";
 
 export default function ChipScreen() {
+  const theme = useTheme();
+  const filterOptions = [{ label: "base" }, { label: "small" }];
+
+  const [activeFilter, setActiveFilter] = useState<string>("base");
+
+  const styles = StyleSheet.create({
+    scrollContainer: {
+      paddingVertical: theme.padding.sm,
+      marginBottom: theme.margin.md,
+    },
+  });
+
   return (
     <View>
       <Header
@@ -14,12 +33,31 @@ export default function ChipScreen() {
         description="A small, interactive UI element used to display information, filter content, or represent choices in a compact way."
         navBack
       />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.scrollContainer}
+      >
+        {filterOptions.map((option) => (
+          <Filter
+            key={option.label}
+            type="default"
+            label={option.label}
+            isActive={option.label === activeFilter}
+            onPress={() => setActiveFilter(option.label)}
+          />
+        ))}
+      </ScrollView>
 
       {CHIP_VARIANTS.map(({ title, description, caption, tone }) => (
         <Card key={tone}>
           <Card.Title>{title}</Card.Title>
           <Card.Description>{description}</Card.Description>
-          <Chip caption={caption} tone={tone as any} />
+          <Chip
+            caption={caption}
+            size={activeFilter === "base" ? "base" : "sm"}
+            tone={tone as any}
+          />
         </Card>
       ))}
 
