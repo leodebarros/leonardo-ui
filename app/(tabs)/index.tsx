@@ -13,7 +13,7 @@ export default function HomeScreen() {
         description="An open-source UI components project for Expo"
       />
       <List>
-        <List.Title>Components</List.Title>
+        <List.Title>Components ({COMPONENTS.length})</List.Title>
         <List.Description>
           Check out our curated list of components
         </List.Description>
