@@ -103,9 +103,15 @@ interface CardFooterProps {
   text?: string;
   button: React.ReactNode;
   chipTone?: "green" | "yellow" | "cyan" | "red" | "purple" | "neutral";
+  chipSize?: "sm" | "base";
 }
 
-Card.Footer = function CardFooter({ text, button, chipTone }: CardFooterProps) {
+Card.Footer = function CardFooter({
+  text,
+  button,
+  chipTone,
+  chipSize = "base",
+}: CardFooterProps) {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
@@ -134,7 +140,12 @@ Card.Footer = function CardFooter({ text, button, chipTone }: CardFooterProps) {
       <RNView style={styles.footerButtonContainer}>{button}</RNView>
 
       {text && chipTone ? (
-        <Chip alignSelf="center" caption={text} tone={chipTone} />
+        <Chip
+          alignSelf="center"
+          caption={text}
+          tone={chipTone}
+          size={chipSize}
+        />
       ) : (
         <Text color="textSecondary" style={styles.footerText} numberOfLines={1}>
           {text}
