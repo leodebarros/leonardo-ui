@@ -19,6 +19,12 @@ export const COMPONENTS = [
         avatar: require("@/assets/avatars/bu.png")
     },
     {
+        path: "/(index)/calloutScreen",
+        caption: "Callout",
+        description: "Versatile container",
+        avatar: require("@/assets/avatars/ct.png")
+    },
+    {
         path: "/(index)/cardScreen",
         caption: "Card",
         description: "Versatile container",
@@ -465,7 +471,6 @@ export const SWITCH_VARIANTS: SwitchVariant[] = [
     },
 ];
 
-
 // -------------------------------------------------------
 // Dialog (Di) 
 // -------------------------------------------------------
@@ -495,3 +500,32 @@ export const DIALOG_CONTENT = [
         type: "destructive",
     },
 ];
+
+
+// -------------------------------------------------------
+// Callout (Ct) 
+// -------------------------------------------------------
+export const CALLOUT_VARIANTS = [
+    {
+        title: "Default Callout",
+        description:
+            "type: default",
+        type: "default",
+        buttonLabel: "Action Button",
+    },
+    {
+        title: "Primary Callout",
+        description:
+            "type: primary",
+        type: "primary",
+        buttonLabel: "Action Button",
+    },
+    {
+        title: "Inverted Callout",
+        description:
+            "type: inverted",
+        type: "inverted",
+        buttonLabel: "Action Button",
+    },
+];
+
