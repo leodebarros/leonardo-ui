@@ -81,13 +81,23 @@ interface ListItemProps {
   description?: string;
   value?: string;
   avatar?: ImageSourcePropType;
+  primaryBgAvatar?: boolean;
   showNavArrow?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
   disabled?: boolean;
 }
 
 List.Item = forwardRef<RNView, ListItemProps>(function ListItem(
-  { caption, description, value, avatar, showNavArrow, onPress, disabled },
+  {
+    caption,
+    description,
+    value,
+    avatar,
+    primaryBgAvatar = false,
+    showNavArrow,
+    onPress,
+    disabled,
+  },
   ref
 ) {
   const theme = useTheme();
@@ -113,7 +123,6 @@ List.Item = forwardRef<RNView, ListItemProps>(function ListItem(
       width: 32,
       height: 32,
       marginRight: theme.margin.sm,
-      backgroundColor: "transparent",
       borderRadius: theme.borderRadius.md,
       objectFit: "contain",
     },
@@ -156,7 +165,14 @@ List.Item = forwardRef<RNView, ListItemProps>(function ListItem(
         {avatar !== undefined && !imageError ? (
           <Image
             source={avatar}
-            style={styles.avatarImage}
+            style={[
+              styles.avatarImage,
+              {
+                backgroundColor: primaryBgAvatar
+                  ? chosenPrimaryKey
+                  : "transparent",
+              },
+            ]}
             resizeMode="center"
             onError={() => setImageError(true)}
           />

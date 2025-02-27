@@ -18,16 +18,22 @@ export default function HomeScreen() {
           Check out our curated list of components
         </List.Description>
 
-        {COMPONENTS.map(({ path, caption }) => (
+        {COMPONENTS.map(({ path, caption, description, avatar }) => (
           <Link key={path} href={path as Href} asChild>
-            <List.Item caption={caption} showNavArrow />
+            <List.Item
+              caption={caption}
+              description={description}
+              avatar={avatar}
+              primaryBgAvatar
+              showNavArrow
+            />
           </Link>
         ))}
 
         <Link href={"/(tabs)/showcase"} asChild>
           <Button
             caption="View Showcase"
-            type="primary"
+            type="default"
             style={{ marginTop: 20 }}
           />
         </Link>

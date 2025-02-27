@@ -6,82 +6,98 @@ export const COMPONENTS = [
     {
         path: "/(index)/actionScreen",
         caption: "Action",
-        description: "A compact, interactive button with an icon, used for quick actions such as sharing, saving, or liking.",
+        description: "Rounded buttons",
+        avatar: require("@/assets/avatars/ac.png")
     },
     {
         path: "/(index)/buttonScreen",
         caption: "Button",
-        description: "A tappable UI element that triggers an action or navigation when pressed, supporting multiple styles and states.",
+        description: "Standard button",
+        avatar: require("@/assets/avatars/bu.png")
     },
     {
         path: "/(index)/cardScreen",
         caption: "Card",
-        description: "A versatile container that groups related content and actions, often used for displaying previews or summaries.",
+        description: "Versatile container",
+        avatar: require("@/assets/avatars/ca.png")
     },
     {
         path: "/(index)/chipScreen",
         caption: "Chip",
-        description: "A small, interactive UI element used to display information, filter content, or represent choices in a compact way.",
+        description: "Pill-shaped info helpers",
+        avatar: require("@/assets/avatars/ch.png")
     },
     {
         path: "/(index)/dialogScreen",
         caption: "Dialog (Work in progress)",
-        description: "A modal overlay that requires user interaction, often used for confirmations, alerts, or form inputs.",
+        description: "An interactive modal overlay.",
+        avatar: require("@/assets/avatars/di.png")
     },
     {
         path: "/(index)/featuredScreen",
         caption: "Featured",
-        description: "A visually prominent section used to highlight key content, such as promotional items or important updates.",
+        description: "Prominent section",
+        avatar: require("@/assets/avatars/ft.png")
     },
     {
         path: "/(index)/filterScreen",
         caption: "Filter",
-        description: "A pill-shaped control used to filter or refine visible content, often displayed horizontally for quick selection.",
+        description: "Pill-shaped controls",
+        avatar: require("@/assets/avatars/fi.png")
     },
     {
         path: "/(index)/headerScreen",
         caption: "Header",
-        description: "A structured title bar that provides context for a screen, often including navigation controls or descriptions.",
+        description: "Provides context",
+        avatar: require("@/assets/avatars/he.png")
     },
     {
         path: "/(index)/inputScreen",
         caption: "Input (Coming soon)",
-        description: "A text field for capturing user input, supporting various validations and styles.",
+        description: "Standard input",
+        avatar: require("@/assets/avatars/in.png")
     },
     {
         path: "/(index)/listScreen",
         caption: "List",
-        description: "A structured, collection of items, commonly used for menus, settings, or displaying dynamic data.",
+        description: "Collection of items",
+        avatar: require("@/assets/avatars/li.png")
     },
     {
         path: "/(index)/optionsScreen",
         caption: "Options",
-        description: "A grouped set of selectable items or settings, often used in preference panels or configuration menus.",
+        description: "A grouped set of useful items or settings",
+        avatar: require("@/assets/avatars/op.png")
     },
     {
         path: "/(index)/radioButtonScreen",
         caption: "Radio Button",
-        description: "A circular selector for picking one option from multiple choices, commonly used in forms.",
+        description: "Standard radio button",
+        avatar: require("@/assets/avatars/ra.png")
     },
     {
         path: "/(index)/switchScreen",
         caption: "Switch",
-        description: "A toggle-like component for switching between two states, e.g., on/off or enable/disable.",
+        description: "A toggle-like state switch",
+        avatar: require("@/assets/avatars/sw.png")
     },
     {
         path: "/(index)/textScreen",
         caption: "Text",
-        description: "A configurable component for displaying and styling text consistently throughout the app.",
+        description: "Configurable text",
+        avatar: require("@/assets/avatars/tx.png")
     },
     {
         path: "/(index)/tabsScreen",
         caption: "Tabs (Coming soon)",
-        description: "A navigational component that organizes content into multiple panels, each accessed by a tab.",
+        description: "Content organizer",
+        avatar: require("@/assets/avatars/ta.png")
     },
     {
         path: "/(index)/toastScreen",
         caption: "Toast",
-        description: "A brief, non-intrusive notification that provides feedback about an action, such as success messages or errors.",
+        description: "Non-intrusive notifications",
+        avatar: require("@/assets/avatars/to.png")
     },
 ];
 
