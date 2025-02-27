@@ -21,7 +21,7 @@ export const COMPONENTS = [
     {
         path: "/(index)/calloutScreen",
         caption: "Callout",
-        description: "Versatile container",
+        description: "Message box",
         avatar: require("@/assets/avatars/ct.png")
     },
     {
