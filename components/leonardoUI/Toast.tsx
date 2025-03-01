@@ -11,7 +11,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Href, Link } from "expo-router";
 import { Text } from "./Text";
 
-type ToastType = "success" | "error" | "info" | "warning";
+type ToastType = "info" | "success" | "warning" | "error";
 
 interface ToastProps {
   isVisible: boolean;
