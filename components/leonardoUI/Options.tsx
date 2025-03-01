@@ -13,6 +13,7 @@ import { useTheme } from "./Theme";
 import { Text } from "./Text";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { useThemeActions } from "@/store/themeContext";
+import { Switch, SwitchType } from "./Switch";
 
 interface OptionsProps {
   children: React.ReactNode;
@@ -115,7 +116,6 @@ Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
         flexShrink: 1,
       },
       description: {
-        color: theme.colors.textSecondary,
         fontSize: theme.fontSize.sm,
         maxWidth: "100%",
       },
@@ -145,7 +145,11 @@ Options.Item = forwardRef<TouchableOpacityRef, OptionsItemProps>(
               {label}
             </Text>
             {description ? (
-              <Text style={styles.description} numberOfLines={1}>
+              <Text
+                color="textSecondary"
+                style={styles.description}
+                numberOfLines={1}
+              >
                 {description}
               </Text>
             ) : null}
@@ -320,5 +324,93 @@ Options.Select = function OptionsSelect({
         </RNView>
       )}
     </React.Fragment>
+  );
+};
+
+interface OptionsSwitchProps {
+  iconName: keyof typeof AntDesign.glyphMap;
+  label: string;
+  description?: string;
+  value: boolean;
+  avatar?: ImageSourcePropType;
+  type?: SwitchType;
+  onValueChange?: (val: boolean) => void;
+  disabled?: boolean;
+  style?: StyleProp<ViewStyle>;
+}
+
+Options.Switch = function OptionsSwitch({
+  iconName,
+  label,
+  description,
+  avatar,
+  value,
+  type = "primary",
+  onValueChange,
+  disabled = false,
+  style,
+}: OptionsSwitchProps) {
+  const theme = useTheme();
+
+  const isAvatarMode = !!avatar;
+  const styles = StyleSheet.create({
+    container: {
+      width: "100%",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      height: isAvatarMode || description ? 42 : 30,
+      paddingLeft: theme.padding.sm,
+      paddingRight: theme.padding.xs,
+    },
+    main: {
+      flexDirection: isAvatarMode || description ? "column" : "row",
+      alignItems: isAvatarMode || description ? "flex-start" : "center",
+      gap: isAvatarMode || description ? 2 : 8,
+      flexShrink: 1,
+    },
+    description: {
+      fontSize: theme.fontSize.sm,
+      maxWidth: "100%",
+    },
+    leftSection: {
+      flexDirection: "row",
+      alignItems: "center",
+      flexShrink: 1,
+      gap: 8,
+    },
+    rightSection: {
+      marginLeft: theme.margin.sm,
+    },
+  });
+
+  return (
+    <RNView style={[styles.container, style]}>
+      <RNView style={styles.leftSection}>
+        <AntDesign name={iconName} size={18} color={theme.colors.textSidebar} />
+        <RNView style={styles.main}>
+          <Text weight="semibold" color="textSidebar" numberOfLines={1}>
+            {label}
+          </Text>
+          {description ? (
+            <Text
+              color="textSecondary"
+              style={styles.description}
+              numberOfLines={1}
+            >
+              {description}
+            </Text>
+          ) : null}
+        </RNView>
+      </RNView>
+      <RNView style={styles.rightSection}>
+        <Switch
+          value={value}
+          onValueChange={onValueChange}
+          type={type}
+          disabled={disabled}
+        />
+      </RNView>
+    </RNView>
   );
 };
