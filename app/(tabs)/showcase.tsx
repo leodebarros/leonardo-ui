@@ -22,7 +22,7 @@ import { Callout } from "@/components/leonardoUI/Callout";
 
 const filterOptions = [
   { label: "Banking" },
-  { label: "Data" },
+  { label: "Files" },
   { label: "Promotion" },
   { label: "Settings" },
 ];
@@ -35,7 +35,7 @@ export default function ShowcaseScreen() {
   const [toastVisible, setToastVisible] = useState<boolean>(false);
 
   const [radioSelected, setRadioSelected] = useState<string>("monthly");
-  const [notificationsOn, setNotificationsOn] = useState<boolean>(true);
+  const [emailsOn, setEmailsOn] = useState<boolean>(true);
   const [selectedAccount, setSelectedAccount] = useState<string>("BTC");
 
   const accounts = [
@@ -98,7 +98,7 @@ export default function ShowcaseScreen() {
   const renderBankingShowcase = () => (
     <RNView style={{ gap: 9 }}>
       <RNView>
-        <Options style={{ marginBottom: 0 }} sectionTitle="Select an account">
+        <Options style={{ marginBottom: 9 }} sectionTitle="Select an account">
           <Options.Select
             label={selectedAccount}
             iconName="checkcircle"
@@ -112,16 +112,17 @@ export default function ShowcaseScreen() {
           />
         </Options>
       </RNView>
+
       <Card>
-        <Card.Title>
+        <Card.PreHeader>Current balance</Card.PreHeader>
+        <Text size="xl" weight="bold">
           {currentAccount?.currency} {currentAccount?.balance}
-        </Card.Title>
+        </Text>
         <Card.Description>{currentAccount?.equivalent} USD</Card.Description>
         <Card.Footer
-          text="Premium Plan"
+          text="Free Plan"
           button={<Button caption="Deposit Funds" type="primary" />}
           chipTone="yellow"
-          chipSize="sm"
         />
       </Card>
 
@@ -132,16 +133,19 @@ export default function ShowcaseScreen() {
           caption="Starbucks Coffee"
           description="Friday morning"
           value="-94.50 USD"
+          avatar={require("@/assets/avatars/starbucks.png")}
         />
         <List.Item
           caption="Salary"
           description="Monthly Income"
-          value="+2,000.00 USD"
+          value="+14,750.00 USD"
+          avatar={require("@/assets/avatars/income.png")}
         />
         <List.Item
           caption="Grocery Store"
           description="Walmart"
           value="-87.20 USD"
+          avatar={require("@/assets/avatars/walmart.png")}
         />
         <Button
           caption="See All Transactions"
@@ -172,12 +176,14 @@ export default function ShowcaseScreen() {
           showNavArrow
         />
       </List>
+
       <Featured
         title="Get up to $25,000"
         subtitle="If approved, you'll get your money in less than 24 hours"
         buttonCaption="Apply Now"
         imageAddress={require("@/assets/covers/featured-sample.png")}
       />
+
       <Card cover={require("@/assets/covers/surf.png")}>
         <Card.Title>Invest with a Financial Advisor</Card.Title>
         <Card.Description>
@@ -367,8 +373,16 @@ export default function ShowcaseScreen() {
         <Options.Item
           iconName="sound"
           label="Sounds"
-          description="Receive push notifications"
+          description="Configure sound settings"
           actionIcon="chevron-forward-outline"
+        />
+        <Options.Switch
+          iconName="mail"
+          label="Emails"
+          description="Receive promotional emails"
+          type="primary"
+          value={emailsOn}
+          onValueChange={(value) => setEmailsOn(value)}
         />
       </Options>
 
@@ -424,7 +438,7 @@ export default function ShowcaseScreen() {
     switch (activeFilter) {
       case "Banking":
         return renderBankingShowcase();
-      case "Data":
+      case "Files":
         return renderDataShowcase();
       case "Promotion":
         return renderPromotionShowcase();
