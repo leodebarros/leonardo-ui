@@ -98,7 +98,7 @@ export const COMPONENTS = [
     },
     {
         path: "/(index)/tabsScreen",
-        caption: "Tabs (Coming soon)",
+        caption: "Tabs",
         description: "Content organizer",
         avatar: require("@/assets/avatars/ta.png")
     },
@@ -529,3 +529,29 @@ export const CALLOUT_VARIANTS = [
     },
 ];
 
+// -------------------------------------------------------
+// Tabs (Ta) 
+// -------------------------------------------------------
+
+export const TABS_VARIANTS = [
+    {
+        title: "Default Tabs",
+        description: "type: default",
+        type: "default",
+    },
+    {
+        title: "Primary Tabs",
+        description: "type: primary",
+        type: "primary",
+    },
+    {
+        title: "Outline Tabs",
+        description: "type: outline",
+        type: "outline",
+    },
+    {
+        title: "Ghost Tabs",
+        description: "type: ghost",
+        type: "ghost",
+    }
+]
