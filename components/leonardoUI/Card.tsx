@@ -57,6 +57,26 @@ function Card({ children, style, padding = "lg", cover }: CardProps) {
   );
 }
 
+Card.PreHeader = function CardPreHeader({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const theme = useTheme();
+
+  const styles = StyleSheet.create({
+    preHeader: {
+      marginBottom: theme.margin.xs,
+    },
+  });
+
+  return (
+    <Text size="sm" color="textSecondary" style={styles.preHeader}>
+      {children}
+    </Text>
+  );
+};
+
 Card.Title = function CardTitle({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
 
