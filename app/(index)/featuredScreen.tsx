@@ -11,10 +11,46 @@ export default function FeaturedScreen() {
         navBack
       />
       <Featured
-        title="Get up to $25,000"
-        subtitle="If approved, you'll get your money in less than 24 hours"
-        buttonCaption="Apply Now"
+        title="Title"
+        subtitle="Subtitle"
+        buttonCaption="Action Button"
         imageAddress={require("@/assets/covers/featured-sample.png")}
+        tone="blue"
+      />
+      <Featured
+        title="Title"
+        subtitle="Subtitle"
+        buttonCaption="Action Button"
+        imageAddress={require("@/assets/covers/featured-sample.png")}
+        tone="yellow"
+      />
+      <Featured
+        title="Title"
+        subtitle="Subtitle"
+        buttonCaption="Action Button"
+        imageAddress={require("@/assets/covers/featured-sample.png")}
+        tone="green"
+      />
+      <Featured
+        title="Title"
+        subtitle="Subtitle"
+        buttonCaption="Action Button"
+        imageAddress={require("@/assets/covers/featured-sample.png")}
+        tone="red"
+      />
+      <Featured
+        title="Title"
+        subtitle="Subtitle"
+        buttonCaption="Action Button"
+        imageAddress={require("@/assets/covers/featured-sample.png")}
+        tone="cyan"
+      />
+      <Featured
+        title="Title"
+        subtitle="Subtitle"
+        buttonCaption="Action Button"
+        imageAddress={require("@/assets/covers/featured-sample.png")}
+        tone="purple"
       />
     </View>
   );
