@@ -24,17 +24,7 @@ export interface CalloutProps {
 }
 
 export const Callout = forwardRef<RNViewRef, CalloutProps>(
-  (
-    {
-      type = "default",
-      title,
-      message,
-      buttonLabel = "Upgrade",
-      onPress,
-      style,
-    },
-    ref
-  ) => {
+  ({ type = "default", title, message, buttonLabel, onPress, style }, ref) => {
     const theme = useTheme();
 
     let containerBg: string;
@@ -97,13 +87,15 @@ export const Callout = forwardRef<RNViewRef, CalloutProps>(
           {message}
         </Text>
 
-        <Button
-          caption={buttonLabel}
-          size="sm"
-          type={buttonType as ButtonType}
-          onPress={onPress}
-          style={styles.buttonWrap}
-        />
+        {buttonLabel ? (
+          <Button
+            caption={buttonLabel}
+            size="sm"
+            type={buttonType as ButtonType}
+            onPress={onPress}
+            style={styles.buttonWrap}
+          />
+        ) : null}
       </RNView>
     );
   }
