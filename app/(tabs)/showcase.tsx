@@ -19,9 +19,11 @@ import { Switch } from "@/components/leonardoUI/Switch";
 import Toast from "@/components/leonardoUI/Toast";
 import { Text } from "@/components/leonardoUI/Text";
 import { Callout } from "@/components/leonardoUI/Callout";
+import Tabs from "@/components/leonardoUI/Tabs";
 
 const filterOptions = [
   { label: "Banking" },
+  { label: "Shopping" },
   { label: "Files" },
   { label: "Promotion" },
   { label: "Settings" },
@@ -195,12 +197,194 @@ export default function ShowcaseScreen() {
     </RNView>
   );
 
+  const renderShoppingShowcase = () => (
+    <RNView style={{ gap: 15 }}>
+      <Card cover={require("@/assets/covers/headphones.png")}>
+        <Card.Title>Premium Wireless Headphones</Card.Title>
+        <Card.Description>
+          Experience studio-quality sound with our premium wireless headphones.
+          Featuring noise cancellation technology and 30+ hours of battery life.
+        </Card.Description>
+        <RNView style={styles.row}>
+          <Chip caption="New Arrival" size="sm" tone="cyan" />
+          <Chip caption="Limited Edition" size="sm" tone="purple" />
+        </RNView>
+        <Card.Footer
+          text="$249.99"
+          button={<Button caption="Add to Cart" type="primary" />}
+        />
+      </Card>
+
+      <Tabs type="outline" defaultActiveTab="specifications">
+        <Tabs.Tab id="specifications" label="Specs" />
+        <Tabs.Tab id="reviews" label="Reviews" />
+        <Tabs.Tab id="shipping" label="Shipping" />
+
+        <Tabs.TabContent tabId="specifications">
+          <RNView style={{ padding: theme.padding.sm }}>
+            <List>
+              <List.Item
+                caption="Connectivity"
+                description="Bluetooth 5.2, 3.5mm cable"
+                value="Wireless"
+              />
+              <List.Item
+                caption="Battery Life"
+                description="10 hours with ANC on"
+                value="30+ hours"
+              />
+              <List.Item
+                caption="Noise Cancellation"
+                description="Adaptive ANC technology"
+                value="Yes"
+              />
+              <List.Item
+                caption="Water Resistance"
+                description="Protected against sweat and light rain"
+                value="IPX4"
+              />
+              <List.Item
+                caption="Weight"
+                description="Lightweight design for comfort"
+                value="250g"
+              />
+            </List>
+          </RNView>
+        </Tabs.TabContent>
+
+        <Tabs.TabContent tabId="reviews">
+          <RNView style={{ padding: theme.padding.sm }}>
+            <RNView style={styles.betweenRow}>
+              <Text weight="semibold" size="lg">
+                4.8
+                <Text size="sm" color="textSecondary">
+                  {" "}
+                  / 5.0
+                </Text>
+              </Text>
+              <Chip caption="94 Reviews" size="sm" tone="green" />
+            </RNView>
+
+            <List>
+              <List.Item
+                caption="James Wilson"
+                description="These headphones have incredible sound quality and the noise cancellation is top-notch. Highly recommend!"
+                value="★★★★★"
+              />
+              <List.Item
+                caption="Maria Garcia"
+                description="Great battery life and comfortable to wear for long periods. The app could use some improvements though."
+                value="★★★★☆"
+              />
+              <List.Item
+                caption="Alex Johnson"
+                description="Sound is clear and the build quality is excellent. Worth every penny."
+                value="★★★★★"
+              />
+            </List>
+            <Button
+              caption="See All Reviews"
+              type="outline"
+              style={{ marginTop: theme.margin.md }}
+            />
+          </RNView>
+        </Tabs.TabContent>
+
+        <Tabs.TabContent tabId="shipping">
+          <RNView style={{ padding: theme.padding.sm }}>
+            <List>
+              <List.Item
+                caption="Standard Shipping"
+                description="Delivery in 5-7 business days"
+                value="Free"
+              />
+              <List.Item
+                caption="Express Shipping"
+                description="Delivery in 2-3 business days"
+                value="$9.99"
+              />
+              <List.Item
+                caption="Next Day Delivery"
+                description="Order before 2pm for next day delivery"
+                value="$19.99"
+              />
+            </List>
+            <Callout
+              title="📦 Free Shipping"
+              message="Orders over $100 qualify for free express shipping. This product is eligible!"
+              type="primary"
+              style={{ marginTop: theme.margin.md }}
+            />
+          </RNView>
+        </Tabs.TabContent>
+      </Tabs>
+
+      <Featured
+        title="Complete Your Purchase"
+        subtitle="This case pair perfectly with your new headphones"
+        buttonCaption="View Case"
+        imageAddress={require("@/assets/covers/case.png")}
+        tone="green"
+      />
+
+      <RNView style={styles.betweenRow}>
+        <Text weight="semibold" size="lg">
+          Similar Products
+        </Text>
+        <Button caption="View All" type="ghost" />
+      </RNView>
+
+      {/* <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ marginLeft: -theme.margin.sm }}
+      >
+        <RNView style={{ padding: theme.padding.sm, width: 200 }}>
+          <Card>
+            <Card.PreHeader>Bestseller</Card.PreHeader>
+            <Card.Title>Wireless Earbuds</Card.Title>
+            <Card.Description>
+              Compact design with premium sound
+            </Card.Description>
+            <Card.Footer
+              text="$129.99"
+              button={<Button caption="Add" type="outline" size="sm" />}
+            />
+          </Card>
+        </RNView>
+        <RNView style={{ padding: theme.padding.sm, width: 200 }}>
+          <Card>
+            <Card.Title>Over-Ear Studio Headphones</Card.Title>
+            <Card.Description>
+              Professional grade audio quality
+            </Card.Description>
+            <Card.Footer
+              text="$299.99"
+              button={<Button caption="Add" type="outline" size="sm" />}
+            />
+          </Card>
+        </RNView>
+        <RNView style={{ padding: theme.padding.sm, width: 200 }}>
+          <Card>
+            <Card.Title>Sport Earphones</Card.Title>
+            <Card.Description>Water-resistant for workouts</Card.Description>
+            <Card.Footer
+              text="$89.99"
+              button={<Button caption="Add" type="outline" size="sm" />}
+            />
+          </Card>
+        </RNView>
+      </ScrollView> */}
+    </RNView>
+  );
+
   const renderDataShowcase = () => (
     <RNView style={{ gap: 15 }}>
       <Callout
         title="⚠️ Storage Almost Full"
         message="Your storage is 90% full. To continue managing your data without interruptions, consider upgrading your plan."
         type="inverted"
+        buttonLabel="Upgrade Plan"
       />
       <RNView>
         <RNView style={styles.betweenRow}>
@@ -313,11 +497,7 @@ export default function ShowcaseScreen() {
         subtitle="Up to 50% off on selected items"
         buttonCaption="Explore"
         imageAddress={require("@/assets/covers/summer-sale.png")}
-        tone={{
-          themeColor: "rgb(112, 15, 63)",
-          titleColor: "#fff0f6",
-          subtitleColor: "#ffcce0",
-        }}
+        tone="blue"
       />
 
       <Card>
@@ -444,6 +624,8 @@ export default function ShowcaseScreen() {
         return renderPromotionShowcase();
       case "Settings":
         return renderSettingsShowcase();
+      case "Shopping":
+        return renderShoppingShowcase();
       default:
         return null;
     }
@@ -467,7 +649,7 @@ export default function ShowcaseScreen() {
             label={option.label}
             isActive={option.label === activeFilter}
             onPress={() => setActiveFilter(option.label)}
-            type="default"
+            type="primary"
           />
         ))}
       </ScrollView>
