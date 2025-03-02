@@ -26,8 +26,8 @@ interface CustomViewProps {
     | "space-evenly";
   onRefresh?: () => void;
   refreshing?: boolean;
-  scrollRef?: React.RefObject<any>; // Replace any with your scroll ref type
-  [key: string]: any; // For otherProps
+  scrollRef?: React.RefObject<any>;
+  [key: string]: any;
 }
 
 export function View({
@@ -38,10 +38,28 @@ export function View({
   onRefresh,
   refreshing = false,
   scrollRef,
+  scrollable = true, // Add this prop
   ...otherProps
-}: CustomViewProps) {
+}: CustomViewProps & { scrollable?: boolean }) {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
+
+  const content = (
+    <DefaultView
+      style={[
+        {
+          flex: justifyContent === "flex-start" ? 0 : 1,
+          alignItems: alignItems,
+          justifyContent: justifyContent,
+          paddingHorizontal: "4%",
+          paddingBottom: 90,
+        },
+      ]}
+    >
+      {children}
+    </DefaultView>
+  );
+
   return (
     <DefaultView
       style={[
@@ -60,26 +78,31 @@ export function View({
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <TouchableWithoutFeedback>
-          {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
-          <ScrollView
-            ref={scrollRef}
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-              onRefresh && (
-                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-              )
-            }
-            // @ts-ignore
-            contentContainerStyle={{
-              flex: justifyContent === "flex-start" ? 0 : 1, // Maybe improve this line later
-              alignItems: alignItems,
-              justifyContent: justifyContent,
-              paddingHorizontal: "4%",
-              paddingBottom: 90,
-            }}
-          >
-            {children}
-          </ScrollView>
+          {scrollable ? (
+            <ScrollView
+              ref={scrollRef}
+              showsVerticalScrollIndicator={false}
+              refreshControl={
+                onRefresh && (
+                  <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                  />
+                )
+              }
+              contentContainerStyle={{
+                flex: justifyContent === "flex-start" ? 0 : 1,
+                alignItems: alignItems,
+                justifyContent: justifyContent,
+                paddingHorizontal: "4%",
+                paddingBottom: 90,
+              }}
+            >
+              {children}
+            </ScrollView>
+          ) : (
+            content
+          )}
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </DefaultView>
