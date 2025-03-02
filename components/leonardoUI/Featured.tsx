@@ -10,18 +10,59 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "./Theme";
 import { Text } from "./Text";
 
+export type FeaturedTone =
+  | "green"
+  | "yellow"
+  | "cyan"
+  | "red"
+  | "purple"
+  | "blue";
+
 interface Tone {
   themeColor: string;
   titleColor: string;
   subtitleColor: string;
 }
 
+const toneColors: Record<FeaturedTone | "blue", Tone> = {
+  blue: {
+    themeColor: "rgb(15, 40, 112)",
+    titleColor: "#e9f6ff",
+    subtitleColor: "#b6dfff",
+  },
+  green: {
+    themeColor: "rgb(22, 101, 52)",
+    titleColor: "#ecfdf5",
+    subtitleColor: "#a7f3d0",
+  },
+  yellow: {
+    themeColor: "rgb(133, 77, 14)",
+    titleColor: "#fffbeb",
+    subtitleColor: "#fef08a",
+  },
+  cyan: {
+    themeColor: "rgb(8, 145, 178)",
+    titleColor: "#ecfeff",
+    subtitleColor: "#a5f3fc",
+  },
+  red: {
+    themeColor: "rgb(153, 27, 27)",
+    titleColor: "#fef2f2",
+    subtitleColor: "#fecaca",
+  },
+  purple: {
+    themeColor: "rgb(88, 28, 135)",
+    titleColor: "#faf5ff",
+    subtitleColor: "#e9d5ff",
+  },
+};
+
 interface FeaturedProps {
   title: string;
   subtitle: string;
   buttonCaption: string;
   imageAddress: ImageSourcePropType;
-  tone?: Tone;
+  tone?: FeaturedTone | Tone;
 }
 
 const Featured = ({
@@ -29,18 +70,23 @@ const Featured = ({
   subtitle,
   buttonCaption,
   imageAddress,
-  tone = {
-    themeColor: "rgb(15, 40, 112)",
-    titleColor: "#e9f6ff",
-    subtitleColor: "#b6dfff",
-  },
+  tone = "blue",
 }: FeaturedProps) => {
   const theme = useTheme();
+
+  let toneObject: Tone;
+  if (typeof tone === "string") {
+    toneObject = toneColors[tone];
+  } else {
+    toneObject = tone;
+  }
 
   const styles = StyleSheet.create({
     container: {
       width: "100%",
       height: 240,
+      borderWidth: 0.7,
+      borderColor: theme.colors.border,
       borderRadius: theme.borderRadius.md,
       overflow: "hidden",
       marginBottom: theme.margin.md,
@@ -75,7 +121,7 @@ const Featured = ({
     actionBtn: {
       paddingVertical: theme.padding.sm,
       paddingHorizontal: theme.padding.md,
-      color: tone.themeColor,
+      color: toneObject.themeColor,
     },
     actionBtnContainer: {
       marginTop: theme.margin.sm,
@@ -95,13 +141,13 @@ const Featured = ({
         imageStyle={styles.image}
       >
         <LinearGradient
-          colors={["transparent", tone.themeColor]}
+          colors={["transparent", toneObject.themeColor]}
           style={styles.gradient}
         >
           <Text
             size="lg"
             weight="bold"
-            style={[styles.text, { color: tone.titleColor }]}
+            style={[styles.text, { color: toneObject.titleColor }]}
           >
             {title}
           </Text>
@@ -109,7 +155,7 @@ const Featured = ({
             style={[
               styles.subtitle,
               {
-                color: tone.subtitleColor,
+                color: toneObject.subtitleColor,
               },
             ]}
           >
@@ -118,7 +164,7 @@ const Featured = ({
           <DefaultView
             style={[
               styles.actionBtnContainer,
-              { backgroundColor: tone.subtitleColor },
+              { backgroundColor: toneObject.subtitleColor },
             ]}
           >
             <Text weight="semibold" style={styles.actionBtn}>
