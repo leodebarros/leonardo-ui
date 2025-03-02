@@ -32,6 +32,10 @@ function Card({ children, style, padding = "lg", cover }: CardProps) {
       height: 200,
       borderTopLeftRadius: theme.borderRadius.md,
       borderTopRightRadius: theme.borderRadius.md,
+      borderTopWidth: 0.7,
+      borderLeftWidth: 0.7,
+      borderRightWidth: 0.7,
+      borderColor: theme.colors.border,
     },
     card: {
       minWidth: "100%",
@@ -103,6 +107,7 @@ Card.Description = function CardDescription({
   const styles = StyleSheet.create({
     container: {
       minWidth: "100%",
+      maxWidth: "100%",
     },
     description: {
       color: theme.colors.textSecondary,
