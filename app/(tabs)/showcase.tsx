@@ -3,27 +3,27 @@ import { ScrollView, StyleSheet, View as RNView } from "react-native";
 import { useTheme, useThemeActions } from "@/store/themeContext";
 
 // LeonardoUI Components
-import { View } from "@/components/leonardoUI/View";
-import Header from "@/components/leonardoUI/Header";
-import Filter from "@/components/leonardoUI/Filter";
 import { Action } from "@/components/leonardoUI/Action";
 import { Button } from "@/components/leonardoUI/Button";
+import { Callout } from "@/components/leonardoUI/Callout";
 import Card from "@/components/leonardoUI/Card";
 import Chip from "@/components/leonardoUI/Chip";
 import Dialog from "@/components/leonardoUI/Dialog";
 import Featured from "@/components/leonardoUI/Featured";
+import Filter from "@/components/leonardoUI/Filter";
+import Header from "@/components/leonardoUI/Header";
 import List from "@/components/leonardoUI/List";
 import { Options } from "@/components/leonardoUI/Options";
 import RadioButton from "@/components/leonardoUI/RadioButton";
 import { Switch } from "@/components/leonardoUI/Switch";
-import Toast from "@/components/leonardoUI/Toast";
-import { Text } from "@/components/leonardoUI/Text";
-import { Callout } from "@/components/leonardoUI/Callout";
 import Tabs from "@/components/leonardoUI/Tabs";
+import { Text } from "@/components/leonardoUI/Text";
+import Toast from "@/components/leonardoUI/Toast";
+import { View } from "@/components/leonardoUI/View";
 
 const filterOptions = [
-  { label: "Banking" },
   { label: "Shopping" },
+  { label: "Banking" },
   { label: "Files" },
   { label: "Promotion" },
   { label: "Settings" },
@@ -32,7 +32,7 @@ const filterOptions = [
 export default function ShowcaseScreen() {
   const theme = useTheme();
   const { chosenPrimaryKey } = useThemeActions();
-  const [activeFilter, setActiveFilter] = useState<string>("Banking");
+  const [activeFilter, setActiveFilter] = useState<string>("Shopping");
   const [dialogVisible, setDialogVisible] = useState<boolean>(false);
   const [toastVisible, setToastVisible] = useState<boolean>(false);
 
@@ -81,7 +81,7 @@ export default function ShowcaseScreen() {
     },
     betweenRow: {
       flexDirection: "row",
-      alignItems: "center",
+      alignItems: "baseline",
       justifyContent: "space-between",
       marginBottom: theme.margin.md,
       marginHorizontal: theme.padding.xs,
@@ -97,109 +97,10 @@ export default function ShowcaseScreen() {
     },
   });
 
-  const renderBankingShowcase = () => (
-    <RNView style={{ gap: 9 }}>
-      <RNView>
-        <Options style={{ marginBottom: 9 }} sectionTitle="Select an account">
-          <Options.Select
-            label={selectedAccount}
-            iconName="checkcircle"
-            options={[
-              { label: "BTC", value: "BTC" },
-              { label: "ETH", value: "ETH" },
-              { label: "SOL", value: "SOL" },
-            ]}
-            selectedValue={selectedAccount}
-            onChange={(value) => setSelectedAccount(value)}
-          />
-        </Options>
-      </RNView>
-
-      <Card>
-        <Card.PreHeader>Current balance</Card.PreHeader>
-        <Text size="xl" weight="bold">
-          {currentAccount?.currency} {currentAccount?.balance}
-        </Text>
-        <Card.Description>{currentAccount?.equivalent} USD</Card.Description>
-        <Card.Footer
-          text="Free Plan"
-          button={<Button caption="Deposit Funds" type="primary" />}
-          chipTone="yellow"
-        />
-      </Card>
-
-      <List>
-        <List.Title>Recent Transactions</List.Title>
-        <List.Description>Tap on a transaction for details</List.Description>
-        <List.Item
-          caption="Starbucks Coffee"
-          description="Friday morning"
-          value="-94.50 USD"
-          avatar={require("@/assets/avatars/starbucks.png")}
-        />
-        <List.Item
-          caption="Salary"
-          description="Monthly Income"
-          value="+14,750.00 USD"
-          avatar={require("@/assets/avatars/income.png")}
-        />
-        <List.Item
-          caption="Grocery Store"
-          description="Walmart"
-          value="-87.20 USD"
-          avatar={require("@/assets/avatars/walmart.png")}
-        />
-        <Button
-          caption="See All Transactions"
-          type="outline"
-          style={{ marginTop: theme.margin.lg }}
-        />
-      </List>
-
-      <List>
-        <List.Title>Send Money Again</List.Title>
-        <List.Description>Recipients recently used</List.Description>
-        <List.Item
-          caption="Donald Drunk"
-          description="@drunkingdonut"
-          avatar={require("@/assets/avatars/recipient1.png")}
-          showNavArrow
-        />
-        <List.Item
-          caption="Sara Parker"
-          description="@sarap111"
-          avatar={require("@/assets/avatars/recipient2.png")}
-          showNavArrow
-        />
-        <List.Item
-          caption="Michael Kors"
-          description="@mkors"
-          avatar={require("@/assets/avatars/recipient3.png")}
-          showNavArrow
-        />
-      </List>
-
-      <Featured
-        title="Get up to $25,000"
-        subtitle="If approved, you'll get your money in less than 24 hours"
-        buttonCaption="Apply Now"
-        imageAddress={require("@/assets/covers/featured-sample.png")}
-      />
-
-      <Card cover={require("@/assets/covers/surf.png")}>
-        <Card.Title>Invest with a Financial Advisor</Card.Title>
-        <Card.Description>
-          Looking to lose all your money? Chart your course towards your next
-          bankruptcy with our expert gamblers.
-        </Card.Description>
-        <Card.Footer button={<Button caption="Learn More" type="outline" />} />
-      </Card>
-    </RNView>
-  );
-
   const renderShoppingShowcase = () => (
     <RNView style={{ gap: 15 }}>
       <Card cover={require("@/assets/covers/headphones.png")}>
+        <Card.PreHeader>Sony</Card.PreHeader>
         <Card.Title>Premium Wireless Headphones</Card.Title>
         <Card.Description>
           Experience studio-quality sound with our premium wireless headphones.
@@ -313,7 +214,6 @@ export default function ShowcaseScreen() {
               title="📦 Free Shipping"
               message="Orders over $100 qualify for free express shipping. This product is eligible!"
               type="primary"
-              style={{ marginTop: theme.margin.md }}
             />
           </RNView>
         </Tabs.TabContent>
@@ -327,54 +227,166 @@ export default function ShowcaseScreen() {
         tone="green"
       />
 
-      <RNView style={styles.betweenRow}>
-        <Text weight="semibold" size="lg">
-          Similar Products
-        </Text>
-        <Button caption="View All" type="ghost" />
+      <RNView>
+        <RNView style={styles.betweenRow}>
+          <Text weight="semibold" size="lg">
+            Similar Products
+          </Text>
+          <Button caption="View All" type="ghost" style={{ marginBottom: 0 }} />
+        </RNView>
+
+        <ScrollView
+          horizontal
+          nestedScrollEnabled={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          <RNView style={{ padding: theme.padding.sm, width: 300 }}>
+            <Card cover={require("@/assets/covers/headphones2.png")}>
+              <Card.PreHeader>Beats</Card.PreHeader>
+              <Card.Title>Reflex Wireless Noise Cancelling</Card.Title>
+              <Card.Description>
+                Compact design with premium sound
+              </Card.Description>
+              <Card.Footer
+                text="$129.99"
+                button={
+                  <Button caption="Add to Cart" type="outline" size="sm" />
+                }
+              />
+            </Card>
+          </RNView>
+          <RNView style={{ padding: theme.padding.sm, width: 300 }}>
+            <Card cover={require("@/assets/covers/ear.png")}>
+              <Card.PreHeader>SuperAudio</Card.PreHeader>
+              <Card.Title>Over-Ear Studio Headphones</Card.Title>
+              <Card.Description>
+                Professional grade audio quality with noise cancellation
+              </Card.Description>
+              <Card.Footer
+                text="$299.99"
+                button={
+                  <Button caption="Add to Cart" type="outline" size="sm" />
+                }
+              />
+            </Card>
+          </RNView>
+          <RNView style={{ padding: theme.padding.sm, width: 300 }}>
+            <Card cover={require("@/assets/covers/sport.png")}>
+              <Card.PreHeader>Shokz</Card.PreHeader>
+              <Card.Title>Sport Earphones Waterproof IP33 </Card.Title>
+              <Card.Description>
+                Water-resistant for workouts with lossless audio quality
+              </Card.Description>
+              <Card.Footer
+                text="$89.99"
+                button={
+                  <Button caption="Add to Cart" type="outline" size="sm" />
+                }
+              />
+            </Card>
+          </RNView>
+        </ScrollView>
+      </RNView>
+    </RNView>
+  );
+
+  const renderBankingShowcase = () => (
+    <RNView style={{ gap: 9 }}>
+      <RNView>
+        <Options style={{ marginBottom: 9 }} sectionTitle="Select an account">
+          <Options.Select
+            label={selectedAccount}
+            iconName="checkcircle"
+            options={[
+              { label: "BTC", value: "BTC" },
+              { label: "ETH", value: "ETH" },
+              { label: "SOL", value: "SOL" },
+            ]}
+            selectedValue={selectedAccount}
+            onChange={(value) => setSelectedAccount(value)}
+          />
+        </Options>
       </RNView>
 
-      {/* <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ marginLeft: -theme.margin.sm }}
-      >
-        <RNView style={{ padding: theme.padding.sm, width: 200 }}>
-          <Card>
-            <Card.PreHeader>Bestseller</Card.PreHeader>
-            <Card.Title>Wireless Earbuds</Card.Title>
-            <Card.Description>
-              Compact design with premium sound
-            </Card.Description>
-            <Card.Footer
-              text="$129.99"
-              button={<Button caption="Add" type="outline" size="sm" />}
-            />
-          </Card>
-        </RNView>
-        <RNView style={{ padding: theme.padding.sm, width: 200 }}>
-          <Card>
-            <Card.Title>Over-Ear Studio Headphones</Card.Title>
-            <Card.Description>
-              Professional grade audio quality
-            </Card.Description>
-            <Card.Footer
-              text="$299.99"
-              button={<Button caption="Add" type="outline" size="sm" />}
-            />
-          </Card>
-        </RNView>
-        <RNView style={{ padding: theme.padding.sm, width: 200 }}>
-          <Card>
-            <Card.Title>Sport Earphones</Card.Title>
-            <Card.Description>Water-resistant for workouts</Card.Description>
-            <Card.Footer
-              text="$89.99"
-              button={<Button caption="Add" type="outline" size="sm" />}
-            />
-          </Card>
-        </RNView>
-      </ScrollView> */}
+      <Card>
+        <Card.PreHeader>Current balance</Card.PreHeader>
+        <Text size="xl" weight="bold">
+          {currentAccount?.currency} {currentAccount?.balance}
+        </Text>
+        <Card.Description>{currentAccount?.equivalent} USD</Card.Description>
+        <Card.Footer
+          text="Free Plan"
+          button={<Button caption="Deposit Funds" type="primary" />}
+          chipTone="yellow"
+        />
+      </Card>
+
+      <List>
+        <List.Title>Recent Transactions</List.Title>
+        <List.Description>Tap on a transaction for details</List.Description>
+        <List.Item
+          caption="Starbucks Coffee"
+          description="Friday morning"
+          value="-94.50 USD"
+          avatar={require("@/assets/avatars/starbucks.png")}
+        />
+        <List.Item
+          caption="Salary"
+          description="Monthly Income"
+          value="+14,750.00 USD"
+          avatar={require("@/assets/avatars/income.png")}
+        />
+        <List.Item
+          caption="Grocery Store"
+          description="Walmart"
+          value="-87.20 USD"
+          avatar={require("@/assets/avatars/walmart.png")}
+        />
+        <Button
+          caption="See All Transactions"
+          type="outline"
+          style={{ marginTop: theme.margin.lg }}
+        />
+      </List>
+
+      <List>
+        <List.Title>Send Money Again</List.Title>
+        <List.Description>Recipients recently used</List.Description>
+        <List.Item
+          caption="Donald Drunk"
+          description="@drunkingdonut"
+          avatar={require("@/assets/avatars/recipient1.png")}
+          showNavArrow
+        />
+        <List.Item
+          caption="Sara Parker"
+          description="@sarap111"
+          avatar={require("@/assets/avatars/recipient2.png")}
+          showNavArrow
+        />
+        <List.Item
+          caption="Michael Kors"
+          description="@mkors"
+          avatar={require("@/assets/avatars/recipient3.png")}
+          showNavArrow
+        />
+      </List>
+
+      <Featured
+        title="Get up to $25,000"
+        subtitle="If approved, you'll get your money in less than 24 hours"
+        buttonCaption="Apply Now"
+        imageAddress={require("@/assets/covers/featured-sample.png")}
+      />
+
+      <Card cover={require("@/assets/covers/surf.png")}>
+        <Card.Title>Invest with a Financial Advisor</Card.Title>
+        <Card.Description>
+          Looking to lose all your money? Chart your course towards your next
+          bankruptcy with our expert gamblers.
+        </Card.Description>
+        <Card.Footer button={<Button caption="Learn More" type="outline" />} />
+      </Card>
     </RNView>
   );
 
@@ -616,6 +628,8 @@ export default function ShowcaseScreen() {
 
   const renderShowcaseContent = () => {
     switch (activeFilter) {
+      case "Shopping":
+        return renderShoppingShowcase();
       case "Banking":
         return renderBankingShowcase();
       case "Files":
@@ -624,8 +638,6 @@ export default function ShowcaseScreen() {
         return renderPromotionShowcase();
       case "Settings":
         return renderSettingsShowcase();
-      case "Shopping":
-        return renderShoppingShowcase();
       default:
         return null;
     }
@@ -637,7 +649,6 @@ export default function ShowcaseScreen() {
         title="Showcase"
         description="Explores real app scenarios using LeonardoUI components"
       />
-
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -653,8 +664,9 @@ export default function ShowcaseScreen() {
           />
         ))}
       </ScrollView>
-
-      <RNView>{renderShowcaseContent()}</RNView>
+      <ScrollView>
+        <RNView>{renderShowcaseContent()}</RNView>
+      </ScrollView>
     </View>
   );
 }
