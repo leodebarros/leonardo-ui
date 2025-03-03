@@ -87,7 +87,7 @@ export function Tabs({
       ...(type !== "outline" &&
         type !== "ghost" && {
           backgroundColor: theme.colors.surface,
-          padding: theme.padding.md,
+          padding: 8,
           borderRadius: theme.borderRadius.md,
         }),
       ...(type === "outline" && {
