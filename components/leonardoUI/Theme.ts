@@ -9,6 +9,7 @@ export type ColorTheme = {
     primary: string;
     overBackground: string;
     secondary: string;
+    success: string;
     surface: string;
     sidebarBg: string;
     textPrimary: string;
@@ -80,6 +81,7 @@ const lightTemplate: Omit<ColorTheme, 'primary'> = {
     overBackground: "#FFFFFF",
     secondary: "#7F7F7F",
     sidebarBg: "#E6E5E3",
+    success: "#00AC54",
     surface: "#F0F0F0",
     textPrimary: "#2B2B2B",
     textSecondary: "#757575",
@@ -96,6 +98,7 @@ const darkTemplate: Omit<ColorTheme, 'primary'> = {
     overBackground: "#1C1C1C",
     secondary: "#B3B3B3",
     sidebarBg: "#1C1C1E",
+    success: "#00AC54",
     surface: "#1E1E1E",
     textPrimary: "#EAEAEA",
     textSecondary: "#B3B3B3",
