@@ -1,5 +1,5 @@
 import React from "react";
-import { View, FlexAlignType, StyleSheet } from "react-native";
+import { View as RNView, FlexAlignType, StyleSheet } from "react-native";
 import { Text } from "./Text";
 
 export type ChipTone =
@@ -92,11 +92,11 @@ const Chip = ({
   });
 
   return (
-    <View style={styles.tagStyle}>
+    <RNView style={styles.tagStyle}>
       <Text size={size} weight="semibold" style={styles.caption}>
         {caption}
       </Text>
-    </View>
+    </RNView>
   );
 };
 
