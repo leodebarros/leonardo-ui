@@ -6,7 +6,7 @@ import { LIST_VARIANTS } from "@/data/components";
 
 export default function ListScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="List"
         description="A structured, collection of items, commonly used for menus, settings, or displaying dynamic data."
@@ -23,6 +23,6 @@ export default function ListScreen() {
           </List>
         ))}
       </RNView>
-    </View>
+    </MainView>
   );
 }

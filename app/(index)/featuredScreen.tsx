@@ -4,7 +4,7 @@ import { View } from "@/components/leonardoUI/View";
 
 export default function FeaturedScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="Featured"
         description="A visually prominent section used to highlight key content, such as promotional items or important updates."
@@ -52,6 +52,6 @@ export default function FeaturedScreen() {
         imageAddress={require("@/assets/covers/featured-sample.png")}
         tone="purple"
       />
-    </View>
+    </MainView>
   );
 }

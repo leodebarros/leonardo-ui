@@ -4,7 +4,7 @@ import { View } from "@/components/leonardoUI/View";
 
 export default function HeaderScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="Header"
         description="A structured title bar that provides context for a screen, often including navigation controls or descriptions."
@@ -29,6 +29,6 @@ export default function HeaderScreen() {
       <Card>
         <Header title="Just a title" />
       </Card>
-    </View>
+    </MainView>
   );
 }

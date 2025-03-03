@@ -24,7 +24,7 @@ export default function FilterScreen() {
   });
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Filter"
         description="A pill-shaped control used to filter or refine visible content, often displayed horizontally for quick selection."
@@ -129,6 +129,6 @@ export default function FilterScreen() {
           ))}
         </ScrollView>
       </Card>
-    </View>
+    </MainView>
   );
 }

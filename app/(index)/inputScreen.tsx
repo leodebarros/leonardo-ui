@@ -3,12 +3,12 @@ import { View } from "@/components/leonardoUI/View";
 
 export default function InputScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="Input"
         description="A text field for capturing user input, supporting various validations and styles."
         navBack
       />
-    </View>
+    </MainView>
   );
 }

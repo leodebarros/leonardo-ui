@@ -15,7 +15,7 @@ export default function RadioButtonScreen() {
   });
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Radio Button"
         description="A circular selector for picking one option from multiple choices, commonly used in forms."
@@ -40,6 +40,6 @@ export default function RadioButtonScreen() {
           </RNView>
         </RNView>
       </Card>
-    </View>
+    </MainView>
   );
 }

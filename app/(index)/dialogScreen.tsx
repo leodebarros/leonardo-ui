@@ -12,7 +12,7 @@ export default function DialogScreen() {
   const [visibleDialog, setVisibleDialog] = useState<string | null>(null);
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Dialog"
         description="A modal overlay that requires user interaction, often used for confirmations, alerts, or form inputs."
@@ -53,6 +53,6 @@ export default function DialogScreen() {
           );
         })}
       </DefaultView>
-    </View>
+    </MainView>
   );
 }

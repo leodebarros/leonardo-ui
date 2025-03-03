@@ -26,7 +26,7 @@ export default function TextScreen() {
   });
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Text"
         description="A configurable component for displaying and styling text consistently throughout the app."
@@ -57,6 +57,6 @@ export default function TextScreen() {
           </Text>
         </Card>
       ))}
-    </View>
+    </MainView>
   );
 }

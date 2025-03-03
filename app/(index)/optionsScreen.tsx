@@ -1,15 +1,28 @@
 import Header from "@/components/leonardoUI/Header";
 import { Options } from "@/components/leonardoUI/Options";
+import { SwitchType } from "@/components/leonardoUI/Switch";
 import { View } from "@/components/leonardoUI/View";
 import { OPTIONS_VARIANTS } from "@/data/components";
 import { useState } from "react";
 import { ImageSourcePropType } from "react-native";
 
 export default function OptionsScreen() {
-  const [selectedOption, setSelectedOption] = useState("Value 1");
+  const [selectedOption, setSelectedOption] = useState<string>("Value 1");
+  const [switchValues, setSwitchValues] = useState<{ [key: string]: boolean }>({
+    "1": true,
+    "2": false,
+    "3": true,
+  });
+
+  const handleSwitchToggle = (label: string, newValue: boolean) => {
+    setSwitchValues((prev) => ({
+      ...prev,
+      [label]: newValue,
+    }));
+  };
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Options"
         description="A grouped set of selectable items or settings, often used in preference panels or configuration menus."
@@ -30,6 +43,20 @@ export default function OptionsScreen() {
                   onChange={(value) => setSelectedOption(value)}
                 />
               );
+            } else if (item.isSwitch) {
+              return (
+                <Options.Switch
+                  key={item.id}
+                  label={item.label ?? ""}
+                  description={item.description}
+                  iconName={item.iconName}
+                  value={item.id ? switchValues[item.id] : false}
+                  type={item.switchType as SwitchType}
+                  onValueChange={(newValue) =>
+                    handleSwitchToggle(item.id ?? "", newValue)
+                  }
+                />
+              );
             } else {
               return (
                 <Options.Item
@@ -45,6 +72,6 @@ export default function OptionsScreen() {
           })}
         </Options>
       ))}
-    </View>
+    </MainView>
   );
 }

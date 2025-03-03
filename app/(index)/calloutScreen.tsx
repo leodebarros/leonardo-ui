@@ -6,7 +6,7 @@ import { View as RNView } from "react-native";
 
 export default function CalloutScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="Callout"
         description="A styled message box that provides important notices, alerts, or actions."
@@ -23,6 +23,6 @@ export default function CalloutScreen() {
           />
         ))}
       </RNView>
-    </View>
+    </MainView>
   );
 }

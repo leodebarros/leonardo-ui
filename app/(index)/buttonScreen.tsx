@@ -6,7 +6,7 @@ import { BUTTON_VARIANTS } from "@/data/components";
 
 export default function ButtonScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="Button"
         description="A tappable UI element that triggers an action or navigation when pressed, supporting multiple styles and states."
@@ -22,6 +22,6 @@ export default function ButtonScreen() {
           <Button caption="Loading" type={type as ButtonType} loading />
         </Card>
       ))}
-    </View>
+    </MainView>
   );
 }

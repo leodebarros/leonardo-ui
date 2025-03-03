@@ -27,7 +27,7 @@ export default function ChipScreen() {
   });
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Chip"
         description="A small, interactive UI element used to display information, filter content, or represent choices in a compact way."
@@ -78,6 +78,6 @@ export default function ChipScreen() {
           <Button caption="Open Tailwind's Colors Page" />
         </Link>
       </Card>
-    </View>
+    </MainView>
   );
 }

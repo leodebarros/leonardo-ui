@@ -22,7 +22,7 @@ export default function SwitchScreen() {
   };
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Switch"
         description="A toggle-like component for switching between two states, e.g., on/off or enable/disable."
@@ -49,6 +49,6 @@ export default function SwitchScreen() {
           />
         </Card>
       ))}
-    </View>
+    </MainView>
   );
 }

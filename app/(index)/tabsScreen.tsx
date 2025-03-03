@@ -21,7 +21,7 @@ export default function TabScreen() {
   });
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Tabs"
         description="A navigational component that organizes content into multiple panels, each accessed by a tab."
@@ -46,6 +46,6 @@ export default function TabScreen() {
           </RNView>
         ))}
       </RNView>
-    </View>
+    </MainView>
   );
 }

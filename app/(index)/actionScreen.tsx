@@ -32,7 +32,7 @@ export default function ActionScreen() {
   });
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Action"
         description="A compact, interactive button with an icon, used for quick actions such as sharing, saving, or liking."
@@ -79,6 +79,6 @@ export default function ActionScreen() {
           <Button caption="Browse Expo Icons" />
         </Link>
       </Card>
-    </View>
+    </MainView>
   );
 }

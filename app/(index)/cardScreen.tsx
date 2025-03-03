@@ -9,7 +9,7 @@ import { CARD_VARIANTS } from "@/data/components";
 
 export default function CardScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="Card"
         description="A versatile container that groups related content and actions, often used for displaying previews or summaries."
@@ -35,6 +35,6 @@ export default function CardScreen() {
           </Card>
         ))}
       </DefaultView>
-    </View>
+    </MainView>
   );
 }

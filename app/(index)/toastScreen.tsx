@@ -58,7 +58,7 @@ export default function ToastScreen() {
   }, [selectedToastType]);
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Toast"
         description="Show notifications on actions result"
@@ -120,6 +120,6 @@ export default function ToastScreen() {
           onRequestClose={() => setIsVisible(false)}
         />
       </Card>
-    </View>
+    </MainView>
   );
 }
