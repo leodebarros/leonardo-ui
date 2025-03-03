@@ -8,7 +8,7 @@ import {
   ImageSourcePropType,
 } from "react-native";
 import { useTheme } from "./Theme";
-import Chip from "./Chip";
+import Badge from "./Badge";
 import { Text } from "./Text";
 
 interface CardProps {
@@ -127,14 +127,14 @@ Card.Description = function CardDescription({
 interface CardFooterProps {
   text?: string;
   button: React.ReactNode;
-  chipTone?: "green" | "yellow" | "cyan" | "red" | "purple" | "neutral";
+  badgeTone?: "green" | "yellow" | "cyan" | "red" | "purple" | "neutral";
   chipSize?: "sm" | "base";
 }
 
 Card.Footer = function CardFooter({
   text,
   button,
-  chipTone,
+  badgeTone,
   chipSize = "base",
 }: CardFooterProps) {
   const theme = useTheme();
@@ -164,11 +164,11 @@ Card.Footer = function CardFooter({
     <RNView style={styles.footerContainer}>
       <RNView style={styles.footerButtonContainer}>{button}</RNView>
 
-      {text && chipTone ? (
-        <Chip
+      {text && badgeTone ? (
+        <Badge
           alignSelf="center"
           caption={text}
-          tone={chipTone}
+          tone={badgeTone}
           size={chipSize}
         />
       ) : (

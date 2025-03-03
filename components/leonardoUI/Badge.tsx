@@ -2,7 +2,7 @@ import React from "react";
 import { View as RNView, FlexAlignType, StyleSheet } from "react-native";
 import { Text } from "./Text";
 
-export type ChipTone =
+export type BadgeTone =
   | "green"
   | "yellow"
   | "cyan"
@@ -12,7 +12,7 @@ export type ChipTone =
 
 interface ChipParams {
   caption: string;
-  tone: ChipTone;
+  tone: BadgeTone;
   size?: "sm" | "base";
   rounded?: "sm" | "full";
   alignSelf?: FlexAlignType;

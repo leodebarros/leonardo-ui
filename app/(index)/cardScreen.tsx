@@ -2,7 +2,7 @@ import { View as DefaultView } from "react-native";
 import { Button, ButtonType } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
-import { ChipTone } from "@/components/leonardoUI/Chip";
+import { BadgeTone } from "@/components/leonardoUI/Badge";
 import MainView from "@/components/leonardoUI/MainView";
 
 import { CARD_VARIANTS } from "@/data/components";
@@ -29,7 +29,7 @@ export default function CardScreen() {
                     type={footer?.button.type as ButtonType}
                   />
                 }
-                chipTone={footer.chipTone as ChipTone}
+                badgeTone={footer.badgeTone as BadgeTone}
               />
             )}
           </Card>

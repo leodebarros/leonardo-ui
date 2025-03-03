@@ -1,6 +1,7 @@
 import { SwitchType } from "@/components/leonardoUI/Switch";
 import { AntDesign } from "@expo/vector-icons";
 import { ImageSourcePropType } from "react-native";
+import { TierType } from "@/components/leonardoUI/Tier";
 
 // -------------------------------------------------------
 // Components Index
@@ -89,6 +90,12 @@ export const COMPONENTS = [
         caption: "Switch",
         description: "A toggle-like state switch",
         avatar: require("@/assets/avatars/sw.png")
+    },
+    {
+        path: "/(index)/tierScreen",
+        caption: "Tier",
+        description: "Configurable text",
+        avatar: require("@/assets/avatars/tx.png")
     },
     {
         path: "/(index)/textScreen",
@@ -260,7 +267,7 @@ export const CARD_VARIANTS = [
         footer: {
             text: "Footer Chip",
             button: { caption: "Action Button", type: "primary" },
-            chipTone: "yellow",
+            badgeTone: "yellow",
         },
     },
     {
@@ -592,3 +599,148 @@ export const TABS_VARIANTS = [
         type: "ghost",
     }
 ]
+
+// -------------------------------------------------------
+// Tier (Ti)
+// -------------------------------------------------------
+
+type TierItem = {
+    title: string;
+    price: string;
+    period?: string;
+    description?: string;
+    type?: TierType;
+    features?: string[];
+    discount?: string;
+    recommended?: boolean;
+    buttonCaption?: string;
+    onSelect?: () => void;
+};
+
+export const TIER_VARIANTS: {
+    title: string;
+    description: string;
+    items: TierItem[];
+}[] = [
+        {
+            title: "Base Tiers",
+            description: "Vertical layout.",
+            items: [
+                {
+                    title: "Default",
+                    price: "Price",
+                    description: "Description",
+                    type: "default",
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button",
+                },
+                {
+                    title: "Primary",
+                    price: "Price",
+                    description: "Description",
+                    type: "primary",
+                    recommended: true,
+                    discount: "Discount",
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button",
+                }
+            ]
+        },
+        {
+            title: "Business Plans",
+            description: "Enterprise solutions for teams of all sizes.",
+            items: [
+                {
+                    title: "Outline",
+                    price: "Price",
+                    description: "Description",
+                    type: "outline",
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button",
+                },
+                {
+                    title: "Ghost",
+                    price: "Price",
+                    description: "Description",
+                    type: "ghost",
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button",
+                }
+            ]
+        },
+        {
+            title: "Smaller Tiers (width: 280px)",
+            description: "Tiers rendered horizontally.",
+            items: [
+                {
+                    title: "Default",
+                    price: "Price",
+                    type: "default",
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button"
+                },
+                {
+                    title: "Primary",
+                    price: "Price",
+                    type: "primary",
+                    recommended: true,
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button"
+                },
+                {
+                    title: "Outline",
+                    price: "Price",
+                    type: "ghost",
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button"
+                },
+                {
+                    title: "Ghost",
+                    price: "Price",
+                    type: "ghost",
+                    features: [
+                        "Feature A",
+                        "Feature B",
+                        "Feature C",
+                        "Feature D"
+                    ],
+                    buttonCaption: "Action Button"
+                }
+            ]
+        }
+    ];

@@ -1,102 +1,91 @@
-import React from "react";
-import { View as RNView, FlexAlignType, StyleSheet } from "react-native";
+import React, { FC } from "react";
+import { TouchableOpacity, StyleSheet } from "react-native";
+import { useTheme } from "./Theme";
+import { useThemeActions } from "@/store/themeContext";
 import { Text } from "./Text";
 
-export type ChipTone =
-  | "green"
-  | "yellow"
-  | "cyan"
-  | "red"
-  | "purple"
-  | "neutral";
+export type ChipType = "default" | "primary" | "outline" | "ghost";
 
-interface ChipParams {
-  caption: string;
-  tone: ChipTone;
-  size?: "sm" | "base";
-  rounded?: "sm" | "full";
-  alignSelf?: FlexAlignType;
+interface ChipProps {
+  label: string;
+  type?: ChipType;
+  isActive?: boolean;
+  onPress?: () => void;
 }
 
-const Chip = ({
-  caption,
-  tone,
-  size = "base",
-  rounded = "full",
-  alignSelf = "flex-start",
-}: ChipParams) => {
-  const sprayTones = (tone: string) => {
-    switch (tone) {
-      case "green":
-        return {
-          backgroundColor: "#dcfce7", // tailwind green-100
-          borderColor: "#bbf7d0", // tailwind green-200
-          textColor: "#166534", // tailwind green-900
-        };
-      case "yellow":
-        return {
-          backgroundColor: "#fef9c3", // tailwind yellow-100
-          borderColor: "#fde68a", // tailwind yellow-200
-          textColor: "#713f12", // tailwind yellow-900
-        };
-      case "cyan":
-        return {
-          backgroundColor: "#cffafe", // tailwind cyan-100
-          borderColor: "#a5f3fc", // tailwind cyan-200
-          textColor: "#164e63", // tailwind cyan-900
-        };
-      case "red":
-        return {
-          backgroundColor: "#fee2e2", // tailwind red-100
-          borderColor: "#fecaca", // tailwind red-200
-          textColor: "#7f1d1d", // tailwind red-900
-        };
-      case "purple":
-        return {
-          backgroundColor: "#ede9fe", // tailwind purple-100
-          borderColor: "#ddd6fe", // tailwind purple-200
-          textColor: "#581c87", // tailwind purple-900
-        };
-      case "neutral":
-        return {
-          backgroundColor: "#f3f4f6", // tailwind gray-100
-          borderColor: "#d1d5db", // tailwind gray-300
-          textColor: "#1f2937", // tailwind gray-900
-        };
-      default:
-        return {
-          backgroundColor: "transparent",
-          borderColor: "black",
-          textColor: "black",
-        };
-    }
-  };
+const Chip: FC<ChipProps> = ({
+  label,
+  type = "default",
+  isActive = false,
+  onPress,
+}) => {
+  const theme = useTheme();
+  const { chosenPrimaryKey } = useThemeActions();
 
-  const { backgroundColor, borderColor, textColor } = sprayTones(tone);
+  let backgroundColor = theme.colors.sidebarBg;
+  let textColor = theme.colors.secondary;
+  let borderWidth = 0;
+  let borderColor = "transparent";
+
+  switch (type) {
+    case "primary":
+      if (isActive) {
+        backgroundColor = chosenPrimaryKey;
+        textColor = theme.colors.white;
+      } else {
+        backgroundColor = theme.colors.sidebarBg;
+        textColor = theme.colors.secondary;
+      }
+      break;
+
+    case "outline":
+      backgroundColor = "transparent";
+      borderWidth = 1.3;
+      borderColor = isActive ? chosenPrimaryKey : theme.colors.border;
+      textColor = isActive ? chosenPrimaryKey : theme.colors.secondary;
+      break;
+
+    case "ghost":
+      backgroundColor = isActive ? theme.colors.accentUsageBg : "transparent";
+      textColor = isActive ? chosenPrimaryKey : theme.colors.secondary;
+      break;
+
+    case "default":
+    default:
+      if (isActive) {
+        backgroundColor = theme.colors.antiOverBackground;
+        textColor = theme.colors.overBackground;
+      } else {
+        backgroundColor = theme.colors.sidebarBg;
+        textColor = theme.colors.secondary;
+      }
+      break;
+  }
 
   const styles = StyleSheet.create({
-    caption: {
-      color: textColor,
-    },
-    tagStyle: {
-      paddingHorizontal: 12,
-      paddingVertical: 4,
-      alignItems: "center",
-      justifyContent: "center",
-      alignSelf,
+    container: {
+      paddingVertical: theme.padding.sm,
+      paddingHorizontal: theme.padding.md,
+      borderRadius: theme.borderRadius.lg,
+      marginRight: theme.margin.sm,
+
       backgroundColor,
+      borderWidth,
       borderColor,
-      borderWidth: 1,
-      borderRadius: rounded === "sm" ? 8 : 9999,
+    },
+    text: {
+      letterSpacing: 0.1,
+      color: textColor,
+      fontWeight: isActive ? theme.fontWeight.bold : theme.fontWeight.normal,
     },
   });
 
   return (
-    <RNView style={styles.tagStyle}>
-      <Text size={size} weight="semibold" style={styles.caption}>
-        {caption}
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Text size="sm" style={styles.text}>
+        {label}
       </Text>
-    </RNView>
+    </TouchableOpacity>
   );
 };
 
