@@ -37,7 +37,7 @@ export default function Header({
 
   return (
     <RNView style={styles.container}>
-      {navBack && (
+      {navBack ? (
         <Pressable onPress={handleBackPress}>
           <Ionicons
             name="arrow-back-outline"
@@ -45,7 +45,7 @@ export default function Header({
             color={theme.colors.textPrimary}
           />
         </Pressable>
-      )}
+      ) : null}
       <Text size="xl" weight="bold">
         {title}
       </Text>

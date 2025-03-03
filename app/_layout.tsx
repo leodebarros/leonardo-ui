@@ -6,12 +6,13 @@ import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import "react-native-reanimated";
 
-import { ThemeProvider } from "@/store/themeContext";
+import { ThemeProvider, useTheme } from "@/store/themeContext";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const theme = useTheme();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -25,6 +26,24 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+  const styles = StyleSheet.create({
+    root: {
+      flex: 1,
+    },
+    container: {
+      flex: 1,
+      ...(Platform.OS === "web" && {
+        maxWidth: 415,
+        marginVertical: 40,
+        width: "100%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        borderWidth: 1,
+        borderColor: "#D0D0D0",
+      }),
+    },
+  });
 
   return (
     <ThemeProvider>
@@ -41,18 +60,3 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    ...(Platform.OS === "web" && {
-      maxWidth: 415,
-      width: "100%",
-      marginLeft: "auto",
-      marginRight: "auto",
-    }),
-  },
-});
