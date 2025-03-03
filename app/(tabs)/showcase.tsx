@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, View as RNView } from "react-native";
+import { ScrollView, StyleSheet, View as RNView, Platform } from "react-native";
 import { useTheme, useThemeActions } from "@/store/themeContext";
 
 // LeonardoUI Components
@@ -20,6 +20,7 @@ import Tabs from "@/components/leonardoUI/Tabs";
 import { Text } from "@/components/leonardoUI/Text";
 import Toast from "@/components/leonardoUI/Toast";
 import { View } from "@/components/leonardoUI/View";
+import MainView from "@/components/leonardoUI/MainView";
 
 const filterOptions = [
   { label: "Shopping" },
@@ -63,6 +64,13 @@ export default function ShowcaseScreen() {
   );
 
   const styles = StyleSheet.create({
+    main: {
+      flex: 1,
+      paddingTop: Platform.OS === "android" ? 25 : 0,
+      paddingHorizontal: "4%",
+      paddingBottom: 90,
+      backgroundColor: theme.colors.background,
+    },
     scrollContainer: {
       paddingLeft: theme.padding.sm,
       marginBottom: theme.margin.lg,
@@ -644,7 +652,7 @@ export default function ShowcaseScreen() {
   };
 
   return (
-    <View>
+    <MainView>
       <Header
         title="Showcase"
         description="Explores real app scenarios using LeonardoUI components"
@@ -667,6 +675,6 @@ export default function ShowcaseScreen() {
       <ScrollView>
         <RNView>{renderShowcaseContent()}</RNView>
       </ScrollView>
-    </View>
+    </MainView>
   );
 }
