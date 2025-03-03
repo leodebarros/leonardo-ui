@@ -1,13 +1,13 @@
-import { View } from "@/components/leonardoUI/View";
 import List from "@/components/leonardoUI/List";
 import Header from "@/components/leonardoUI/Header";
 import { Href, Link } from "expo-router";
 import { Button } from "@/components/leonardoUI/Button";
 import { COMPONENTS } from "@/data/components";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function HomeScreen() {
   return (
-    <View>
+    <MainView>
       <Header
         title="LeonardoUI"
         description="An open-source UI components project for Expo"
@@ -38,6 +38,6 @@ export default function HomeScreen() {
           />
         </Link>
       </List>
-    </View>
+    </MainView>
   );
 }
