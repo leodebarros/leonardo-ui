@@ -20,8 +20,7 @@ export default function MainView({ children }: MainViewProps) {
     main: {
       flex: 1,
       paddingHorizontal: "4%",
-      paddingBottom: 30,
-      backgroundColor: theme.colors.background,
+      paddingBottom: 300,
       paddingTop:
         Platform.OS === "android" ? 25 : Platform.OS === "web" ? 7 : 0,
     },
@@ -34,7 +33,13 @@ export default function MainView({ children }: MainViewProps) {
         backgroundColor: theme.colors.background,
       }}
     >
-      <ScrollView style={styles.main} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.main}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 75,
+        }}
+      >
         <StatusBar style="auto" />
         <KeyboardAvoidingView
           style={{ flex: 1 }}
