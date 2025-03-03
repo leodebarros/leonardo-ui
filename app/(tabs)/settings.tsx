@@ -1,14 +1,9 @@
-import React, { useState } from "react";
-import { View } from "@/components/leonardoUI/View";
+import React from "react";
 import Header from "@/components/leonardoUI/Header";
-import { AntDesign } from "@expo/vector-icons";
-import {
-  PrimaryColorKey,
-  useTheme,
-  useThemeActions,
-} from "@/store/themeContext";
+import { PrimaryColorKey, useThemeActions } from "@/store/themeContext";
 import { Options } from "@/components/leonardoUI/Options";
 import { Link } from "expo-router";
+import MainView from "@/components/leonardoUI/MainView";
 
 const COLOR_HEX_TO_LABEL: Record<string, string> = {
   "#00B2A9": "teal",
@@ -22,7 +17,7 @@ export default function SettingsScreen() {
   const { chosenPrimaryKey, setPrimaryColor } = useThemeActions();
 
   return (
-    <View>
+    <MainView>
       <Header title="Settings" description="Configure your app settings" />
 
       <Options sectionTitle="Primary Color">
@@ -59,6 +54,6 @@ export default function SettingsScreen() {
           <Options.Item iconName="github" label="View source code" />
         </Link>
       </Options>
-    </View>
+    </MainView>
   );
 }
