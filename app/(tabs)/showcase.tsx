@@ -549,8 +549,7 @@ export default function ShowcaseScreen() {
   );
 
   const renderSubscriptionShowcase = () => (
-    <RNView style={{ gap: 16, paddingBottom: theme.padding.md }}>
-      {/* Individual Tier Cards */}
+    <RNView style={{ gap: 12, paddingBottom: theme.padding.md }}>
       <Tier
         title="Basic"
         price="$9.99"
