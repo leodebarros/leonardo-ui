@@ -62,7 +62,7 @@ export const COMPONENTS = [
     },
     {
         path: "/(index)/inputScreen",
-        caption: "Input (Coming soon)",
+        caption: "Input",
         description: "Standard input",
         avatar: require("@/assets/avatars/in.png")
     },
