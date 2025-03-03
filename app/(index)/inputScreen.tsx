@@ -1,5 +1,5 @@
 import Card from "@/components/leonardoUI/Card";
-import Filter from "@/components/leonardoUI/Filter";
+import Chip from "@/components/leonardoUI/Chip";
 import Header from "@/components/leonardoUI/Header";
 import Input, { ValidationType } from "@/components/leonardoUI/Input";
 import MainView from "@/components/leonardoUI/MainView";
@@ -40,7 +40,7 @@ export default function InputScreen() {
         style={styles.scrollContainer}
       >
         {validationTypes.map((option) => (
-          <Filter
+          <Chip
             key={option.label}
             type="default"
             label={option.label}
