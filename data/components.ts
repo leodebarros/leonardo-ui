@@ -359,14 +359,19 @@ export const TEXT_VARIANTS = [
 // Options (Op)
 // -------------------------------------------------------
 type OptionItem = {
-    isSelect?: boolean
-    sectionTitle?: string
-    label?: string
+    id?: string,
+    isSelect?: boolean;
+    isSwitch?: boolean;
+    sectionTitle?: string;
+    label?: string;
     iconName: keyof typeof AntDesign.glyphMap;
-    description?: string
-    avatar?: ImageSourcePropType
-    actionIcon?: "chevron-forward-outline" | "chevron-expand"
-    options?: { label: string; value: string }[]
+    description?: string;
+    avatar?: ImageSourcePropType;
+    actionIcon?: "chevron-forward-outline" | "chevron-expand";
+    options?: { label: string; value: string }[];
+    switchValue?: boolean;
+    switchType?: "default" | "primary" | "ghost";
+    disabled?: boolean;
 }
 
 export const OPTIONS_VARIANTS: {
@@ -385,6 +390,39 @@ export const OPTIONS_VARIANTS: {
                         { label: "Option 2", value: "Value 2" },
                         { label: "Option 3", value: "Value 3" },
                     ],
+                },
+            ],
+        },
+        {
+            sectionTitle: "Options Switch",
+            items: [
+                {
+                    id: "1",
+                    isSwitch: true,
+                    iconName: "infocirlceo",
+                    label: "Label",
+                    description: "Primary",
+                    switchValue: true,
+                    switchType: "primary",
+                },
+                {
+                    id: "2",
+                    isSwitch: true,
+                    iconName: "infocirlceo",
+                    label: "Label",
+                    description: "Default",
+                    switchValue: false,
+                    switchType: "default",
+
+                },
+                {
+                    id: "3",
+                    isSwitch: true,
+                    iconName: "infocirlceo",
+                    label: "Label",
+                    description: "Accent",
+                    switchValue: true,
+                    switchType: "ghost",
                 },
             ],
         },
@@ -443,7 +481,6 @@ export const OPTIONS_VARIANTS: {
             ],
         },
     ]
-
 // -------------------------------------------------------
 // Switch (Sw) 
 // -------------------------------------------------------
