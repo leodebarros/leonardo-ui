@@ -92,10 +92,10 @@ export const COMPONENTS = [
         avatar: require("@/assets/avatars/sw.png")
     },
     {
-        path: "/(index)/tierScreen",
-        caption: "Tier",
-        description: "Configurable text",
-        avatar: require("@/assets/avatars/tx.png")
+        path: "/(index)/tabsScreen",
+        caption: "Tabs",
+        description: "Content organizer",
+        avatar: require("@/assets/avatars/ta.png")
     },
     {
         path: "/(index)/textScreen",
@@ -104,10 +104,10 @@ export const COMPONENTS = [
         avatar: require("@/assets/avatars/tx.png")
     },
     {
-        path: "/(index)/tabsScreen",
-        caption: "Tabs",
-        description: "Content organizer",
-        avatar: require("@/assets/avatars/ta.png")
+        path: "/(index)/tierScreen",
+        caption: "Tier",
+        description: "Configurable text",
+        avatar: require("@/assets/avatars/ti.png")
     },
     {
         path: "/(index)/toastScreen",
