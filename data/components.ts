@@ -13,6 +13,12 @@ export const COMPONENTS = [
         avatar: require("@/assets/avatars/ac.png")
     },
     {
+        path: "/(index)/badgeScreen",
+        caption: "Badge",
+        description: "Pill-shaped info helpers",
+        avatar: require("@/assets/avatars/ba.png")
+    },
+    {
         path: "/(index)/buttonScreen",
         caption: "Button",
         description: "Standard button",
@@ -33,7 +39,7 @@ export const COMPONENTS = [
     {
         path: "/(index)/chipScreen",
         caption: "Chip",
-        description: "Pill-shaped info helpers",
+        description: "Pill-shaped controls",
         avatar: require("@/assets/avatars/ch.png")
     },
     {
@@ -47,12 +53,6 @@ export const COMPONENTS = [
         caption: "Featured",
         description: "Prominent section",
         avatar: require("@/assets/avatars/ft.png")
-    },
-    {
-        path: "/(index)/filterScreen",
-        caption: "Filter",
-        description: "Pill-shaped controls",
-        avatar: require("@/assets/avatars/fi.png")
     },
     {
         path: "/(index)/headerScreen",
@@ -192,9 +192,9 @@ export const ACTION_VARIANTS: {
     ];
 
 // -------------------------------------------------------
-// Chip (Ch)
+// Badge (Ba)
 // -------------------------------------------------------
-export const CHIP_VARIANTS = [
+export const BADGE_VARIANTS = [
     {
         title: "Green",
         description: "Uses Tailwind's Green shades (bg-green-100, border-green-200, text-green-900).",

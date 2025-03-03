@@ -4,16 +4,16 @@ import { useTheme } from "./Theme";
 import { useThemeActions } from "@/store/themeContext";
 import { Text } from "./Text";
 
-export type FilterType = "default" | "primary" | "outline" | "ghost";
+export type ChipType = "default" | "primary" | "outline" | "ghost";
 
-interface FilterProps {
+interface ChipProps {
   label: string;
-  type?: FilterType;
+  type?: ChipType;
   isActive?: boolean;
   onPress?: () => void;
 }
 
-const Filter: FC<FilterProps> = ({
+const Chip: FC<ChipProps> = ({
   label,
   type = "default",
   isActive = false,
@@ -89,4 +89,4 @@ const Filter: FC<FilterProps> = ({
   );
 };
 
-export default Filter;
+export default Chip;
