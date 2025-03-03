@@ -4,7 +4,7 @@ import Header from "@/components/leonardoUI/Header";
 import { ScrollView, StyleSheet } from "react-native";
 import { useTheme } from "@/store/themeContext";
 import MainView from "@/components/leonardoUI/MainView";
-import Chip from "@/components/leonardoUI/Filter";
+import Chip from "@/components/leonardoUI/Chip";
 
 export default function ChipScreen() {
   const theme = useTheme();

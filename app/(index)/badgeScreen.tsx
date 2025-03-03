@@ -5,12 +5,12 @@ import { ScrollView, StyleSheet } from "react-native";
 import { Button } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
 import Chip from "@/components/leonardoUI/Chip";
-import Filter from "@/components/leonardoUI/Filter";
 import Header from "@/components/leonardoUI/Header";
 import MainView from "@/components/leonardoUI/MainView";
 import { useTheme } from "@/store/themeContext";
 
 import { BADGE_VARIANTS } from "@/data/components";
+import Badge from "@/components/leonardoUI/Badge";
 
 export default function BadgeScreen() {
   const theme = useTheme();
@@ -38,7 +38,7 @@ export default function BadgeScreen() {
         style={styles.scrollContainer}
       >
         {filterOptions.map((option) => (
-          <Filter
+          <Chip
             key={option.label}
             type="default"
             label={option.label}
@@ -52,7 +52,7 @@ export default function BadgeScreen() {
         <Card key={tone}>
           <Card.Title>{title}</Card.Title>
           <Card.Description>{description}</Card.Description>
-          <Chip
+          <Badge
             caption={caption}
             size={activeFilter === "base" ? "base" : "sm"}
             tone={tone as any}
