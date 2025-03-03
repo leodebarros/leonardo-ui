@@ -37,7 +37,7 @@ export default function MainView({ children }: MainViewProps) {
         style={styles.main}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingBottom: 75,
+          paddingBottom: 81,
         }}
       >
         <StatusBar style="auto" />
