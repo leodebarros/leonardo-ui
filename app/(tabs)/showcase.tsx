@@ -7,26 +7,26 @@ import { Action } from "@/components/leonardoUI/Action";
 import { Button } from "@/components/leonardoUI/Button";
 import { Callout } from "@/components/leonardoUI/Callout";
 import Card from "@/components/leonardoUI/Card";
-import Chip from "@/components/leonardoUI/Chip";
 import Dialog from "@/components/leonardoUI/Dialog";
 import Featured from "@/components/leonardoUI/Featured";
-import Filter from "@/components/leonardoUI/Filter";
+import Chip from "@/components/leonardoUI/Chip";
 import Header from "@/components/leonardoUI/Header";
 import List from "@/components/leonardoUI/List";
 import { Options } from "@/components/leonardoUI/Options";
 import RadioButton from "@/components/leonardoUI/RadioButton";
-import { Switch } from "@/components/leonardoUI/Switch";
 import Tabs from "@/components/leonardoUI/Tabs";
 import { Text } from "@/components/leonardoUI/Text";
 import Toast from "@/components/leonardoUI/Toast";
-import { View } from "@/components/leonardoUI/View";
 import MainView from "@/components/leonardoUI/MainView";
+import Tier from "@/components/leonardoUI/Tier";
+import Badge from "@/components/leonardoUI/Badge";
 
 const filterOptions = [
   { label: "Shopping" },
   { label: "Banking" },
   { label: "Files" },
   { label: "Promotion" },
+  { label: "Subscription" },
   { label: "Settings" },
 ];
 
@@ -115,8 +115,8 @@ export default function ShowcaseScreen() {
           Featuring noise cancellation technology and 30+ hours of battery life.
         </Card.Description>
         <RNView style={styles.row}>
-          <Chip caption="New Arrival" size="sm" tone="cyan" />
-          <Chip caption="Limited Edition" size="sm" tone="purple" />
+          <Badge caption="New Arrival" size="sm" tone="cyan" />
+          <Badge caption="Limited Edition" size="sm" tone="purple" />
         </RNView>
         <Card.Footer
           text="$249.99"
@@ -171,7 +171,7 @@ export default function ShowcaseScreen() {
                   / 5.0
                 </Text>
               </Text>
-              <Chip caption="94 Reviews" size="sm" tone="green" />
+              <Badge caption="94 Reviews" size="sm" tone="green" />
             </RNView>
 
             <List>
@@ -325,7 +325,7 @@ export default function ShowcaseScreen() {
         <Card.Footer
           text="Free Plan"
           button={<Button caption="Deposit Funds" type="primary" />}
-          chipTone="yellow"
+          badgeTone="yellow"
         />
       </Card>
 
@@ -527,8 +527,8 @@ export default function ShowcaseScreen() {
           31st.
         </Card.Description>
         <RNView style={styles.row}>
-          <Chip caption="Limited Time" size="sm" tone="red" />
-          <Chip caption="One-use Only" size="sm" tone="yellow" />
+          <Badge caption="Limited Time" size="sm" tone="red" />
+          <Badge caption="One-use Only" size="sm" tone="yellow" />
         </RNView>
         <Button
           type="default"
@@ -545,6 +545,135 @@ export default function ShowcaseScreen() {
         description="Your discount has been added."
         type="success"
       />
+    </RNView>
+  );
+
+  const renderSubscriptionShowcase = () => (
+    <RNView style={{ gap: 16, paddingBottom: theme.padding.md }}>
+      {/* Individual Tier Cards */}
+      <Tier
+        title="Basic"
+        price="$9.99"
+        description="Perfect for individuals and small teams"
+        type="default"
+        features={[
+          "Up to 5 projects",
+          "1GB storage",
+          "Basic support",
+          "Access to core features",
+        ]}
+      />
+
+      <Tier
+        title="Pro"
+        price="$19.99"
+        description="For professional users with advanced needs"
+        type="primary"
+        recommended={true}
+        discount="SAVE 20% YEARLY"
+        features={[
+          "Unlimited projects",
+          "10GB storage",
+          "Priority support",
+          "Advanced features",
+          "Team collaboration tools",
+        ]}
+      />
+
+      <Tier
+        title="Business"
+        price="$49.99"
+        description="Enterprise-grade solution for large teams"
+        type="outline"
+        features={[
+          "Unlimited everything",
+          "100GB storage",
+          "24/7 dedicated support",
+          "All premium features",
+          "Advanced security",
+          "Custom integrations",
+        ]}
+      />
+
+      <Tier
+        title="Free"
+        price="$0"
+        description="Try our platform with limited features"
+        type="ghost"
+        features={[
+          "1 project",
+          "100MB storage",
+          "Community support",
+          "Basic features",
+        ]}
+        buttonCaption="Start Free"
+      />
+
+      <RNView>
+        <Header
+          title="Compare Plans"
+          description="Swipe to see all plans side by side"
+        />
+        <ScrollView horizontal showsHorizontalScrollIndicator={true}>
+          <Tier.Comparison>
+            <Tier
+              title="Basic"
+              price="$9.99"
+              type="default"
+              features={[
+                "Up to 5 projects",
+                "1GB storage",
+                "Basic support",
+                "Access to core features",
+              ]}
+              style={{ width: 280 }}
+            />
+
+            <Tier
+              title="Pro"
+              price="$19.99"
+              type="primary"
+              recommended={true}
+              features={[
+                "Unlimited projects",
+                "10GB storage",
+                "Priority support",
+                "Advanced features",
+                "Team collaboration tools",
+              ]}
+              style={{ width: 280 }}
+            />
+
+            <Tier
+              title="Business"
+              price="$49.99"
+              type="ghost"
+              features={[
+                "Unlimited everything",
+                "100GB storage",
+                "24/7 dedicated support",
+                "All premium features",
+                "Advanced security",
+                "Custom integrations",
+              ]}
+              style={{ width: 280 }}
+            />
+
+            <Tier
+              title="Free"
+              price="$0"
+              type="ghost"
+              features={[
+                "1 project",
+                "100MB storage",
+                "Community support",
+                "Basic features",
+              ]}
+              style={{ width: 280 }}
+            />
+          </Tier.Comparison>
+        </ScrollView>
+      </RNView>
     </RNView>
   );
 
@@ -642,6 +771,8 @@ export default function ShowcaseScreen() {
         return renderBankingShowcase();
       case "Files":
         return renderDataShowcase();
+      case "Subscription":
+        return renderSubscriptionShowcase();
       case "Promotion":
         return renderPromotionShowcase();
       case "Settings":
@@ -663,7 +794,7 @@ export default function ShowcaseScreen() {
         style={styles.scrollContainer}
       >
         {filterOptions.map((option) => (
-          <Filter
+          <Chip
             key={option.label}
             label={option.label}
             isActive={option.label === activeFilter}
