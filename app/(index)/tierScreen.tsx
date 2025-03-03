@@ -6,8 +6,10 @@ import MainView from "@/components/leonardoUI/MainView";
 import { Text } from "@/components/leonardoUI/Text";
 
 import { TIER_VARIANTS } from "@/data/components";
+import { useTheme } from "@/store/themeContext";
 
 export default function TierScreen() {
+  const theme = useTheme();
   return (
     <MainView>
       <Header
@@ -15,11 +17,11 @@ export default function TierScreen() {
         description="A component for subscription plan cards."
         navBack
       />
-      <RNView style={{ gap: 24, paddingBottom: 20 }}>
+      <RNView style={{ gap: 15 }}>
         {TIER_VARIANTS.map(({ title, description, items }, index) => (
           <RNView key={index} style={{ gap: 16 }}>
             {index === 2 ? (
-              <RNView>
+              <RNView style={{ marginTop: theme.margin.xl }}>
                 <Text size="md" weight="bold">
                   {title}
                 </Text>
@@ -33,7 +35,7 @@ export default function TierScreen() {
                 </ScrollView>
               </RNView>
             ) : (
-              <RNView style={{ gap: 16 }}>
+              <RNView style={{ gap: 15 }}>
                 {items.map((item, itemIndex) => (
                   <Tier key={itemIndex} {...item} />
                 ))}
