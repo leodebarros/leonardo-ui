@@ -1,12 +1,13 @@
+import { View as RNView, StyleSheet } from "react-native";
+import { useMemo, useState } from "react";
+
 import { Button } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
 import Toast from "@/components/leonardoUI/Toast";
-import { View } from "@/components/leonardoUI/View";
-import { View as RNView, StyleSheet } from "react-native";
-import { useMemo, useState } from "react";
 import RadioButton from "@/components/leonardoUI/RadioButton";
 import { Text } from "@/components/leonardoUI/Text";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function ToastScreen() {
   const [isVisible, setIsVisible] = useState(false);

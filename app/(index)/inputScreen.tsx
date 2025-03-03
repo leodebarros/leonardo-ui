@@ -1,5 +1,5 @@
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function InputScreen() {
   return (

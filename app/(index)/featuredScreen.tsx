@@ -1,6 +1,6 @@
 import Featured from "@/components/leonardoUI/Featured";
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function FeaturedScreen() {
   return (

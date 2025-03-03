@@ -1,9 +1,9 @@
 import { View as DefaultView } from "react-native";
 import { Button, ButtonType } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
-import { View } from "@/components/leonardoUI/View";
 import Header from "@/components/leonardoUI/Header";
 import { ChipTone } from "@/components/leonardoUI/Chip";
+import MainView from "@/components/leonardoUI/MainView";
 
 import { CARD_VARIANTS } from "@/data/components";
 

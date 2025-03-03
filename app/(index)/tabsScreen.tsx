@@ -1,10 +1,12 @@
+import { useTheme } from "@/store/themeContext";
+
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
 import { Text } from "@/components/leonardoUI/Text";
 import Tabs, { TabType } from "@/components/leonardoUI/Tabs";
 import { View as RNView, StyleSheet } from "react-native";
+import MainView from "@/components/leonardoUI/MainView";
+
 import { TABS_VARIANTS } from "@/data/components";
-import { useTheme } from "@/store/themeContext";
 
 export default function TabScreen() {
   const theme = useTheme();

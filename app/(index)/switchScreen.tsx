@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { View } from "@/components/leonardoUI/View";
+import { useTheme } from "@/store/themeContext";
+
 import Header from "@/components/leonardoUI/Header";
 import Card from "@/components/leonardoUI/Card";
 import { Switch, SwitchType } from "@/components/leonardoUI/Switch";
-import { useTheme } from "@/store/themeContext";
+import MainView from "@/components/leonardoUI/MainView";
+
 import { SWITCH_VARIANTS } from "@/data/components";
 
 export default function SwitchScreen() {

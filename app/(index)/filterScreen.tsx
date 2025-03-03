@@ -2,9 +2,9 @@ import { useState } from "react";
 import Card from "@/components/leonardoUI/Card";
 import Filter from "@/components/leonardoUI/Filter";
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
 import { ScrollView, StyleSheet } from "react-native";
 import { useTheme } from "@/store/themeContext";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function FilterScreen() {
   const theme = useTheme();

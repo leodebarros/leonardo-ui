@@ -1,9 +1,10 @@
+import { StyleSheet, View as RNView } from "react-native";
+
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
 import RadioButton from "@/components/leonardoUI/RadioButton";
-import { View } from "@/components/leonardoUI/View";
-import { StyleSheet, View as RNView } from "react-native";
 import { Text } from "@/components/leonardoUI/Text";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function RadioButtonScreen() {
   const styles = StyleSheet.create({

@@ -1,12 +1,12 @@
 // DialogScreen.tsx
 import React, { useState } from "react";
 import { View as DefaultView } from "react-native";
-import { View } from "@/components/leonardoUI/View";
 import { Button, ButtonType } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
 import Dialog, { GhostType } from "@/components/leonardoUI/Dialog";
 import { DIALOG_CONTENT } from "@/data/components";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function DialogScreen() {
   const [visibleDialog, setVisibleDialog] = useState<string | null>(null);

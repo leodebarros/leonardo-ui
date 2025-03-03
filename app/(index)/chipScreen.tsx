@@ -7,9 +7,8 @@ import Card from "@/components/leonardoUI/Card";
 import Chip from "@/components/leonardoUI/Chip";
 import Filter from "@/components/leonardoUI/Filter";
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
+import MainView from "@/components/leonardoUI/MainView";
 import { useTheme } from "@/store/themeContext";
-import { Text } from "@/components/leonardoUI/Text";
 
 import { CHIP_VARIANTS } from "@/data/components";
 

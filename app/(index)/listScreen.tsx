@@ -1,7 +1,9 @@
+import { View as RNView } from "react-native";
+
 import Header from "@/components/leonardoUI/Header";
 import List from "@/components/leonardoUI/List";
-import { View } from "@/components/leonardoUI/View";
-import { View as RNView } from "react-native";
+import MainView from "@/components/leonardoUI/MainView";
+
 import { LIST_VARIANTS } from "@/data/components";
 
 export default function ListScreen() {

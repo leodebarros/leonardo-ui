@@ -1,7 +1,7 @@
 import { Button, ButtonType } from "@/components/leonardoUI/Button";
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
+import MainView from "@/components/leonardoUI/MainView";
 import { BUTTON_VARIANTS } from "@/data/components";
 
 export default function ButtonScreen() {

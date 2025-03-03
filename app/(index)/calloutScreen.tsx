@@ -1,8 +1,8 @@
 import { Callout, CalloutType } from "@/components/leonardoUI/Callout";
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
-import { CALLOUT_VARIANTS } from "@/data/components";
+import MainView from "@/components/leonardoUI/MainView";
 import { View as RNView } from "react-native";
+import { CALLOUT_VARIANTS } from "@/data/components";
 
 export default function CalloutScreen() {
   return (

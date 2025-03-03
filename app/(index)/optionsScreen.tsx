@@ -1,10 +1,12 @@
-import Header from "@/components/leonardoUI/Header";
-import { Options } from "@/components/leonardoUI/Options";
-import { SwitchType } from "@/components/leonardoUI/Switch";
-import { View } from "@/components/leonardoUI/View";
-import { OPTIONS_VARIANTS } from "@/data/components";
 import { useState } from "react";
 import { ImageSourcePropType } from "react-native";
+
+import Header from "@/components/leonardoUI/Header";
+import MainView from "@/components/leonardoUI/MainView";
+import { Options } from "@/components/leonardoUI/Options";
+import { SwitchType } from "@/components/leonardoUI/Switch";
+
+import { OPTIONS_VARIANTS } from "@/data/components";
 
 export default function OptionsScreen() {
   const [selectedOption, setSelectedOption] = useState<string>("Value 1");

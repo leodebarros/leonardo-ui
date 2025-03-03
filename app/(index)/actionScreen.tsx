@@ -1,15 +1,18 @@
+import { Link } from "expo-router";
+import { View as DefaultView, StyleSheet } from "react-native";
+
+// Components
 import { Action } from "@/components/leonardoUI/Action";
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
-import { View } from "@/components/leonardoUI/View";
-import { View as DefaultView, StyleSheet } from "react-native";
 import { useTheme } from "@/components/leonardoUI/Theme";
 import { Text } from "@/components/leonardoUI/Text";
-import { ACTION_VARIANTS } from "@/data/components";
 import { ActionType } from "@/components/leonardoUI/Action";
 import { AntDesign } from "@expo/vector-icons";
 import { Button } from "@/components/leonardoUI/Button";
-import { Link } from "expo-router";
+import MainView from "@/components/leonardoUI/MainView";
+
+import { ACTION_VARIANTS } from "@/data/components";
 
 export default function ActionScreen() {
   const theme = useTheme();

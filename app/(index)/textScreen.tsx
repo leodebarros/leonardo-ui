@@ -1,12 +1,14 @@
+import { ScrollView, StyleSheet } from "react-native";
+import { useState } from "react";
+import { useTheme } from "@/store/themeContext";
+
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
 import { FontWeight, Text, TextSize } from "@/components/leonardoUI/Text";
-import { View } from "@/components/leonardoUI/View";
-import { ScrollView, StyleSheet } from "react-native";
-import { TEXT_VARIANTS } from "@/data/components";
-import { useState } from "react";
 import Filter from "@/components/leonardoUI/Filter";
-import { useTheme } from "@/store/themeContext";
+
+import { TEXT_VARIANTS } from "@/data/components";
+import MainView from "@/components/leonardoUI/MainView";
 
 export default function TextScreen() {
   const theme = useTheme();
