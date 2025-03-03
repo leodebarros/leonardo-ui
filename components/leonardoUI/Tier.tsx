@@ -79,8 +79,8 @@ function Tier({
       borderWidth: 1,
       borderColor: tierStyles.borderColor,
       backgroundColor: tierStyles.backgroundColor,
+      marginBottom: theme.margin.sm,
       padding: theme.padding.lg,
-      marginBottom: theme.margin.md,
       overflow: "hidden",
     },
     recommendedBadge: {
