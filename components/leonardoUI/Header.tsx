@@ -1,4 +1,4 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { View as RNView, StyleSheet, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "./Theme";
 import { useRouter } from "expo-router";
@@ -36,7 +36,7 @@ export default function Header({
   });
 
   return (
-    <View style={styles.container}>
+    <RNView style={styles.container}>
       {navBack && (
         <Pressable onPress={handleBackPress}>
           <Ionicons
@@ -50,12 +50,12 @@ export default function Header({
         {title}
       </Text>
       {description && (
-        <View>
+        <RNView>
           <Text color="textSecondary" style={styles.description}>
             {description}
           </Text>
-        </View>
+        </RNView>
       )}
-    </View>
+    </RNView>
   );
 }
