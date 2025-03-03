@@ -27,7 +27,7 @@ export default function HeaderScreen() {
         <Header title="Title without description but with navBack" navBack />
       </Card>
       <Card>
-        <Header title="Just a title" />
+        <Header title="Title" />
       </Card>
     </MainView>
   );
