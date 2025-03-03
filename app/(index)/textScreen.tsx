@@ -5,7 +5,7 @@ import { useTheme } from "@/store/themeContext";
 import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
 import { FontWeight, Text, TextSize } from "@/components/leonardoUI/Text";
-import Filter from "@/components/leonardoUI/Filter";
+import Chip from "@/components/leonardoUI/Chip";
 
 import { TEXT_VARIANTS } from "@/data/components";
 import MainView from "@/components/leonardoUI/MainView";
@@ -40,7 +40,7 @@ export default function TextScreen() {
         style={styles.scrollContainer}
       >
         {filterOptions.map((option) => (
-          <Filter
+          <Chip
             key={option.label}
             type="default"
             label={option.label}
