@@ -150,8 +150,8 @@ Card.Footer = function CardFooter({
       justifyContent: "space-between",
     },
     footerText: {
-      flexBasis: "40%",
-      maxWidth: "40%",
+      flexBasis: "50%",
+      maxWidth: "50%",
       textAlign: "right",
       paddingHorizontal: theme.padding.md,
     },
@@ -172,7 +172,7 @@ Card.Footer = function CardFooter({
           size={chipSize}
         />
       ) : (
-        <Text color="textSecondary" style={styles.footerText} numberOfLines={1}>
+        <Text color="textSecondary" style={styles.footerText} numberOfLines={2}>
           {text}
         </Text>
       )}
