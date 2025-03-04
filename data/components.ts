@@ -12,14 +12,14 @@ export const SCREENS = [
         path: "/(screens)/loginScreen",
         caption: "Login",
         description: "Authentication template",
-        avatar: require("@/assets/avatars/ac.png")
+        avatar: require("@/assets/avatars/lo.png")
 
     },
     {
         path: "/(screens)/verificationCodeScreen",
         caption: "Verification Code",
         description: "Secure account verification template",
-        avatar: require("@/assets/avatars/ac.png")
+        avatar: require("@/assets/avatars/vc.png")
 
     }
 ]
@@ -104,7 +104,7 @@ export const COMPONENTS = [
         path: "/(index)/progressScreen",
         caption: "Progress",
         description: "Visual indicators for completion or status",
-        avatar: require("@/assets/avatars/op.png")
+        avatar: require("@/assets/avatars/pr.png")
     },
     {
         path: "/(index)/radioButtonScreen",
