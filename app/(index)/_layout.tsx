@@ -15,6 +15,7 @@ export default function IndexLayout() {
       <Stack.Screen name="inputScreen" options={{ headerShown: false }} />
       <Stack.Screen name="listScreen" options={{ headerShown: false }} />
       <Stack.Screen name="optionsScreen" options={{ headerShown: false }} />
+      <Stack.Screen name="progressScreen" options={{ headerShown: false }} />
       <Stack.Screen name="radioButtonScreen" options={{ headerShown: false }} />
       <Stack.Screen name="switchScreen" options={{ headerShown: false }} />
       <Stack.Screen name="tabsScreen" options={{ headerShown: false }} />
