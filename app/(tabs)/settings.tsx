@@ -18,7 +18,10 @@ export default function SettingsScreen() {
 
   return (
     <MainView>
-      <Header title="Settings" description="Configure your app settings" />
+      <Header
+        title="Settings"
+        description="Customize app appearance and access information about LeonardoUI and how to contribute to the project."
+      />
 
       <Options sectionTitle="Primary Color">
         <Options.Select
@@ -52,6 +55,9 @@ export default function SettingsScreen() {
         <Options.Item disabled iconName="file1" label="Docs (Coming soon)" />
         <Link href={"https://github.com/leodebarros/leonardo-ui"} asChild>
           <Options.Item iconName="github" label="View source code" />
+        </Link>
+        <Link href={"https://github.com/sponsors/leodebarros"} asChild>
+          <Options.Item iconName="heart" label="Become a sponsor" />
         </Link>
       </Options>
     </MainView>
