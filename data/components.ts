@@ -106,7 +106,7 @@ export const COMPONENTS = [
     {
         path: "/(index)/tierScreen",
         caption: "Tier",
-        description: "Configurable text",
+        description: "Cards for subscription plans",
         avatar: require("@/assets/avatars/ti.png")
     },
     {
