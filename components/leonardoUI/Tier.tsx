@@ -4,6 +4,8 @@ import { useTheme } from "./Theme";
 import { Text } from "./Text";
 import { Button } from "./Button";
 import { useThemeActions } from "@/store/themeContext";
+import { AntDesign } from "@expo/vector-icons";
+import Badge from "./Badge";
 
 export type TierType = "primary" | "default" | "outline" | "ghost";
 
@@ -118,10 +120,6 @@ function Tier({
       color: tierStyles.secondaryTextColor,
     },
     discountContainer: {
-      backgroundColor: theme.colors.destructive + "20",
-      borderRadius: theme.borderRadius.sm,
-      paddingHorizontal: theme.padding.sm,
-      paddingVertical: theme.padding.xs,
       alignSelf: "flex-start",
       marginBottom: theme.margin.md,
     },
@@ -182,9 +180,7 @@ function Tier({
 
         {discount && (
           <RNView style={styles.discountContainer}>
-            <Text size="xs" style={styles.discountText}>
-              {discount}
-            </Text>
+            <Badge size="sm" tone="red" caption="SAVE 20% YEARLY" />
           </RNView>
         )}
       </RNView>
@@ -222,13 +218,7 @@ Tier.Feature = function TierFeature({ children, textColor }: TierFeatureProps) {
       flexDirection: "row",
       marginBottom: theme.margin.sm,
       alignItems: "center",
-    },
-    featureBullet: {
-      width: 6,
-      height: 6,
-      borderRadius: 3,
-      backgroundColor: textColor,
-      marginRight: theme.margin.sm,
+      gap: 6,
     },
     featureText: {
       color: textColor,
@@ -237,7 +227,7 @@ Tier.Feature = function TierFeature({ children, textColor }: TierFeatureProps) {
 
   return (
     <RNView style={styles.featureItem}>
-      <RNView style={styles.featureBullet} />
+      <AntDesign name="check" color={theme.colors.success} />
       <Text size="sm" style={styles.featureText}>
         {children}
       </Text>
