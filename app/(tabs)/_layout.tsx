@@ -41,7 +41,7 @@ export default function TabLayout() {
         options={{
           title: "Screens",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="00.square.hi" color={color} />
+            <IconSymbol size={28} name="iphone" color={color} />
           ),
         }}
       />
