@@ -9,15 +9,10 @@ export default function HomeScreen() {
   return (
     <MainView>
       <Header
-        title="LeonardoUI"
-        description="An open-source UI components project for Expo"
+        title={`Components (${COMPONENTS.length})`}
+        description="Check out our curated list of components"
       />
       <List>
-        <List.Title>Components ({COMPONENTS.length})</List.Title>
-        <List.Description>
-          Check out our curated list of components
-        </List.Description>
-
         {COMPONENTS.map(({ path, caption, description, avatar }) => (
           <Link key={path} href={path as Href} asChild>
             <List.Item
@@ -34,7 +29,7 @@ export default function HomeScreen() {
           <Button
             caption="View Showcase"
             type="default"
-            style={{ marginTop: 20 }}
+            style={{ marginBottom: 0 }}
           />
         </Link>
       </List>
