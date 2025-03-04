@@ -25,8 +25,8 @@ const filterOptions = [
   { label: "Shopping" },
   { label: "Banking" },
   { label: "Files" },
-  { label: "Promotion" },
   { label: "Subscription" },
+  { label: "Promotion" },
   { label: "Settings" },
 ];
 
@@ -551,10 +551,23 @@ export default function ShowcaseScreen() {
   const renderSubscriptionShowcase = () => (
     <RNView style={{ gap: 12, paddingBottom: theme.padding.md }}>
       <Tier
+        title="Free"
+        price="$0"
+        description="Try our platform with limited features"
+        type="ghost"
+        features={[
+          "1 project",
+          "100MB storage",
+          "Community support",
+          "Basic features",
+        ]}
+        buttonCaption="Start Free"
+      />
+      <Tier
         title="Basic"
         price="$9.99"
         description="Perfect for individuals and small teams"
-        type="default"
+        type="outline"
         features={[
           "Up to 5 projects",
           "1GB storage",
@@ -594,20 +607,6 @@ export default function ShowcaseScreen() {
         ]}
       />
 
-      <Tier
-        title="Free"
-        price="$0"
-        description="Try our platform with limited features"
-        type="ghost"
-        features={[
-          "1 project",
-          "100MB storage",
-          "Community support",
-          "Basic features",
-        ]}
-        buttonCaption="Start Free"
-      />
-
       <RNView>
         <Header
           title="Compare Plans"
@@ -616,9 +615,21 @@ export default function ShowcaseScreen() {
         <ScrollView horizontal showsHorizontalScrollIndicator={true}>
           <Tier.Comparison>
             <Tier
+              title="Free"
+              price="$0"
+              type="ghost"
+              features={[
+                "1 project",
+                "100MB storage",
+                "Community support",
+                "Basic features",
+              ]}
+              style={{ width: 280 }}
+            />
+            <Tier
               title="Basic"
               price="$9.99"
-              type="default"
+              type="outline"
               features={[
                 "Up to 5 projects",
                 "1GB storage",
@@ -654,19 +665,6 @@ export default function ShowcaseScreen() {
                 "All premium features",
                 "Advanced security",
                 "Custom integrations",
-              ]}
-              style={{ width: 280 }}
-            />
-
-            <Tier
-              title="Free"
-              price="$0"
-              type="ghost"
-              features={[
-                "1 project",
-                "100MB storage",
-                "Community support",
-                "Basic features",
               ]}
               style={{ width: 280 }}
             />
