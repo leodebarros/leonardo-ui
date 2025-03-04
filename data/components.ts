@@ -4,6 +4,27 @@ import { ImageSourcePropType } from "react-native";
 import { TierType } from "@/components/leonardoUI/Tier";
 
 // -------------------------------------------------------
+// Screens Index
+// -------------------------------------------------------
+
+export const SCREENS = [
+    {
+        path: "/(screens)/loginScreen",
+        caption: "Login",
+        description: "Authentication template",
+        avatar: require("@/assets/avatars/ac.png")
+
+    },
+    {
+        path: "/(screens)/verificationCodeScreen",
+        caption: "Verification Code",
+        description: "Secure account verification template",
+        avatar: require("@/assets/avatars/ac.png")
+
+    }
+]
+
+// -------------------------------------------------------
 // Components Index
 // -------------------------------------------------------
 export const COMPONENTS = [
@@ -77,6 +98,12 @@ export const COMPONENTS = [
         path: "/(index)/optionsScreen",
         caption: "Options",
         description: "A grouped set of useful items or settings",
+        avatar: require("@/assets/avatars/op.png")
+    },
+    {
+        path: "/(index)/progressScreen",
+        caption: "Progress",
+        description: "Visual indicators for completion or status",
         avatar: require("@/assets/avatars/op.png")
     },
     {
@@ -744,3 +771,73 @@ export const TIER_VARIANTS: {
             ]
         }
     ];
+
+// -------------------------------------------------------
+// Progress (Pr)
+// -------------------------------------------------------
+
+export type ProgressVariant = {
+    componentName: "Linear" | "Circular";
+    title: string;
+    description: string;
+    items: {
+        value: number;
+        label: string;
+        size: string | number;
+        thickness?: number;
+        showValue?: boolean;
+    }[];
+};
+
+export const PROGRESS_VARIANTS: ProgressVariant[] = [
+    {
+        componentName: "Linear",
+        title: "Progress.Linear",
+        description: "Horizontal progress indicators with different sizes",
+        items: [
+            {
+                value: 75,
+                label: "Small Progress",
+                size: "sm",
+                showValue: true,
+            },
+            {
+                value: 45,
+                label: "Medium Progress",
+                size: "md",
+                showValue: true,
+            },
+            {
+                value: 65,
+                label: "Large Progress",
+                size: "lg",
+                showValue: true,
+            },
+        ],
+    },
+    {
+        componentName: "Circular",
+        title: "Progress.Circular",
+        description: "Radial progress indicators with different sizes",
+        items: [
+            {
+                value: 75,
+                label: "Small",
+                size: 60,
+                thickness: 6,
+            },
+            {
+                value: 45,
+                label: "Medium",
+                size: 90,
+                thickness: 8,
+            },
+            {
+                value: 65,
+                label: "Large",
+                size: 120,
+                thickness: 10,
+            },
+        ],
+    },
+];
