@@ -10,7 +10,7 @@ export type BadgeTone =
   | "purple"
   | "neutral";
 
-interface ChipParams {
+interface BadgeParams {
   caption: string;
   tone: BadgeTone;
   size?: "sm" | "base";
@@ -18,13 +18,13 @@ interface ChipParams {
   alignSelf?: FlexAlignType;
 }
 
-const Chip = ({
+const Badge = ({
   caption,
   tone,
   size = "base",
   rounded = "full",
   alignSelf = "flex-start",
-}: ChipParams) => {
+}: BadgeParams) => {
   const sprayTones = (tone: string) => {
     switch (tone) {
       case "green":
@@ -100,4 +100,4 @@ const Chip = ({
   );
 };
 
-export default Chip;
+export default Badge;
