@@ -37,6 +37,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="screens"
+        options={{
+          title: "Screens",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="00.square.hi" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="showcase"
         options={{
           title: "Showcase",
