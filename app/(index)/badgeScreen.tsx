@@ -14,7 +14,10 @@ import Badge from "@/components/leonardoUI/Badge";
 
 export default function BadgeScreen() {
   const theme = useTheme();
-  const filterOptions = [{ label: "base" }, { label: "small" }];
+  const filterOptions = [
+    { label: "Base", value: "base" },
+    { label: "Small", value: "small" },
+  ];
 
   const [activeFilter, setActiveFilter] = useState<string>("base");
 
@@ -42,8 +45,8 @@ export default function BadgeScreen() {
             key={option.label}
             type="default"
             label={option.label}
-            isActive={option.label === activeFilter}
-            onPress={() => setActiveFilter(option.label)}
+            isActive={option.value === activeFilter}
+            onPress={() => setActiveFilter(option.value)}
           />
         ))}
       </ScrollView>
