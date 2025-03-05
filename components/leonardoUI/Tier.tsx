@@ -123,10 +123,6 @@ function Tier({
       alignSelf: "flex-start",
       marginBottom: theme.margin.md,
     },
-    discountText: {
-      color: theme.colors.destructive,
-      fontWeight: "bold",
-    },
     featuresList: {
       marginBottom: theme.margin.lg,
     },
@@ -180,7 +176,7 @@ function Tier({
 
         {discount && (
           <RNView style={styles.discountContainer}>
-            <Badge size="sm" tone="red" caption="SAVE 20% YEARLY" />
+            <Badge size="sm" tone="red" caption={discount} />
           </RNView>
         )}
       </RNView>
