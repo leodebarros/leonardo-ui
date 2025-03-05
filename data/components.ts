@@ -665,6 +665,7 @@ export const TIER_VARIANTS: {
                         "Feature D"
                     ],
                     buttonCaption: "Action Button",
+
                 },
                 {
                     title: "Primary",
@@ -672,7 +673,6 @@ export const TIER_VARIANTS: {
                     description: "Description",
                     type: "primary",
                     recommended: true,
-                    discount: "Discount",
                     features: [
                         "Feature A",
                         "Feature B",
@@ -699,6 +699,7 @@ export const TIER_VARIANTS: {
                         "Feature D"
                     ],
                     buttonCaption: "Action Button",
+                    discount: "Discount"
                 },
                 {
                     title: "Ghost",
@@ -839,5 +840,32 @@ export const PROGRESS_VARIANTS: ProgressVariant[] = [
                 thickness: 10,
             },
         ],
+    },
+];
+
+// -------------------------------------------------------
+// Chip (Ch)
+// -------------------------------------------------------
+
+export const CHIP_VARIANTS = [
+    {
+        type: "default",
+        title: "Default Chips",
+        description: "type: default",
+    },
+    {
+        type: "primary",
+        title: "Primary Chips",
+        description: "type: primary",
+    },
+    {
+        type: "ghost",
+        title: "Ghost Chips",
+        description: "type: ghost",
+    },
+    {
+        type: "outline",
+        title: "Outline Chips",
+        description: "type: outline",
     },
 ];
