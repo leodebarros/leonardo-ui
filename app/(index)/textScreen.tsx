@@ -13,9 +13,9 @@ import MainView from "@/components/leonardoUI/MainView";
 export default function TextScreen() {
   const theme = useTheme();
   const filterOptions = [
-    { label: "normal" },
-    { label: "semibold" },
-    { label: "bold" },
+    { label: "Normal", value: "normal" },
+    { label: "Semibold", value: "semibold" },
+    { label: "Bold", value: "bold" },
   ];
 
   const [activeFilter, setActiveFilter] = useState<string>("normal");
@@ -44,7 +44,7 @@ export default function TextScreen() {
             key={option.label}
             type="default"
             label={option.label}
-            isActive={option.label === activeFilter}
+            isActive={option.value === activeFilter}
             onPress={() => setActiveFilter(option.label)}
           />
         ))}
