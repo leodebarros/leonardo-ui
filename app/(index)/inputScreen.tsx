@@ -7,15 +7,21 @@ import { useTheme } from "@/components/leonardoUI/Theme";
 import { useState } from "react";
 import { View as RNView, ScrollView, StyleSheet } from "react-native";
 
+const VALIDATION_TYPES = [
+  { label: "None", value: undefined },
+  { label: "Info", value: "info" },
+  { label: "Error", value: "error" },
+  { label: "Success", value: "success" },
+];
+
+const INPUT_SIZE_VARIANTS = [
+  { title: "Small Input", description: "Size: sm", size: "sm" },
+  { title: "Medium Input", description: "Size: md", size: "md" },
+  { title: "Large Input", description: "Size: lg", size: "lg" },
+];
+
 export default function InputScreen() {
   const theme = useTheme();
-  const validationTypes = [
-    { label: "none", value: undefined },
-    { label: "info", value: "info" },
-    { label: "error", value: "error" },
-    { label: "success", value: "success" },
-  ];
-
   const [validationType, setValidationType] = useState<
     ValidationType | undefined
   >(undefined);
@@ -39,7 +45,7 @@ export default function InputScreen() {
         showsHorizontalScrollIndicator={false}
         style={styles.scrollContainer}
       >
-        {validationTypes.map((option) => (
+        {VALIDATION_TYPES.map((option) => (
           <Chip
             key={option.label}
             type="default"
@@ -50,40 +56,19 @@ export default function InputScreen() {
         ))}
       </ScrollView>
       <RNView>
-        <Card>
-          <Card.Title>Small Input</Card.Title>
-          <Card.Description>Size: sm</Card.Description>
-          <Input
-            size="sm"
-            label="Label"
-            placeholder="Placeholder"
-            validationType={validationType as ValidationType}
-            validationText="Validation text"
-          />
-        </Card>
-
-        <Card>
-          <Card.Title>Medium Input</Card.Title>
-          <Card.Description>Size: md</Card.Description>
-          <Input
-            label="Label"
-            placeholder="Placeholder"
-            validationType={validationType as ValidationType}
-            validationText="Validation text"
-          />
-        </Card>
-
-        <Card>
-          <Card.Title>Large Input</Card.Title>
-          <Card.Description>Size: lg</Card.Description>
-          <Input
-            size="lg"
-            label="Label"
-            placeholder="Placeholder"
-            validationType={validationType as ValidationType}
-            validationText="Validation text"
-          />
-        </Card>
+        {INPUT_SIZE_VARIANTS.map((variant) => (
+          <Card key={variant.size}>
+            <Card.Title>{variant.title}</Card.Title>
+            <Card.Description>{variant.description}</Card.Description>
+            <Input
+              size={variant.size as "sm" | "md" | "lg"}
+              label="Label"
+              placeholder="Placeholder"
+              validationType={validationType as ValidationType}
+              validationText="Validation text"
+            />
+          </Card>
+        ))}
       </RNView>
     </MainView>
   );
