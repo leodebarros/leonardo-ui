@@ -24,8 +24,11 @@ export default function LoginScreen() {
             <Input label="Email" size="sm" placeholder="example@gmail.com" />
             <Button caption="Send magic link" type="default" />
             <Card.Footer
-              text="Need help?   Contact us"
-              button={<Button caption="Create an account" type="outline" />}
+              text="Need help?"
+              textPath={"/"}
+              button={
+                <Button size="sm" caption="Create an account" type="primary" />
+              }
             />
           </Card>
         </Tabs.TabContent>
@@ -43,7 +46,10 @@ export default function LoginScreen() {
             <Button caption="Login" type="default" />
             <Card.Footer
               text="Forgot password?"
-              button={<Button caption="Create an account" type="outline" />}
+              textPath={"/"}
+              button={
+                <Button size="sm" caption="Create an account" type="primary" />
+              }
             />
           </Card>
         </Tabs.TabContent>
