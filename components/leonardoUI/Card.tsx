@@ -10,6 +10,8 @@ import {
 import { useTheme } from "./Theme";
 import Badge from "./Badge";
 import { Text } from "./Text";
+import { Href, Link } from "expo-router";
+import { useThemeActions } from "@/store/themeContext";
 
 interface CardProps {
   children: React.ReactNode;
@@ -129,6 +131,8 @@ interface CardFooterProps {
   button: React.ReactNode;
   badgeTone?: "green" | "yellow" | "cyan" | "red" | "purple" | "neutral";
   chipSize?: "sm" | "base";
+  buttonPath?: Href;
+  textPath?: Href;
 }
 
 Card.Footer = function CardFooter({
@@ -136,8 +140,11 @@ Card.Footer = function CardFooter({
   button,
   badgeTone,
   chipSize = "base",
+  buttonPath,
+  textPath,
 }: CardFooterProps) {
   const theme = useTheme();
+  const { chosenPrimaryKey } = useThemeActions();
 
   const styles = StyleSheet.create({
     footerContainer: {
@@ -154,16 +161,22 @@ Card.Footer = function CardFooter({
       maxWidth: "50%",
       textAlign: "right",
       paddingHorizontal: theme.padding.md,
+      color: textPath ? chosenPrimaryKey : theme.colors.textSecondary,
     },
     footerButtonContainer: {
-      maxWidth: "60%",
+      maxWidth: "50%",
     },
   });
 
   return (
     <RNView style={styles.footerContainer}>
-      <RNView style={styles.footerButtonContainer}>{button}</RNView>
-
+      {buttonPath ? (
+        <Link href={buttonPath}>
+          <RNView style={styles.footerButtonContainer}>{button}</RNView>
+        </Link>
+      ) : (
+        <RNView style={styles.footerButtonContainer}>{button}</RNView>
+      )}
       {text && badgeTone ? (
         <Badge
           alignSelf="center"
@@ -171,8 +184,18 @@ Card.Footer = function CardFooter({
           tone={badgeTone}
           size={chipSize}
         />
+      ) : textPath ? (
+        <Link href={textPath}>
+          <Text
+            color="textSecondary"
+            style={styles.footerText}
+            numberOfLines={2}
+          >
+            {text}
+          </Text>
+        </Link>
       ) : (
-        <Text color="textSecondary" style={styles.footerText} numberOfLines={2}>
+        <Text style={styles.footerText} numberOfLines={2}>
           {text}
         </Text>
       )}
