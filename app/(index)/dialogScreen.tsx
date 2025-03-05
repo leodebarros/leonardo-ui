@@ -22,7 +22,6 @@ export default function DialogScreen() {
       <DefaultView style={{ gap: 12 }}>
         {DIALOG_CONTENT.map((dialogItem) => {
           const { id, title, description, type } = dialogItem;
-          // Determine if this dialog should be open
           const isOpen = visibleDialog === id;
 
           return (
