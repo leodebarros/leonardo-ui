@@ -20,7 +20,7 @@ export default function MainView({ children }: MainViewProps) {
     main: {
       flex: 1,
       paddingHorizontal: "4%",
-      paddingBottom: 300,
+      paddingBottom: Platform.OS === "web" ? 15 : 300,
       paddingTop:
         Platform.OS === "android" ? 25 : Platform.OS === "web" ? 7 : 0,
     },
@@ -37,7 +37,7 @@ export default function MainView({ children }: MainViewProps) {
         style={styles.main}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingBottom: 81,
+          paddingBottom: Platform.OS === "web" ? 0 : 81,
         }}
       >
         <StatusBar style="auto" />
