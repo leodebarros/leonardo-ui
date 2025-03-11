@@ -89,7 +89,7 @@ export default function ShowcaseScreen() {
     },
     betweenRow: {
       flexDirection: "row",
-      alignItems: "baseline",
+      alignItems: "center",
       justifyContent: "space-between",
       marginBottom: theme.margin.md,
       marginHorizontal: theme.padding.xs,
@@ -236,7 +236,7 @@ export default function ShowcaseScreen() {
       />
 
       <RNView>
-        <RNView style={styles.betweenRow}>
+        <RNView style={[styles.betweenRow, { alignItems: "baseline" }]}>
           <Text weight="semibold" size="lg">
             Similar Products
           </Text>
