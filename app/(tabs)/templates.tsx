@@ -7,7 +7,10 @@ import MainView from "@/components/leonardoUI/MainView";
 export default function ScreensScreen() {
   return (
     <MainView>
-      <Header title="Screens" description="A set of ready-to-go screens" />
+      <Header
+        title={`Templates (${SCREENS.length})`}
+        description="Safe precious time with this set of ready-to-go screens"
+      />
       <List>
         {SCREENS.map(({ path, caption, description, avatar }) => (
           <Link key={path} href={path as Href} asChild>

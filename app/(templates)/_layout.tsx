@@ -8,6 +8,7 @@ export default function ScreensLayout() {
         name="verificationCodeScreen"
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="termsScreen" options={{ headerShown: false }} />
     </Stack>
   );
 }

@@ -9,19 +9,33 @@ import { TierType } from "@/components/leonardoUI/Tier";
 
 export const SCREENS = [
     {
-        path: "/(screens)/loginScreen",
+        path: "/(templates)/loginScreen",
         caption: "Login",
         description: "Authentication template",
         avatar: require("@/assets/avatars/lo.png")
 
     },
     {
-        path: "/(screens)/verificationCodeScreen",
+        path: "/(templates)/verificationCodeScreen",
         caption: "Verification Code",
         description: "Secure account verification template",
         avatar: require("@/assets/avatars/vc.png")
 
-    }
+    },
+    {
+        path: "/(templates)/passwordResetScreen",
+        caption: "Password Reset",
+        description: "Password recovery template",
+        avatar: require("@/assets/avatars/vc.png")
+
+    },
+    {
+        path: "/(templates)/termsScreen",
+        caption: "Terms",
+        description: "Terms & conditions template",
+        avatar: require("@/assets/avatars/vc.png")
+
+    },
 ]
 
 // -------------------------------------------------------

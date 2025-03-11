@@ -37,9 +37,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="screens"
+        name="templates"
         options={{
-          title: "Screens",
+          title: "Templates",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="iphone" color={color} />
           ),
