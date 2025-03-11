@@ -24,14 +24,6 @@ export default function HomeScreen() {
             />
           </Link>
         ))}
-
-        <Link href={"/(tabs)/showcase"} asChild>
-          <Button
-            caption="View Showcase"
-            type="default"
-            style={{ marginBottom: 0 }}
-          />
-        </Link>
       </List>
     </MainView>
   );
