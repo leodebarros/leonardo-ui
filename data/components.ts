@@ -22,13 +22,13 @@ export const SCREENS = [
         avatar: require("@/assets/avatars/vc.png")
 
     },
-    {
-        path: "/(templates)/passwordResetScreen",
-        caption: "Password Reset",
-        description: "Password recovery template",
-        avatar: require("@/assets/avatars/vc.png")
+    // {
+    //     path: "/(templates)/passwordResetScreen",
+    //     caption: "Password Reset",
+    //     description: "Password recovery template",
+    //     avatar: require("@/assets/avatars/vc.png")
 
-    },
+    // },
     {
         path: "/(templates)/termsScreen",
         caption: "Terms",
