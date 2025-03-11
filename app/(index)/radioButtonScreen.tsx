@@ -24,7 +24,7 @@ export default function RadioButtonScreen() {
       />
       <Card>
         <Card.Description>
-          Allow the selection a single option from a set
+          Allow the selection of a single option from a set
         </Card.Description>
 
         <RNView style={{ gap: 12 }}>
