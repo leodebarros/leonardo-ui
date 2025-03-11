@@ -33,7 +33,7 @@ export default function RootLayout() {
     container: {
       flex: 1,
       ...(Platform.OS === "web" && {
-        maxWidth: 415,
+        maxWidth: 600,
         marginVertical: 40,
         width: "100%",
         marginLeft: "auto",
