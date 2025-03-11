@@ -9,7 +9,7 @@ export default function ScreensScreen() {
     <MainView>
       <Header
         title={`Templates (${SCREENS.length})`}
-        description="Safe precious time with this set of ready-to-go screens"
+        description="Save precious time with this set of ready-to-go screens"
       />
       <List>
         {SCREENS.map(({ path, caption, description, avatar }) => (
