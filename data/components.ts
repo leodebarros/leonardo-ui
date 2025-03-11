@@ -12,14 +12,14 @@ export const SCREENS = [
         path: "/(templates)/loginScreen",
         caption: "Login",
         description: "Authentication template",
-        avatar: require("@/assets/avatars/lo.png")
+        avatar: require("@/assets/avatars/login.png")
 
     },
     {
         path: "/(templates)/verificationCodeScreen",
         caption: "Verification Code",
         description: "Secure account verification template",
-        avatar: require("@/assets/avatars/vc.png")
+        avatar: require("@/assets/avatars/code.png")
 
     },
     // {
@@ -33,7 +33,7 @@ export const SCREENS = [
         path: "/(templates)/termsScreen",
         caption: "Terms",
         description: "Terms & conditions template",
-        avatar: require("@/assets/avatars/vc.png")
+        avatar: require("@/assets/avatars/terms.png")
 
     },
 ]
