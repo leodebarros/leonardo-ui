@@ -29,11 +29,12 @@ export default function RootLayout() {
   const styles = StyleSheet.create({
     root: {
       flex: 1,
+      backgroundColor: "blue",
     },
     container: {
       flex: 1,
       ...(Platform.OS === "web" && {
-        maxWidth: 600,
+        maxWidth: 550,
         marginVertical: 40,
         width: "100%",
         marginLeft: "auto",
