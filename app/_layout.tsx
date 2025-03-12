@@ -35,11 +35,11 @@ export default function RootLayout() {
       flex: 1,
       ...(Platform.OS === "web" && {
         maxWidth: 550,
-        marginVertical: 40,
+        marginVertical: "0%",
         width: "100%",
         marginLeft: "auto",
         marginRight: "auto",
-        borderWidth: 1,
+        borderWidth: 0,
         borderColor: "#D0D0D0",
       }),
     },
