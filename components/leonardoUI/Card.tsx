@@ -158,7 +158,6 @@ Card.Footer = function CardFooter({
     },
     footerText: {
       flexBasis: "50%",
-      maxWidth: "50%",
       textAlign: "right",
       paddingHorizontal: theme.padding.md,
       color: textPath ? chosenPrimaryKey : theme.colors.textSecondary,
