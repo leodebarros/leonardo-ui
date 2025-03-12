@@ -3,8 +3,10 @@ import Card from "@/components/leonardoUI/Card";
 import Header from "@/components/leonardoUI/Header";
 import MainView from "@/components/leonardoUI/MainView";
 import { BUTTON_VARIANTS } from "@/data/components";
+import { useTheme } from "@/store/themeContext";
 
 export default function ButtonScreen() {
+  const theme = useTheme();
   return (
     <MainView>
       <Header
@@ -14,7 +16,14 @@ export default function ButtonScreen() {
       />
 
       {BUTTON_VARIANTS.map(({ title, description, type }) => (
-        <Card key={type}>
+        <Card
+          key={type}
+          style={{
+            backgroundColor: "transparent",
+            borderWidth: 1,
+            borderColor: theme.colors.antiOverBackground,
+          }}
+        >
           <Card.Title>{title}</Card.Title>
           <Card.Description>{description}</Card.Description>
           <Button caption="Enabled" type={type as ButtonType} />

@@ -686,7 +686,6 @@ export const TIER_VARIANTS: {
                     price: "Price",
                     description: "Description",
                     type: "primary",
-                    recommended: true,
                     features: [
                         "Feature A",
                         "Feature B",

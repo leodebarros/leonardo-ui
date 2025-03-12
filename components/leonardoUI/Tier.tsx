@@ -89,7 +89,7 @@ function Tier({
       position: "absolute",
       top: 0,
       right: 0,
-      backgroundColor: "#C800DE",
+      backgroundColor: theme.colors.success,
       paddingHorizontal: theme.padding.md,
       paddingVertical: theme.padding.md,
       borderBottomLeftRadius: theme.borderRadius.md,
