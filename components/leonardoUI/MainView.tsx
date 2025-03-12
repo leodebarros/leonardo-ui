@@ -19,7 +19,7 @@ export default function MainView({ children }: MainViewProps) {
   const styles = StyleSheet.create({
     main: {
       flex: 1,
-      paddingHorizontal: "4%",
+      paddingHorizontal: Platform.OS === "web" ? "6%" : "4%",
       paddingBottom: Platform.OS === "web" ? 15 : 300,
       paddingTop:
         Platform.OS === "android" ? 25 : Platform.OS === "web" ? 7 : 0,
