@@ -8,6 +8,8 @@ import {
   GestureResponderEvent,
   Image,
   ImageSourcePropType,
+  Modal,
+  Platform,
 } from "react-native";
 import { useTheme } from "./Theme";
 import { Text } from "./Text";
@@ -216,6 +218,7 @@ Options.Select = function OptionsSelect({
 
   const styles = StyleSheet.create({
     container: {
+      position: "relative",
       width: "100%",
       flexDirection: "row",
       alignItems: "center",
@@ -233,27 +236,41 @@ Options.Select = function OptionsSelect({
     rightSection: {
       marginLeft: theme.margin.sm,
     },
+    modalContainer: {
+      flex: 1,
+      justifyContent: "flex-start",
+      alignItems: "center",
+      backgroundColor: "rgba(0,0,0,0)",
+      paddingHorizontal: "4%",
+      paddingTop: Platform.OS === "web" ? "7%" : "15%",
+      minWidth: Platform.OS === "web" ? 480 : "auto",
+      maxWidth: Platform.OS === "web" ? 480 : "auto",
+      marginHorizontal: "auto",
+    },
     dropdownContainer: {
-      position: "absolute",
-      backgroundColor: theme.colors.accentUsageBg,
+      width: "100%",
       borderRadius: theme.borderRadius.md,
+      backgroundColor: theme.colors.background,
       paddingHorizontal: theme.padding.md,
       paddingVertical: theme.padding.xs,
-      top: 40,
-      left: theme.padding.sm,
-      right: theme.padding.sm,
-      zIndex: 9999,
-      shadowColor: "#000",
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.2,
-      shadowRadius: 4,
-      elevation: 5, // For Android
+      alignItems: "center",
+      justifyContent: "center",
+      position: "relative",
+      borderWidth: 1,
+      borderColor: theme.colors.border,
+      minWidth: Platform.OS === "web" ? 480 : "100%",
+      maxWidth: Platform.OS === "web" ? 480 : "100%",
     },
     dropdownItem: {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
       paddingVertical: 15,
+      minWidth: "100%",
+    },
+    innerWrapper: {
+      minWidth: "100%",
+      maxWidth: "100%",
     },
     separator: {
       borderBottomWidth: 1,
@@ -262,13 +279,10 @@ Options.Select = function OptionsSelect({
     label: {
       color: chosenPrimaryKey,
     },
-    iconColor: {
-      color: chosenPrimaryKey,
-    },
   });
 
   return (
-    <React.Fragment>
+    <>
       <TouchableOpacity
         style={[styles.container, style]}
         onPress={handlePress}
@@ -292,38 +306,47 @@ Options.Select = function OptionsSelect({
       </TouchableOpacity>
 
       {open && (
-        <RNView style={styles.dropdownContainer}>
-          {options.map((opt, index) => (
-            <RNView key={opt.value}>
-              <TouchableOpacity
-                style={[styles.dropdownItem]}
-                onPress={() => {
-                  onChange?.(opt.value);
-                  setOpen(false);
-                }}
-              >
-                <Text color="textSidebar" weight="semibold">
-                  {opt.label}
-                </Text>
-                {opt.value === selectedValue ? (
-                  <AntDesign
-                    name="check"
-                    size={18}
-                    color={theme.colors.textPrimary}
+        <Modal
+          visible={open}
+          transparent={true}
+          animationType="fade"
+          onRequestClose={() => setOpen(false)}
+        >
+          <RNView style={styles.modalContainer}>
+            <RNView style={styles.dropdownContainer}>
+              {options.map((opt, index) => (
+                <RNView key={opt.value} style={styles.innerWrapper}>
+                  <TouchableOpacity
+                    style={styles.dropdownItem}
+                    onPress={() => {
+                      onChange?.(opt.value);
+                      setOpen(false);
+                    }}
+                  >
+                    <Text color="textSidebar" weight="semibold">
+                      {opt.label}
+                    </Text>
+                    {opt.value === selectedValue ? (
+                      <AntDesign
+                        name="check"
+                        size={18}
+                        color={theme.colors.textPrimary}
+                      />
+                    ) : null}
+                  </TouchableOpacity>
+                  <RNView
+                    style={[
+                      styles.separator,
+                      index === options.length - 1 && { borderBottomWidth: 0 },
+                    ]}
                   />
-                ) : null}
-              </TouchableOpacity>
-              <RNView
-                style={[
-                  styles.separator,
-                  index === options.length - 1 && { borderBottomWidth: 0 },
-                ]}
-              ></RNView>
+                </RNView>
+              ))}
             </RNView>
-          ))}
-        </RNView>
+          </RNView>
+        </Modal>
       )}
-    </React.Fragment>
+    </>
   );
 };
 
